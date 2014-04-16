@@ -4,7 +4,7 @@ html
     title Emojis
     link(rel="stylesheet" href="./style/ionicons.min.css" type="text/css")
     link(rel="stylesheet" href="./style/style.css" type="text/css")
-    script(src="./underscore-min.js")
+    script(src="./lib/underscore-min.js")
   body
     .group-logos
       each group, n in emojis
@@ -21,4 +21,4 @@ html
       input#detail-input
       button#copy-button
         i.ion-clipboard
-    script(src="popup.js")
+    script(src="./src/popup.js")
