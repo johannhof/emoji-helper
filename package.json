@@ -1,0 +1,15 @@
+{
+  "name": "emoji",
+  "version": "0.1.0",
+  "description": "",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Johann Hofmann",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.6.0",
+    "gulp-jade": "^0.5.0"
+  }
+}
