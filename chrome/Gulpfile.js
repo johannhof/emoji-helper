@@ -2,7 +2,7 @@ var gulp = require('gulp');
 
 var jade = require('gulp-jade');
 
-var emojis = require('../emojis.json');
+var emojis = require('../shared/emojis.json');
 
 gulp.task('popup', function() {
   gulp.src('../shared/popup.jade')

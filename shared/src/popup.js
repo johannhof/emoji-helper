@@ -1,4 +1,9 @@
 (function() {
+
+  // local vars for linting (and performance)
+  var chrome = window.chrome;
+  var _ = window._;
+
   // beware, these are dom groups, not real arrays
   // use underscore on them or turn them into an array with slice
   var groups = document.querySelectorAll(".group");
@@ -9,10 +14,35 @@
   var detailInput = document.getElementById("detail-input");
   var detailLogo = document.getElementById("detail-logo");
   var copyButton = document.getElementById("copy-button");
+  var searchInput = document.getElementById("search");
+  var searchContainer = document.getElementById("search-container");
 
-  // local vars for linting (and performance)
-  var chrome = window.chrome;
-  var _ = window._;
+  // very simple utility http function
+  function getJSON(url, cb) {
+    var request = new XMLHttpRequest();
+    request.open("GET", url, true);
+    request.send();
+    request.onreadystatechange = function() {
+      if (request.readyState === 4) {
+        cb(request.responseText);
+      }
+    };
+  }
+
+  // load emojis from json
+  var emojis;
+  getJSON("./emojis.json", function(res) {
+    // flatten and objectify emojis
+    // is this efficient enough?
+    emojis = _.flatten(_.map(JSON.parse(res), function(group) {
+      return _.map(group, function(v, k) {
+        return {
+          name: k,
+          src: v
+        };
+      });
+    }));
+  });
 
   // recently used emojis
   var recent = [];
@@ -66,23 +96,28 @@
     });
   }
 
-  // TODO improve performance (always called when updated)
+  function appendItem(container, item) {
+    var cont = document.createElement("div");
+    cont.classList.add("emoji");
+    cont.dataset.name = item.name;
+    cont.dataset.src = item.src;
+
+    var img = document.createElement("img");
+    img.src = item.src;
+    cont.appendChild(img);
+
+    var span = document.createElement("span");
+    span.innerHTML = item.name;
+    cont.appendChild(span);
+
+    addEmojiClickListener(cont);
+    container.appendChild(cont);
+  }
+
+
   function updateRecent() {
     recentDiv.innerHTML = "";
-    _.each(recent, function(item) {
-      var cont = document.createElement("div");
-      cont.dataset.name = item.name;
-      cont.dataset.src = item.src;
-      var span = document.createElement("span");
-      var img = document.createElement("img");
-      cont.classList.add("emoji");
-      span.innerHTML = item.name;
-      img.src = item.src;
-      cont.appendChild(img);
-      cont.appendChild(span);
-      addEmojiClickListener(cont);
-      recentDiv.appendChild(cont);
-    });
+    _.each(recent, appendItem.bind(null, recentDiv));
   }
 
   _.each(groups, function(group) {
@@ -127,6 +162,16 @@
   // add click listener to logo that changes the displayed group
   _.each(logos, function(logo) {
     logo.addEventListener('click', setActiveGroup.bind(null, logo));
+  });
+
+  searchInput.addEventListener("keyup", function() {
+    setActiveGroup(searchInput);
+    var val = searchInput.value;
+    searchContainer.innerHTML = "";
+    var filtered = _.filter(emojis, function(emoji) {
+      return emoji.name.indexOf(val) !== -1;
+    });
+    filtered.forEach(appendItem.bind(null, searchContainer));
   });
 
 }());

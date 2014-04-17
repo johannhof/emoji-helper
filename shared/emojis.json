@@ -1,0 +1,29 @@
+{
+  "recent" : { },
+  "people": {
+    "+1": "https://github.global.ssl.fastly.net/images/icons/emoji/+1.png?v5",
+    "-1": "https://github.global.ssl.fastly.net/images/icons/emoji/-1.png?v5",
+    "accept": "https://github.global.ssl.fastly.net/images/icons/emoji/accept.png?v5"
+  },
+  "nature" : {
+    "sunflower": "https://github.global.ssl.fastly.net/images/icons/emoji/sunflower.png?v5",
+    "whale": "https://github.global.ssl.fastly.net/images/icons/emoji/whale.png?v5",
+    "whale2": "https://github.global.ssl.fastly.net/images/icons/emoji/whale2.png?v5"
+  },
+  "objects" : {
+    "alarm_clock": "https://github.global.ssl.fastly.net/images/icons/emoji/alarm_clock.png?v5",
+    "8ball": "https://github.global.ssl.fastly.net/images/icons/emoji/8ball.png?v5"
+  },
+  "places" : {
+    "aerial_tramway": "https://github.global.ssl.fastly.net/images/icons/emoji/aerial_tramway.png?v5",
+    "airplane": "https://github.global.ssl.fastly.net/images/icons/emoji/airplane.png?v5"
+  },
+  "symbols" : {
+    "100": "https://github.global.ssl.fastly.net/images/icons/emoji/100.png?v5",
+    "1234": "https://github.global.ssl.fastly.net/images/icons/emoji/1234.png?v5",
+    "a": "https://github.global.ssl.fastly.net/images/icons/emoji/a.png?v5",
+    "ab": "https://github.global.ssl.fastly.net/images/icons/emoji/ab.png?v5",
+    "abc": "https://github.global.ssl.fastly.net/images/icons/emoji/abc.png?v5",
+    "abcd": "https://github.global.ssl.fastly.net/images/icons/emoji/abcd.png?v5"
+  }
+}
