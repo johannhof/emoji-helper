@@ -1,8 +1,8 @@
 (function() {
 
   // local vars for linting (and performance)
-  var chrome = window.chrome;
   var _ = window._;
+  var vendor = window.vendor;
 
   // beware, these are dom groups, not real arrays
   // use underscore on them or turn them into an array with slice
@@ -67,8 +67,8 @@
         src: node.dataset.src
       };
 
-      // save last in chrome storage
-      chrome.storage.local.set({
+      // save last in local storage
+      vendor.setLocal({
         'last': item
       });
 
@@ -83,7 +83,7 @@
       }
 
       // persist recent
-      chrome.storage.local.set({
+      vendor.setLocal({
         recent: recent
       });
 
@@ -125,17 +125,17 @@
   });
 
   // get last used emoji from user locals and display
-  chrome.storage.local.get("last", function(item) {
-    if (item.last) {
-      showDetail(item.last.name, item.last.src);
+  vendor.getLocal("last", function(item) {
+    if (item) {
+      showDetail(item.name, item.src);
     }
   });
 
   copyButton.addEventListener("click", copyToClipboard);
 
   // get recents from user locals
-  chrome.storage.local.get("recent", function(item) {
-    recent = item.recent || recent;
+  vendor.getLocal("recent", function(rec) {
+    recent = rec || recent;
     updateRecent();
   });
 

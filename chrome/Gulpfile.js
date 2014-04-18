@@ -18,6 +18,10 @@ gulp.task('manifest', function() {
   gulp.src("./manifest.json").pipe(gulp.dest("./build/"));
 });
 
+gulp.task('vendor', function() {
+  gulp.src("./vendor.js").pipe(gulp.dest("./build/src/"));
+});
+
 gulp.task('shared', function() {
   gulp.src([
     "../shared/**/*",
@@ -30,8 +34,9 @@ gulp.task('watch', function() {
   gulp.watch('../shared/popup.jade', ['build']);
   gulp.watch('../shared/src/*.js', ['build']);
   gulp.watch('../shared/style/*.css', ['build']);
+  gulp.watch('./vendor.js', ['build']);
 });
 
-gulp.task('build', ['popup', 'shared', 'manifest']);
+gulp.task('build', ['popup', 'shared', 'manifest', 'vendor']);
 
 gulp.task('default', ['build', 'watch']);
