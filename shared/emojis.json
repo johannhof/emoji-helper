@@ -1,8 +1,8 @@
 {
   "recent" : { },
   "people": {
-    "+1": "https://github.global.ssl.fastly.net/images/icons/emoji/+1.png?v5",
-    "-1": "https://github.global.ssl.fastly.net/images/icons/emoji/-1.png?v5",
+    "+1": "./img/emoji/+1.png",
+    "-1": "./img/emoji/-1.png",
     "accept": "https://github.global.ssl.fastly.net/images/icons/emoji/accept.png?v5"
   },
   "nature" : {

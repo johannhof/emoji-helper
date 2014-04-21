@@ -55,6 +55,7 @@
     document.execCommand('copy');
   }
 
+  // show an emoji in the bottom detail screen
   function showDetail(name, src) {
     detailLogo.src = src;
     detailInput.value = ":" + name + ":";
@@ -114,7 +115,6 @@
     container.appendChild(cont);
   }
 
-
   function updateRecent() {
     recentDiv.innerHTML = "";
     _.each(recent, appendItem.bind(null, recentDiv));
@@ -164,14 +164,21 @@
     logo.addEventListener('click', setActiveGroup.bind(null, logo));
   });
 
-  searchInput.addEventListener("keyup", function() {
-    setActiveGroup(searchInput);
-    var val = searchInput.value;
-    searchContainer.innerHTML = "";
-    var filtered = _.filter(emojis, function(emoji) {
-      return emoji.name.indexOf(val) !== -1;
+  // search functionality
+  (function() {
+    var lastVal;
+    searchInput.addEventListener("keyup", function() {
+      setActiveGroup(searchInput);
+      var val = searchInput.value;
+      // prevent flickering
+      if (val !== lastVal) {
+        lastVal = val;
+        searchContainer.innerHTML = "";
+        _.filter(emojis, function(emoji) {
+          return emoji.name.indexOf(val) !== -1;
+        }).forEach(appendItem.bind(null, searchContainer));
+      }
     });
-    filtered.forEach(appendItem.bind(null, searchContainer));
-  });
+  }());
 
 }());
