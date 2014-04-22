@@ -1,11 +1,10 @@
 {
-  "name": "emoji",
+  "name": "emoji-helper",
+  "title": "emoji-helper",
   "version": "0.1.0",
-  "description": "",
-  "main": "Gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Emoji Helper Addon",
+  "id": "jid1-Xo5SuA6qc1DFpw",
+  "main": "main",
   "author": "Johann Hofmann",
   "license": "MIT",
   "devDependencies": {
