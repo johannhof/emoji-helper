@@ -8,7 +8,8 @@ gulp.task('popup', function() {
   gulp.src('../shared/popup.jade')
     .pipe(jade({
       locals: {
-        emojis: emojis
+        emojis: emojis,
+        browser: "firefox"
       }
     }))
     .pipe(gulp.dest("./build/data/"));
@@ -17,6 +18,7 @@ gulp.task('popup', function() {
 gulp.task('js', function() {
   gulp.src("./vendor.js").pipe(gulp.dest("./build/data/src/"));
   gulp.src("./main.js").pipe(gulp.dest("./build/"));
+  gulp.src("./helper.js").pipe(gulp.dest("./build/data/"));
 });
 
 gulp.task('shared', function() {
@@ -32,8 +34,7 @@ gulp.task('watch', function() {
   gulp.watch('../shared/popup.jade', ['build']);
   gulp.watch('../shared/src/*.js', ['build']);
   gulp.watch('../shared/style/*.css', ['build']);
-  gulp.watch('./vendor.js', ['build']);
-  gulp.watch('./main.js', ['build']);
+  gulp.watch('./*.js', ['build']);
 });
 
 gulp.task('build', ['popup', 'shared', 'js']);

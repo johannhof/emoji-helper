@@ -13,5 +13,11 @@
     chrome.storage.local.set(item);
   };
 
+  exports.copyToClipboard = function(domElement) {
+    domElement.focus();
+    document.execCommand('SelectAll');
+    document.execCommand('copy');
+  };
+
   window.vendor = exports;
 }());

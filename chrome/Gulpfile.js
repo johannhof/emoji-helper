@@ -8,7 +8,8 @@ gulp.task('popup', function() {
   gulp.src('../shared/popup.jade')
     .pipe(jade({
       locals: {
-        emojis: emojis
+        emojis: emojis,
+        browser: "chrome"
       }
     }))
     .pipe(gulp.dest("./build/"));

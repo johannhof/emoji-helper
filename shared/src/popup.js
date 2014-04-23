@@ -4,6 +4,7 @@
   var _ = window._;
   var vendor = window.vendor;
 
+
   // beware, these are dom groups, not real arrays
   // use underscore on them or turn them into an array with slice
   var groups = document.querySelectorAll(".group");
@@ -49,12 +50,6 @@
   // maximum number of recents
   var MAX_RECENT = 20;
 
-  function copyToClipboard() {
-    detailInput.focus();
-    document.execCommand('SelectAll');
-    document.execCommand('copy');
-  }
-
   // show an emoji in the bottom detail screen
   function showDetail(name, src) {
     detailLogo.src = src;
@@ -93,7 +88,7 @@
 
       // show selected emoji in detail
       showDetail(item.name, item.src);
-      copyToClipboard(); // TODO make this turnoffable?
+      vendor.copyToClipboard(detailInput); // TODO make this turnoffable?
     });
   }
 
@@ -131,7 +126,7 @@
     }
   });
 
-  copyButton.addEventListener("click", copyToClipboard);
+  copyButton.addEventListener("click", vendor.copyToClipboard.bind(null, detailInput));
 
   // get recents from user locals
   vendor.getLocal("recent", function(rec) {
