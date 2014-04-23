@@ -1,30 +1,32 @@
 (function() {
   var exports = {};
 
-  exports.getLocal = function(name, cb) {
+  function send(name, data){
     var event = document.createEvent('CustomEvent');
-    event.initCustomEvent("get", true, true, name);
+    event.initCustomEvent(name, true, true, data);
     document.documentElement.dispatchEvent(event);
+  }
 
-    var listener = window.addEventListener("send", function(event) {
-      alert(event.detail);
+  exports.getLocal = function(name, cb) {
+    send("get", name);
+
+    var listener = function(event) {
       cb(event.detail);
-      window.removeEventListener(listener);
-    }, false);
+      window.removeEventListener("send_" + name, listener);
+    };
+
+    // suffix data name to have unique recepients
+    window.addEventListener("send_" + name, listener, false);
   };
 
   exports.setLocal = function(item) {
-    var event = document.createEvent('CustomEvent');
-    event.initCustomEvent("set", true, true, item);
-    document.documentElement.dispatchEvent(event);
+    send("set", item);
   };
 
   exports.copyToClipboard = function(domElement) {
     domElement.focus();
     domElement.select();
-    var event = document.createEvent('CustomEvent');
-    event.initCustomEvent("copy", true, true, domElement.value);
-    document.documentElement.dispatchEvent(event);
+    send("copy", domElement.value);
   };
 
   window.vendor = exports;

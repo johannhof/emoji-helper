@@ -119,20 +119,7 @@
     _.each(group.childNodes, addEmojiClickListener);
   });
 
-  // get last used emoji from user locals and display
-  vendor.getLocal("last", function(item) {
-    if (item) {
-      showDetail(item.name, item.src);
-    }
-  });
-
   copyButton.addEventListener("click", vendor.copyToClipboard.bind(null, detailInput));
-
-  // get recents from user locals
-  vendor.getLocal("recent", function(rec) {
-    recent = rec || recent;
-    updateRecent();
-  });
 
   var setActiveGroup = (function() {
     // show first group
@@ -175,5 +162,21 @@
       }
     });
   }());
+
+  // wait for plugin to be fully loaded before querying data
+  window.addEventListener("load", function() {
+    // get last used emoji from user locals and display
+    vendor.getLocal("last", function(item) {
+      if (item) {
+        showDetail(item.name, item.src);
+      }
+    });
+
+    // get recents from user locals
+    vendor.getLocal("recent", function(rec) {
+      recent = rec || recent;
+      updateRecent();
+    });
+  }, false);
 
 }());
