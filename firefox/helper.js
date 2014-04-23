@@ -1,3 +1,7 @@
+// this content script serves as the bridge between the embedded page script
+// and the plugin main script, routing low-level requests like copy to clipboard
+// back and forth
+
 window.addEventListener("copy", function(event) {
   self.port.emit("copy", event.detail);
 }, false);
@@ -10,7 +14,7 @@ window.addEventListener("get", function(event) {
   self.port.emit("get", event.detail);
 }, false);
 
-self.port.on("send", function (data) {
+self.port.on("send", function(data) {
   var event = document.createEvent('CustomEvent');
   event.initCustomEvent("send_" + data.key, true, true, data.value);
   document.documentElement.dispatchEvent(event);

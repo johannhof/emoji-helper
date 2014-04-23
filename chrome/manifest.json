@@ -3,7 +3,7 @@
 
   "name": "Emoji Helper",
   "description": "Emoji!",
-  "version": "0.1",
+  "version": "0.1.0",
   "icons": { "128": "icon.png" },
 
   "permissions":[

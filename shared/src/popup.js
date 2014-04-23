@@ -4,9 +4,7 @@
   var _ = window._;
   var vendor = window.vendor;
 
-
   // beware, these are dom groups, not real arrays
-  // use underscore on them or turn them into an array with slice
   var groups = document.querySelectorAll(".group");
   var logos = document.querySelectorAll(".group-logo");
 
@@ -18,7 +16,7 @@
   var searchInput = document.getElementById("search");
   var searchContainer = document.getElementById("search-container");
 
-  // very simple utility http function
+  // very simple utility http get function
   function getJSON(url, cb) {
     var request = new XMLHttpRequest();
     request.open("GET", url, true);
