@@ -46,7 +46,7 @@
   // recently used emojis
   var recent = [];
   // maximum number of recents
-  var MAX_RECENT = 20;
+  var MAX_RECENT = 40;
 
   // show an emoji in the bottom detail screen
   function showDetail(name, src) {
@@ -100,9 +100,9 @@
     img.src = item.src;
     cont.appendChild(img);
 
-    var span = document.createElement("span");
-    span.innerHTML = item.name;
-    cont.appendChild(span);
+    //var span = document.createElement("span");
+    //span.innerHTML = item.name;
+    //cont.appendChild(span);
 
     addEmojiClickListener(cont);
     container.appendChild(cont);

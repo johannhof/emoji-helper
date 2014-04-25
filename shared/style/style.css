@@ -8,7 +8,7 @@ body {
   background: linear-gradient(to bottom, rgba(238, 238, 238, 1) 0%, rgba(238, 238, 238, 1) 100%);
 }
 #detail {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   margin: 0;
@@ -67,9 +67,11 @@ input {
   min-height: 325px;
 }
 .group {
+  overflow: scroll;
   display: none;
-  padding: 3px;
   box-sizing: border-box;
+  max-height: 400px;
+  padding: 40px 3px;
 }
 .emoji {
   display: inline-block;
@@ -94,6 +96,8 @@ input {
   background: linear-gradient(to bottom, rgba(238, 238, 238, 1) 0%, rgba(204, 204, 204, 1) 100%);
   padding-top: 5px;
   width: 100%;
+  position: fixed;
+  box-shadow: 0px -1px 1px gray inset;
 }
 .group-logo {
   border-top-left-radius: 3px;
