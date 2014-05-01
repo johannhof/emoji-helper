@@ -78,9 +78,6 @@
       // persist recent
       vendor.setLocal('recent', recent );
 
-      // update dom
-      updateRecent();
-
       // show selected emoji in detail
       showDetail(item.name, item.src);
       vendor.copyToClipboard(detailInput); // TODO make this turnoffable?
@@ -142,6 +139,8 @@
       }
     };
   }());
+
+  document.querySelector("button[data-group=recent]").addEventListener('click', updateRecent);
 
   // add click listener to logo that changes the displayed group
   _.each(logos, function(logo) {

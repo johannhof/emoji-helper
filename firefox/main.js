@@ -7,7 +7,7 @@ var gClipboardHelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci
 
 var text_entry = require("sdk/panel").Panel({
   width: 510,
-  height: 350,
+  height: 370,
   contentURL: data.url("popup.html"),
   contentScriptFile: data.url("helper.js")
 });
