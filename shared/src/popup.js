@@ -47,6 +47,8 @@
   // maximum number of recents
   var MAX_RECENT = 40;
 
+  var MAX_SEARCH_RESULTS = 75;
+
   // show an emoji in the bottom detail screen
   function showDetail(name, src) {
     detailLogo.src = src;
@@ -160,12 +162,12 @@
 
           // intermediate container to render the dom as few times as possible
           var cont = document.createElement("div");
-          _.filter(emojis, function(emoji) {
+          _.first(_.filter(emojis, function(emoji) {
             return emoji.name.indexOf(val) !== -1;
-          }).forEach(appendItem.bind(null, searchContainer));
+          }), MAX_SEARCH_RESULTS).forEach(appendItem.bind(null, searchContainer));
           recentDiv.appendChild(cont);
         }
-      }, 300);
+      }, 200);
     });
   }());
 
