@@ -5,7 +5,7 @@
   var vendor = window.vendor;
 
   // beware, these are dom groups, not real arrays
-  var groups = document.querySelectorAll(".group");
+  var groups = document.querySelectorAll(".group[data-emoji=true]");
   var logos = document.querySelectorAll(".group-logo");
 
   // dom elements
@@ -13,6 +13,7 @@
   var detailInput = document.getElementById("detail-input");
   var detailLogo = document.getElementById("detail-logo");
   var copyButton = document.getElementById("copy-button");
+  var aboutButton = document.getElementById("about-button");
   var searchInput = document.getElementById("search");
   var searchContainer = document.getElementById("search-container");
 
@@ -139,6 +140,10 @@
       }
     };
   }());
+
+  aboutButton.addEventListener('click', function () {
+    setActiveGroup(aboutButton);
+  });
 
   document.querySelector("button[data-group=recent]").addEventListener('click', updateRecent);
 

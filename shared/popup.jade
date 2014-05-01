@@ -6,6 +6,7 @@ html
     link(rel="stylesheet" href="./style/ionicons.min.css" type="text/css")
     link(rel="stylesheet" href="./style/style.css" type="text/css")
     script(src="./lib/underscore-min.js")
+    script(src="./src/vendor.js")
   body
     .group-logos
       each group, n in emojis
@@ -14,17 +15,28 @@ html
       input#search(placeholder="Search", data-group="search-container")
     .groups
       each group, n in emojis
-        .group(id=n)
+        .group(id=n, data-emoji="true")
           each url, name in group
             .emoji(data-name=name, data-src=url)
               img(src=url)
               //-span= name
-        .group(id="search-container")
+        .group(id="search-container",data-emoji=true)
+        .group(id="about-container")
+          h1
+            img(src="./img/emoji/hatched_chick.png")
+            | Emoji-Helper
+          | Version: 0.2.0 - 
+          img.about-text-img(src="./img/emoji/bee.png")
+          br
+          br
+          img.about-text-img(src="./img/emoji/heart.png")
+          | Johann Hofmann
     #detail
       img#detail-logo
       input#detail-input
       if browser != "safari" && browser != "bookmarklet"
-        button#copy-button(title="Copy to clipboard")
+        button#copy-button.detail-button(title="Copy to clipboard")
           i.ion-clipboard
-    script(src="./src/vendor.js")
+      button#about-button.detail-button(title="About", data-group="about-container")
+          i.ion-information-circled
     script(src="./src/popup.js")
