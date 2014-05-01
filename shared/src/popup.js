@@ -32,7 +32,6 @@
   var emojis;
   getJSON("./emojis.json", function(res) {
     // flatten and objectify emojis
-    // is this efficient enough?
     emojis = _.flatten(_.map(JSON.parse(res), function(group) {
       return _.map(group, function(v, k) {
         return {
@@ -110,7 +109,11 @@
 
   function updateRecent() {
     recentDiv.innerHTML = "";
-    _.each(recent, appendItem.bind(null, recentDiv));
+
+    // intermediate container to render the dom as few times as possible
+    var cont = document.createElement("div");
+    _.each(recent, appendItem.bind(null, cont));
+    recentDiv.appendChild(cont);
   }
 
   _.each(groups, function(group) {
@@ -151,13 +154,19 @@
       setActiveGroup(searchInput);
       var val = searchInput.value;
       // prevent flickering
-      if (val !== lastVal) {
-        lastVal = val;
-        searchContainer.innerHTML = "";
-        _.filter(emojis, function(emoji) {
-          return emoji.name.indexOf(val) !== -1;
-        }).forEach(appendItem.bind(null, searchContainer));
-      }
+      setTimeout(function() {
+        if (searchInput.value === val && val !== lastVal) {
+          lastVal = val;
+          searchContainer.innerHTML = "";
+
+          // intermediate container to render the dom as few times as possible
+          var cont = document.createElement("div");
+          _.filter(emojis, function(emoji) {
+            return emoji.name.indexOf(val) !== -1;
+          }).forEach(appendItem.bind(null, searchContainer));
+          recentDiv.appendChild(cont);
+        }
+      }, 500);
     });
   }());
 
