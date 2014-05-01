@@ -23,7 +23,8 @@ html
     #detail
       img#detail-logo
       input#detail-input
-      button#copy-button(title="Copy to clipboard")
-        i.ion-clipboard
+      if browser != "safari"
+        button#copy-button(title="Copy to clipboard")
+          i.ion-clipboard
     script(src="./src/vendor.js")
     script(src="./src/popup.js")

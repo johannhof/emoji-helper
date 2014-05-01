@@ -17,8 +17,7 @@ text_entry.port.on("copy", function(text) {
 });
 
 text_entry.port.on("set", function(item) {
-  var key = Object.keys(item)[0];
-  ss.storage[key] = item[key];
+  ss.storage[item.key] = item.value;
 });
 
 text_entry.port.on("get", function(key) {

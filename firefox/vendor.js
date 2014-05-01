@@ -19,8 +19,8 @@
     window.addEventListener("send_" + name, listener, false);
   };
 
-  exports.setLocal = function(item) {
-    send("set", item);
+  exports.setLocal = function(key, value) {
+    send("set", {key: key, value: value});
   };
 
   exports.copyToClipboard = function(domElement) {

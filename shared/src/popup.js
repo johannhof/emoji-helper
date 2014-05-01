@@ -61,9 +61,7 @@
       };
 
       // save last in local storage
-      vendor.setLocal({
-        'last': item
-      });
+      vendor.setLocal('last', item);
 
       // set item in recent
       recent = [item].concat(_.reject(recent, function(el) {
@@ -76,9 +74,7 @@
       }
 
       // persist recent
-      vendor.setLocal({
-        recent: recent
-      });
+      vendor.setLocal('recent', recent );
 
       // update dom
       updateRecent();
@@ -120,7 +116,10 @@
     _.each(group.childNodes, addEmojiClickListener);
   });
 
-  copyButton.addEventListener("click", vendor.copyToClipboard.bind(null, detailInput));
+  // copybutton is not present in safari
+  if(copyButton){
+    copyButton.addEventListener("click", vendor.copyToClipboard.bind(null, detailInput));
+  }
 
   var setActiveGroup = (function() {
     // show first group
@@ -166,7 +165,7 @@
           }).forEach(appendItem.bind(null, searchContainer));
           recentDiv.appendChild(cont);
         }
-      }, 500);
+      }, 300);
     });
   }());
 

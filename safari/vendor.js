@@ -1,24 +1,19 @@
 (function() {
   var exports = {};
 
-  var chrome = window.chrome;
-
   exports.getLocal = function(name, cb) {
-    chrome.storage.local.get(name, function(item) {
-      cb(item[name]);
-    });
+    cb(JSON.parse(localStorage[name]));
   };
 
   exports.setLocal = function(key, value) {
-    var item = {};
-    item[key] = value;
-    chrome.storage.local.set(item);
+    localStorage[key] = JSON.stringify(value);
   };
 
   exports.copyToClipboard = function(domElement) {
     domElement.focus();
     document.execCommand('SelectAll');
-    document.execCommand('copy');
+    console.log("Copy to clipboard not supported for Safari Extensions :(");
+    //document.execCommand('copy');
   };
 
   window.vendor = exports;
