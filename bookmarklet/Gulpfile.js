@@ -19,7 +19,7 @@ gulp.task('popup', function() {
     .pipe(jade({
       locals: {
         emojis: emojis,
-        browser: "bookmarklet"
+        browser: "Bookmarklet"
       }
     }))
     .pipe(rename("index.html"))

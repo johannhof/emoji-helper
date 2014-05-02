@@ -11,7 +11,7 @@ gulp.task('popup', function() {
     .pipe(jade({
       locals: {
         emojis: emojis,
-        browser: "safari"
+        browser: "Safari"
       }
     }))
     .pipe(gulp.dest(build));

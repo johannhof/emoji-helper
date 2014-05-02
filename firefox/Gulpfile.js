@@ -9,7 +9,7 @@ gulp.task('popup', function() {
     .pipe(jade({
       locals: {
         emojis: emojis,
-        browser: "firefox"
+        browser: "Firefox"
       }
     }))
     .pipe(gulp.dest("./build/data/"));

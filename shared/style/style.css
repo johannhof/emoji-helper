@@ -95,6 +95,15 @@ h2{
   font-weight: 100;
   text-align: center;
 }
+#about-container a{
+  text-decoration: none;
+}
+#about-container a:hover{
+  text-decoration: underline;
+}
+#about-container a > i{
+  margin: 0 5px;
+}
 .groups {
   box-shadow: 0px 0px 1px black;
   min-height: 325px;
