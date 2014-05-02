@@ -4,7 +4,7 @@ body {
   min-width: 475px;
   min-height: 370px;
   overflow: hidden;
-  font-family: Arial;
+  font-family: sans-serif;
   background: linear-gradient(to bottom, rgba(238, 238, 238, 1) 0%, rgba(238, 238, 238, 1) 100%);
 }
 #detail {
@@ -57,6 +57,10 @@ h1 img{
   margin: 0 5px;
   height: 26px;
 }
+h2{
+  font-weight: 400;
+  margin: 15px 0 10px;
+}
 .about-text-img{
   height: 18px;
   vertical-align: text-bottom;
@@ -79,7 +83,16 @@ h1 img{
   float: right;
   margin-top: 5px;
 }
+#settings-button {
+  float: right;
+  margin-top: 5px;
+}
+#settings-container{
+  font-weight: 100;
+  padding: 40px 20px;
+}
 #about-container{
+  font-weight: 100;
   text-align: center;
 }
 .groups {

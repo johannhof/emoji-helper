@@ -20,17 +20,22 @@ html
             .emoji(data-name=name, data-src=url)
               img(src=url)
               //-span= name
-        .group(id="search-container",data-emoji=true)
-        .group(id="about-container")
-          h1
-            img(src="./img/emoji/hatched_chick.png")
-            | Emoji-Helper
-          | Version: 0.2.0 - 
-          img.about-text-img(src="./img/emoji/bee.png")
-          br
-          br
-          img.about-text-img(src="./img/emoji/heart.png")
-          | Johann Hofmann
+      .group(id="search-container",data-emoji=true)
+      .group(id="settings-container")
+        h2 Settings
+        if browser == "chrome" || browser == "firefox"
+          div
+            span Automatically copy to clipboard
+            input(type="checkbox")
+      .group(id="about-container")
+        h1
+          img(src="./img/emoji/hatched_chick.png")
+          | Emoji-Helper
+        | Version 0.2.0 - 
+        img.about-text-img(src="./img/emoji/bee.png")
+        br
+        br
+        img.about-text-img(src="./img/emoji/heart.png")
     #detail
       img#detail-logo
       input#detail-input
@@ -39,4 +44,6 @@ html
           i.ion-clipboard
       button#about-button.detail-button(title="About", data-group="about-container")
           i.ion-information-circled
+      button#settings-button.detail-button(title="Settings", data-group="settings-container")
+          i.ion-settings
     script(src="./src/popup.js")

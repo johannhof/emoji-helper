@@ -9,11 +9,13 @@
   var logos = document.querySelectorAll(".group-logo");
 
   // dom elements
+  var recentButton = document.querySelector("button[data-group=recent]");
   var recentDiv = document.getElementById("recent");
   var detailInput = document.getElementById("detail-input");
   var detailLogo = document.getElementById("detail-logo");
   var copyButton = document.getElementById("copy-button");
   var aboutButton = document.getElementById("about-button");
+  var settingsButton = document.getElementById("settings-button");
   var searchInput = document.getElementById("search");
   var searchContainer = document.getElementById("search-container");
 
@@ -77,7 +79,7 @@
       }
 
       // persist recent
-      vendor.setLocal('recent', recent );
+      vendor.setLocal('recent', recent);
 
       // show selected emoji in detail
       showDetail(item.name, item.src);
@@ -117,7 +119,7 @@
   });
 
   // copybutton is not present in safari
-  if(copyButton){
+  if (copyButton) {
     copyButton.addEventListener("click", vendor.copyToClipboard.bind(null, detailInput));
   }
 
@@ -141,11 +143,15 @@
     };
   }());
 
-  aboutButton.addEventListener('click', function () {
+  aboutButton.addEventListener('click', function() {
     setActiveGroup(aboutButton);
   });
 
-  document.querySelector("button[data-group=recent]").addEventListener('click', updateRecent);
+  settingsButton.addEventListener('click', function() {
+    setActiveGroup(settingsButton);
+  });
+
+  recentButton.addEventListener('click', updateRecent);
 
   // add click listener to logo that changes the displayed group
   _.each(logos, function(logo) {
