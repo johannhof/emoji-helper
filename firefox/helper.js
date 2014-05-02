@@ -14,6 +14,20 @@ window.addEventListener("get", function(event) {
   self.port.emit("get", event.detail);
 }, false);
 
+window.addEventListener("setSettings", function(event) {
+  self.port.emit("setSettings", event.detail);
+}, false);
+
+window.addEventListener("get", function(event) {
+  self.port.emit("getSettings");
+}, false);
+
+self.port.on("sendSettings", function(data) {
+  var event = document.createEvent('CustomEvent');
+  event.initCustomEvent("sendSettings", true, true, data);
+  document.documentElement.dispatchEvent(event);
+});
+
 self.port.on("send", function(data) {
   var event = document.createEvent('CustomEvent');
   event.initCustomEvent("send_" + data.key, true, true, data.value);

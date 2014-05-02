@@ -30,12 +30,17 @@
   };
 
   exports.getSettings = function (callback) {
-    // no settings right now
-    callback();
+    send("getSettings");
+    var listener = function(event) {
+      callback(event.detail);
+      window.removeEventListener("sendSettings", listener);
+    };
+
+    window.addEventListener("sendSettings", listener, false);
   };
 
   exports.setSettings = function (settings) {
-    // no settings right now
+    send("setSettings", settings);
   };
 
   window.vendor = exports;

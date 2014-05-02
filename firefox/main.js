@@ -1,5 +1,6 @@
 var data = require("sdk/self").data;
 var ss = require("sdk/simple-storage");
+var prefs = require('sdk/simple-prefs').prefs;
 
 // get clipboard helper service
 var {Cc, Ci} = require("chrome");
@@ -25,6 +26,16 @@ text_entry.port.on("get", function(key) {
     key: key,
     value: ss.storage[key]
   });
+});
+
+text_entry.port.on("setSettings", function(settings) {
+  Object.keys(settings).forEach(function (key) {
+    prefs[key] = settings[key];
+  });
+});
+
+text_entry.port.on("getSettings", function() {
+  text_entry.port.emit("sendSettings", prefs);
 });
 
 // Create a button
