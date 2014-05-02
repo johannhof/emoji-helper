@@ -21,5 +21,17 @@
     document.execCommand('copy');
   };
 
+  exports.getSettings = function(callback) {
+    chrome.storage.local.get("settings", function(item) {
+      callback(item.settings);
+    });
+  };
+
+  exports.setSettings = function(settings) {
+    chrome.storage.local.set({
+      settings: settings
+    });
+  };
+
   window.vendor = exports;
 }());

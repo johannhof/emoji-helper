@@ -16,5 +16,14 @@
     //document.execCommand('copy');
   };
 
+  exports.getSettings = function (callback) {
+    // no settings right now
+    callback();
+  };
+
+  exports.setSettings = function (settings) {
+    // no settings right now
+  };
+
   window.vendor = exports;
 }());

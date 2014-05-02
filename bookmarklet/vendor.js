@@ -16,5 +16,17 @@
     //document.execCommand('copy');
   };
 
+  exports.getSettings = function (callback) {
+    if(localStorage.EmojiSettings){
+      callback(JSON.parse(localStorage.EmojiSettings));
+    }else{
+      callback();
+    }
+  };
+
+  exports.setSettings = function (settings) {
+    localStorage.EmojiSettings = JSON.stringify(settings);
+  };
+
   window.vendor = exports;
 }());

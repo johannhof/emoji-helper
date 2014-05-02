@@ -4,20 +4,45 @@
   var _ = window._;
   var vendor = window.vendor;
 
-  // beware, these are dom groups, not real arrays
-  var groups = document.querySelectorAll(".group[data-emoji=true]");
-  var logos = document.querySelectorAll(".group-logo");
+  // init with default settings
+  var settings = {
+    autoCopy: true
+  };
 
-  // dom elements
-  var recentButton = document.querySelector("button[data-group=recent]");
+  // upper bar
+  var logos = document.querySelectorAll(".group-logo");
+  var recentButton = document.querySelector(".group-logo[data-group=recent]");
+  var searchInput = document.getElementById("search");
+
+  // group divs
+  var groups = document.querySelectorAll(".group[data-emoji=true]");
   var recentDiv = document.getElementById("recent");
+  var searchContainer = document.getElementById("search-container");
+
+  // settings
+  var autoCopyCheckbox = document.getElementById("autoCopy");
+  if(autoCopyCheckbox){
+    autoCopyCheckbox.addEventListener('change', function () {
+      settings.autoCopy = autoCopyCheckbox.checked;
+      vendor.setSettings(settings);
+    });
+  }
+
+  // detail area
   var detailInput = document.getElementById("detail-input");
   var detailLogo = document.getElementById("detail-logo");
   var copyButton = document.getElementById("copy-button");
   var aboutButton = document.getElementById("about-button");
   var settingsButton = document.getElementById("settings-button");
-  var searchInput = document.getElementById("search");
-  var searchContainer = document.getElementById("search-container");
+
+  // recently used emojis
+  var recent = [];
+
+  // maximum number of recents
+  var MAX_RECENT = 40;
+
+  // maximum displayed search results for performance
+  var MAX_SEARCH_RESULTS = 75;
 
   // very simple utility http get function
   function getJSON(url, cb) {
@@ -44,13 +69,6 @@
       });
     }));
   });
-
-  // recently used emojis
-  var recent = [];
-  // maximum number of recents
-  var MAX_RECENT = 40;
-
-  var MAX_SEARCH_RESULTS = 75;
 
   // show an emoji in the bottom detail screen
   function showDetail(name, src) {
@@ -83,7 +101,9 @@
 
       // show selected emoji in detail
       showDetail(item.name, item.src);
-      vendor.copyToClipboard(detailInput); // TODO make this turnoffable?
+      if (settings.autoCopy) {
+        vendor.copyToClipboard(detailInput);
+      }
     });
   }
 
@@ -147,9 +167,14 @@
     setActiveGroup(aboutButton);
   });
 
-  settingsButton.addEventListener('click', function() {
-    setActiveGroup(settingsButton);
-  });
+  if(settingsButton){
+    settingsButton.addEventListener('click', function() {
+      setActiveGroup(settingsButton);
+
+      // show current settings
+      autoCopyCheckbox.checked = settings.autoCopy;
+    });
+  }
 
   recentButton.addEventListener('click', updateRecent);
 
@@ -194,6 +219,12 @@
     vendor.getLocal("recent", function(rec) {
       recent = rec || recent;
       updateRecent();
+    });
+
+    vendor.getSettings(function(set) {
+      if (set) {
+        settings = set;
+      }
     });
   }, false);
 
