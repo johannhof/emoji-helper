@@ -12,7 +12,7 @@
   exports.copyToClipboard = function(domElement) {
     domElement.focus();
     document.execCommand('SelectAll');
-    console.log("Copy to clipboard not supported for Safari Extensions :(");
+    // copy to clipboard not supported in safari :(
     //document.execCommand('copy');
   };
 

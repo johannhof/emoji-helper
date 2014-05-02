@@ -12,7 +12,7 @@
   exports.copyToClipboard = function(domElement) {
     domElement.focus();
     document.execCommand('SelectAll');
-    console.log("Copy to clipboard not supported in the bookmarklet. Download the extension of your choice.");
+    // copy to clipboard not supported in the bookmarklet
     //document.execCommand('copy');
   };
 
