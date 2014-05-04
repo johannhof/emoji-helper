@@ -1,9 +1,11 @@
 Emoji Helper
 ============
 
-An Emoji Cheatsheet extension for Chrome, Firefox and Safari. Also a Bookmarklet.
+An Emoji cheat sheet extension for Chrome, Firefox and Safari. Also a Bookmarklet. Built because I like spamming my coworkers with :mushroom: :pig: :rocket: :snail: but fortunately have more important things to keep in mind than the name for :moyai:
 
-Visit the page for download links and more usage info.
+http://emoji-cheat-sheet.com is a great site, but opening a new tab distracts me too much..
+
+Visit http://johannhof.github.io/emoji-helper for download links from the official stores.
 
 ## Development
 
