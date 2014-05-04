@@ -11,13 +11,18 @@
     "gulp": "^3.6.0",
     "gulp-jade": "^0.5.0",
     "connect": "^2.14.5",
-    "gulp-rename": "^1.2.0"
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^0.2.1",
+    "gulp-zip": "^0.3.4",
+    "gulp-shell": "^0.2.4"
   },
-  "preferences": [{
-    "name": "autoCopy",
-    "title": "Automatically copy to clipboard",
-    "description": "Copy Emoji :name: to the clipboard on selection",
-    "type": "bool",
-    "value": true
-  }]
+  "preferences": [
+    {
+      "name": "autoCopy",
+      "title": "Automatically copy to clipboard",
+      "description": "Copy Emoji :name: to the clipboard on selection",
+      "type": "bool",
+      "value": true
+    }
+  ]
 }
