@@ -20,9 +20,9 @@ The generated files are located in the `build` folders. To load the build folder
 
 #### Chrome
 
-```
-cd chrome
-gulp build
+```bash
+$ cd chrome
+$ gulp build
 ```
 Follow this guide https://developer.chrome.com/extensions/getstarted#unpacked and select the `build` folder.
 
@@ -31,28 +31,28 @@ Follow this guide https://developer.chrome.com/extensions/getstarted#unpacked an
 
 A good introduction to the Mozilla Add-on SDK is https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Getting_started
 
-```
-cd firefox
-gulp build
-cd build
-cfx run
+```bash
+$ cd firefox
+$ gulp build
+$ cd build
+$ cfx run
 ```
 
 #### Safari
 
-```
-cd safari
-gulp build
+```bash
+$ cd safari
+$ gulp build
 ```
 
 The `build` folder now contains `emoji.safariextension`, which can be loaded using the Extension Builder (https://developer.apple.com/library/safari/documentation/Tools/Conceptual/SafariExtensionGuide/UsingExtensionBuilder/UsingExtensionBuilder.html)
 
 #### Bookmarklet
 
-```
-cd bookmarklet
-gulp dev
-open test.html
+```bash
+$ cd bookmarklet
+$ gulp dev
+$ open test.html
 ```
 
 `gulp dev` will start a server to deliver the bookmarklet. You can test/debug the bookmarklet using test.html.
