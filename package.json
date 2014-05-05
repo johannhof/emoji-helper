@@ -15,14 +15,5 @@
     "gulp-uglify": "^0.2.1",
     "gulp-zip": "^0.3.4",
     "gulp-shell": "^0.2.4"
-  },
-  "preferences": [
-    {
-      "name": "autoCopy",
-      "title": "Automatically copy to clipboard",
-      "description": "Copy Emoji :name: to the clipboard on selection",
-      "type": "bool",
-      "value": true
-    }
-  ]
+  }
 }

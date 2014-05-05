@@ -21,12 +21,6 @@ html
               img(src=url)
               //-span= name
       .group(id="search-container",data-emoji=true)
-      .group(id="settings-container")
-        h2 Settings
-        if browser == "Chrome" || browser == "Firefox"
-          div
-            span Automatically copy to clipboard
-            input#autoCopy(type="checkbox")
       .group(id="about-container")
         h1
           img(src="./img/emoji/hatched_chick.png")
@@ -57,7 +51,4 @@ html
           i.ion-clipboard
       button#about-button.detail-button(title="About", data-group="about-container")
           i.ion-information-circled
-      if browser != "Bookmarklet" && browser != "Safari"
-        button#settings-button.detail-button(title="Settings", data-group="settings-container")
-            i.ion-settings
     script(src="./src/popup.js")

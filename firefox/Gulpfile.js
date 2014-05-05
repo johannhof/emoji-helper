@@ -39,10 +39,9 @@ gulp.task('watch', function() {
   gulp.watch('./*.js', ['build']);
 });
 
-
 gulp.task('release', ['build'], shell.task([
-  'mkdir ../release/latest/firefox',
-  'cfx xpi --pkgdir="./build/" --output-file="../release/latest/firefox/emoji-helper.xpi"'
+  'mkdir -p ../release/latest/firefox',
+  'cd build && cfx xpi --output-file="../../release/latest/firefox/emoji-helper.xpi"'
 ]));
 
 gulp.task('build', ['popup', 'shared', 'js']);

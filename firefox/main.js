@@ -1,10 +1,6 @@
 var data = require("sdk/self").data;
 var ss = require("sdk/simple-storage");
-var prefs = require('sdk/simple-prefs').prefs;
-
-// get clipboard helper service
-var {Cc, Ci} = require("chrome");
-var gClipboardHelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
+var clipboard = require("sdk/clipboard");
 
 var text_entry = require("sdk/panel").Panel({
   width: 510,
@@ -14,7 +10,7 @@ var text_entry = require("sdk/panel").Panel({
 });
 
 text_entry.port.on("copy", function(text) {
-  gClipboardHelper.copyString(text);
+  clipboard.set(text);
 });
 
 text_entry.port.on("set", function(item) {
@@ -26,16 +22,6 @@ text_entry.port.on("get", function(key) {
     key: key,
     value: ss.storage[key]
   });
-});
-
-text_entry.port.on("setSettings", function(settings) {
-  Object.keys(settings).forEach(function (key) {
-    prefs[key] = settings[key];
-  });
-});
-
-text_entry.port.on("getSettings", function() {
-  text_entry.port.emit("sendSettings", prefs);
 });
 
 // Create a button

@@ -4,11 +4,6 @@
   var _ = window._;
   var vendor = window.vendor;
 
-  // init with default settings
-  var settings = {
-    autoCopy: true
-  };
-
   // upper bar
   var logos = document.querySelectorAll(".group-logo");
   var recentButton = document.querySelector(".group-logo[data-group=recent]");
@@ -19,21 +14,11 @@
   var recentDiv = document.getElementById("recent");
   var searchContainer = document.getElementById("search-container");
 
-  // settings
-  var autoCopyCheckbox = document.getElementById("autoCopy");
-  if(autoCopyCheckbox){
-    autoCopyCheckbox.addEventListener('change', function () {
-      settings.autoCopy = autoCopyCheckbox.checked;
-      vendor.setSettings(settings);
-    });
-  }
-
   // detail area
   var detailInput = document.getElementById("detail-input");
   var detailLogo = document.getElementById("detail-logo");
   var copyButton = document.getElementById("copy-button");
   var aboutButton = document.getElementById("about-button");
-  var settingsButton = document.getElementById("settings-button");
 
   // recently used emojis
   var recent = [];
@@ -101,9 +86,7 @@
 
       // show selected emoji in detail
       showDetail(item.name, item.src);
-      if (settings.autoCopy) {
-        vendor.copyToClipboard(detailInput);
-      }
+      vendor.copyToClipboard(detailInput);
     });
   }
 
@@ -167,15 +150,6 @@
     setActiveGroup(aboutButton);
   });
 
-  if(settingsButton){
-    settingsButton.addEventListener('click', function() {
-      setActiveGroup(settingsButton);
-
-      // show current settings
-      autoCopyCheckbox.checked = settings.autoCopy;
-    });
-  }
-
   recentButton.addEventListener('click', updateRecent);
 
   // add click listener to logo that changes the displayed group
@@ -221,11 +195,6 @@
       updateRecent();
     });
 
-    vendor.getSettings(function(set) {
-      if (set) {
-        settings = set;
-      }
-    });
   }, false);
 
 }());
