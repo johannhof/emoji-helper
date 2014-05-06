@@ -1,0 +1,180 @@
+body {
+  padding: 0;
+  margin: 0;
+  min-width: 475px;
+  min-height: 370px;
+  overflow: hidden;
+  font-family: sans-serif;
+  background: linear-gradient(to bottom, rgba(238, 238, 238, 1) 0%, rgba(238, 238, 238, 1) 100%);
+}
+#detail {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  height: 40px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(229, 229, 229, 1) 100%);
+  box-shadow: 0px 5px 10px black;
+  text-align: center;
+}
+#detail-logo {
+  vertical-align: middle;
+  box-sizing: border-box;
+  padding: 5px;
+  display: inline-block;
+  height: 100%;
+  margin: 0 3px;
+}
+input {
+  border-radius: 3px;
+  padding: 6px;
+  border: none;
+  box-shadow: inset 0px 0px 2px #999;
+  font-size: 13px;
+  outline-width: thin;
+  outline-offset: -3px;
+}
+#search-wrapper {
+  display: inline-block;
+}
+#search {
+  vertical-align: top;
+  margin-left: 5px;
+  border-radius: 15px;
+  padding-left: 10px;
+  outline: none;
+}
+#detail-input {
+  vertical-align: middle;
+}
+h1{
+  font-weight: 100;
+  margin: 15px 0 10px;
+}
+h1 img{
+  margin: 0 5px;
+  height: 26px;
+}
+h2{
+  font-weight: 400;
+  margin: 15px 0 10px;
+}
+.about-text-img{
+  height: 18px;
+  vertical-align: text-bottom;
+}
+.detail-button{
+  font-size: 20px;
+  color: grey;
+  background: none;
+  border: none;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 3px 8px;
+}
+.detail-button:hover{
+  box-shadow: 0px 0px 1px grey;
+  color: #444;
+}
+#about-button {
+  float: right;
+  margin-top: 5px;
+}
+#settings-button {
+  float: right;
+  margin-top: 5px;
+}
+#settings-container{
+  font-weight: 100;
+  padding: 40px 20px;
+}
+#about-container{
+  font-weight: 100;
+  text-align: center;
+}
+#about-container a{
+  text-decoration: none;
+}
+#about-container a:hover{
+  text-decoration: underline;
+}
+#about-container a > i{
+  margin: 0 5px;
+}
+.groups {
+  box-shadow: 0px 0px 1px black;
+  min-height: 325px;
+}
+.group {
+  overflow: scroll;
+  display: none;
+  height: 250px;
+  padding: 40px 3px;
+}
+.emoji {
+  display: inline-block;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.emoji:hover {
+  box-shadow: 0px 0px 1px black;
+}
+.emoji img {
+  height: 23px
+}
+.emoji span {
+  font-size: 9px;
+  display: block;
+}
+.group-logos {
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, rgba(238, 238, 238, 1) 0%, rgba(204, 204, 204, 1) 100%);
+  padding-top: 5px;
+  width: 100%;
+  position: fixed;
+  box-shadow: 0px -1px 1px gray inset;
+}
+.group-logo {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  margin: 0 2px;
+  outline: none;
+  box-sizing: border-box;
+  padding: 7px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: center;
+  width: 46px;
+  display: inline-block;
+}
+.group-logo img {
+  height: 20px;
+  opacity: 0.8;
+  /* firefox grayscale filter 100% */
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(100%);
+  /* prevent blurry image from filter */
+  -webkit-transform: translateZ(0);
+}
+.group-logo:hover img {
+  /* firefox grayscale filter 0% */
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(0%)
+}
+.group-logo.selected {
+  background: linear-gradient(to bottom, rgba(238, 238, 238, 1) 0%, rgba(238, 238, 238, 1) 100%);
+  box-shadow: 0px -1px 1px grey;
+}
+.group-logo.selected img {
+  opacity: 1;
+  /* firefox grayscale filter 0% */
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(0%)
+}

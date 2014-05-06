@@ -1,6 +1,5 @@
-var gulp = require('gulp');
-
-var jade = require('gulp-jade');
+var gulp = require('gulp'),
+    jade = require('gulp-jade');
 
 var emojis = require('../shared/emojis.json');
 
@@ -38,6 +37,11 @@ gulp.task('watch', function() {
   gulp.watch('../shared/src/*.js', ['build']);
   gulp.watch('../shared/style/*.css', ['build']);
   gulp.watch('./vendor.js', ['build']);
+});
+
+gulp.task('release', ['build'], function () {
+  gulp.src([build + '**/*'])
+      .pipe(gulp.dest("../release/latest/safari/"));
 });
 
 gulp.task('build', ['popup', 'shared', 'manifest', 'vendor']);
