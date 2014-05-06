@@ -41,7 +41,7 @@ gulp.task('watch', function() {
 
 gulp.task('release', ['build'], function () {
   gulp.src([build + '**/*'])
-      .pipe(gulp.dest("../release/latest/safari/"));
+      .pipe(gulp.dest("../release/latest/safari/emoji.safariextension/"));
 });
 
 gulp.task('build', ['popup', 'shared', 'manifest', 'vendor']);
