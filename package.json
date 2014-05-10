@@ -1,11 +1,14 @@
 {
   "name": "emoji-helper",
-  "title": "emoji-helper",
+  "title": "Emoji Helper",
   "version": "0.3.0",
-  "description": "Emoji Helper Addon",
+  "description": "Emoji Cheatsheet Extension",
   "id": "jid1-Xo5SuA6qc1DFpw",
   "main": "main",
   "author": "Johann Hofmann",
+  "icon" : "data/icon32.png",
+  "icon64" : "data/icon_alt.png",
+  "homepage" : "http://github.com/johannhof/emoji-helper",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.6.0",
