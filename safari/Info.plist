@@ -39,7 +39,7 @@
 				<key>Identifier</key>
 				<string>emoji</string>
 				<key>Image</key>
-				<string>icon.png</string>
+				<string>icon_alpha.png</string>
 				<key>Label</key>
 				<string>Emoji</string>
 				<key>Popover</key>
