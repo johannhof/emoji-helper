@@ -1,4 +1,4 @@
-V=0.4.0
+V=0.4.1
 
 release:
 	gulp release --cwd bookmarklet/
