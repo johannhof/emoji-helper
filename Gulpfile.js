@@ -1,15 +1,20 @@
 var gulp = require('gulp'),
-    uglify = require('gulp-uglify'),
+    fs = require('fs'),
     jade = require('gulp-jade');
 
 var build = "./";
 
 gulp.task('jade', function() {
-  gulp.src('index.jade')
-    .pipe(jade({
-      locals: { }
-    }))
-    .pipe(gulp.dest(build));
+  fs.readFile('./bookmarklet/bookmarklet.js', function (err, data) {
+    if(err) return;
+    gulp.src('index.jade')
+      .pipe(jade({
+        locals: {
+          bookmarklet : 'javascript:' + data
+        }
+      }))
+      .pipe(gulp.dest(build));
+  });
 });
 
 // Rerun the task when a file changes
