@@ -19,7 +19,7 @@ gulp.task('popup', function() {
 
 gulp.task('js', function() {
   gulp.src("./vendor.js").pipe(gulp.dest(build + "data/src/"));
-  gulp.src("./main.js").pipe(gulp.dest(build));
+  gulp.src("./main.js").pipe(gulp.dest(build + "lib/"));
   gulp.src("./helper.js").pipe(gulp.dest(build + "data/"));
 });
 
