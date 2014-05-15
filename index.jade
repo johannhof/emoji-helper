@@ -90,5 +90,5 @@ html
       }else{
         known.parentNode.removeChild(known);
       }
-      var bookmarklet = '!{bookmarklet}';
-      document.querySelector('.bookmarklet').href = bookmarklet;
+      var bookmarklet = document.querySelector('.bookmarklet');
+      bookmarklet.href = '!{bookmarklet}';
