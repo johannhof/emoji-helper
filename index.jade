@@ -42,7 +42,7 @@ html
           | Download for Chrome
         br
         br
-        a.vendor.bookmarklet.small(href!=bookmarklet)
+        a.vendor.bookmarklet.small(href='')
           img(src='./img/bookmarklet.png', alt='')
           | Bookmarklet
         br
@@ -66,26 +66,29 @@ html
       var unknown = document.getElementById("unknown");
       var known = document.getElementById("known");
       var smalls = known.querySelectorAll(".vendor.small");
+
       if((bowser.chrome || bowser.firefox || bowser.safari) && !(bowser.android || bowser.ios)){
-      unknown.parentNode.removeChild(unknown);
-      var browser = bowser.name.toLowerCase();
-      mainVendor.classList.add(browser);
-      switch(browser){
-      case "chrome":
-      mainVendor.href = "https://chrome.google.com/webstore/detail/nojknakoailnpbjlmfkpbbhoodlolfbh";
-      mainVendor.innerHTML = '<img src="./img/chrome.png" alt="" /> Download for Chrome';
-      smalls[1].style.display = "none";
-      break;
-      case "firefox":
-      mainVendor.href = "https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/";
-      mainVendor.innerHTML = '<img src="./img/firefox.png" alt="" /> Download for Firefox';
-      smalls[2].style.display = "none";
-      break;
-      case "safari":
-      mainVendor.innerHTML = '<img src="./img/safari.png" alt="" /> Download for Safari';
-      smalls[3].style.display = "none";
-      break;
-      }
+        unknown.parentNode.removeChild(unknown);
+        var browser = bowser.name.toLowerCase();
+        mainVendor.classList.add(browser);
+        switch(browser){
+          case "chrome":
+          mainVendor.href = "https://chrome.google.com/webstore/detail/nojknakoailnpbjlmfkpbbhoodlolfbh";
+          mainVendor.innerHTML = '<img src="./img/chrome.png" alt="" /> Download for Chrome';
+          smalls[1].style.display = "none";
+          break;
+          case "firefox":
+          mainVendor.href = "https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/";
+          mainVendor.innerHTML = '<img src="./img/firefox.png" alt="" /> Download for Firefox';
+          smalls[2].style.display = "none";
+          break;
+          case "safari":
+          mainVendor.innerHTML = '<img src="./img/safari.png" alt="" /> Download for Safari';
+          smalls[3].style.display = "none";
+          break;
+        }
       }else{
-      known.parentNode.removeChild(known);
+        known.parentNode.removeChild(known);
       }
+      var bookmarklet = '!{bookmarklet}';
+      document.querySelector('.bookmarklet').href = bookmarklet;
