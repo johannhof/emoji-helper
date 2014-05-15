@@ -1,0 +1,91 @@
+html
+  head
+    meta(http-equiv='content-type', content='text/html; charset=utf-8')
+    title
+      | Emoji Cheatsheet Browser Extension for Chrome, Firefox, Safari and as a Bookmarklet.
+    link(rel='stylesheet', href='./pure-min.css')
+    link(rel='stylesheet', href='style.css', type='text/css', media='all')
+    script(src='./bowser.min.js', type='text/javascript')
+  body
+    main
+      h1 Emoji Helper
+      p
+        | A quick cheat sheet extension for Emoji codes used by GitHub, Basecamp, and many others.
+      br
+      strong
+        p Some versions are still under review, please excuse not working download links.
+      #unknown
+        strong
+          p There is no dedicated version for your browser. :(
+          p You can, however, use the Bookmarklet, it works everywhere!
+        a.vendor.bookmarklet(href='')
+          img(src='./img/bookmarklet.png', alt='')
+          | Bookmarklet
+        br
+        br
+        br
+        br
+        p Not correct? Here are the downloads for supported browsers.
+        a.vendor.chrome.small(href='https://chrome.google.com/webstore/detail/nojknakoailnpbjlmfkpbbhoodlolfbh')
+          img(src='./img/chrome.png', alt='')
+          | Download for Chrome
+        a.vendor.firefox.small(href='https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/')
+          img(src='./img/firefox.png', alt='')
+          | Download for Firefox
+        br
+        a.vendor.safari.small(href='')
+          img(src='./img/safari.png', alt='')
+          | Download for Safari
+      #known
+        a#mainVendor.vendor.chrome(href='')
+          img(src='./img/chrome.png', alt='')
+          | Download for Chrome
+        br
+        br
+        a.vendor.bookmarklet.small(href='')
+          img(src='./img/bookmarklet.png', alt='')
+          | Bookmarklet
+        br
+        br
+        br
+        br
+        br
+        p Different browser?
+        a.vendor.chrome.small(href='https://chrome.google.com/webstore/detail/nojknakoailnpbjlmfkpbbhoodlolfbh')
+          img(src='./img/chrome.png', alt='')
+          | Download for Chrome
+        a.vendor.firefox.small(href='https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/')
+          img(src='./img/firefox.png', alt='')
+          | Download for Firefox
+        a.vendor.safari.small(href='')
+          img(src='./img/safari.png', alt='')
+          | Download for Safari
+        a(href='https://github.com/johannhof/emoji-helper')
+          img(style='position: absolute; top: 0; right: 0; border: 0;', src='https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67', alt='Fork me on GitHub', data-canonical-src='https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png')
+    script.
+      var unknown = document.getElementById("unknown");
+      var known = document.getElementById("known");
+      var smalls = known.querySelectorAll(".vendor.small");
+      if((bowser.chrome || bowser.firefox || bowser.safari) && !(bowser.android || bowser.ios)){
+      unknown.parentNode.removeChild(unknown);
+      var browser = bowser.name.toLowerCase();
+      mainVendor.classList.add(browser);
+      switch(browser){
+      case "chrome":
+      mainVendor.href = "https://chrome.google.com/webstore/detail/nojknakoailnpbjlmfkpbbhoodlolfbh";
+      mainVendor.innerHTML = '<img src="./img/chrome.png" alt="" /> Download for Chrome';
+      smalls[1].style.display = "none";
+      break;
+      case "firefox":
+      mainVendor.href = "https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/";
+      mainVendor.innerHTML = '<img src="./img/firefox.png" alt="" /> Download for Firefox';
+      smalls[2].style.display = "none";
+      break;
+      case "safari":
+      mainVendor.innerHTML = '<img src="./img/safari.png" alt="" /> Download for Safari';
+      smalls[3].style.display = "none";
+      break;
+      }
+      }else{
+      known.parentNode.removeChild(known);
+      }
