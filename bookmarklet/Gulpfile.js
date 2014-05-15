@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     connect = require('connect'),
     path = require('path'),
     rename = require("gulp-rename"),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
     jade = require('gulp-jade');
 
 var emojis = require('../shared/emojis.json');

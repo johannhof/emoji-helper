@@ -6,17 +6,17 @@
   "id": "jid1-Xo5SuA6qc1DFpw",
   "main": "main",
   "author": "Johann Hofmann",
-  "icon" : "data/icon32.png",
-  "icon64" : "data/icon_alt.png",
-  "homepage" : "http://github.com/johannhof/emoji-helper",
+  "icon": "data/icon32.png",
+  "icon64": "data/icon_alt.png",
+  "homepage": "http://github.com/johannhof/emoji-helper",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.6.0",
     "gulp-jade": "^0.5.0",
     "connect": "^2.14.5",
     "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^0.2.1",
     "gulp-zip": "^0.3.4",
-    "gulp-shell": "^0.2.4"
+    "gulp-shell": "^0.2.4",
+    "gulp-uglify": "^0.3.0"
   }
 }
