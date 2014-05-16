@@ -3,6 +3,8 @@ var gulp = require('gulp'),
     path = require('path'),
     rename = require("gulp-rename"),
     uglify = require('gulp-uglify'),
+    imageResize = require('gulp-image-resize'),
+    newer = require('gulp-newer'),
     jade = require('gulp-jade');
 
 var emojis = require('../shared/emojis.json');
@@ -29,6 +31,16 @@ gulp.task('popup', function() {
     .pipe(gulp.dest(build));
 });
 
+gulp.task('emoji', function () {
+    return gulp.src('../shared/img/emoji/*')
+        .pipe(newer(build + 'img/emoji/'))
+        .pipe(imageResize({
+          width : 30,
+          height : 30
+        }))
+        .pipe(gulp.dest(build + 'img/emoji/'));
+});
+
 gulp.task('vendor', function() {
   gulp.src("./vendor.js").pipe(gulp.dest(build + "src/"));
 });
@@ -42,7 +54,8 @@ gulp.task('bookmarklet', function () {
 gulp.task('shared', function() {
   gulp.src([
     "../shared/**/*",
-    "!../shared/popup.jade"
+    "!../shared/popup.jade",
+    "!../shared/img/emoji/*"
   ]).pipe(gulp.dest(build));
 });
 
@@ -59,7 +72,7 @@ gulp.task('release', ['build'], function () {
       .pipe(gulp.dest("../release/latest/bookmarklet/"));
 });
 
-gulp.task('build', ['popup', 'shared', 'vendor', 'bookmarklet']);
+gulp.task('build', ['popup', 'shared', 'vendor', 'bookmarklet', 'emoji']);
 
 gulp.task('default', ['build', 'watch']);
 
