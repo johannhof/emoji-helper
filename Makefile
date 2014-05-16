@@ -13,4 +13,10 @@ build:
 	gulp build --cwd firefox/
 	gulp build --cwd safari/
 
-.PHONY: release build
+clean:
+	rm -rf ./bookmarklet/build/
+	rm -rf ./chrome/build/
+	rm -rf ./firefox/build/
+	rm -rf ./safari/build/
+
+.PHONY: release build clean
