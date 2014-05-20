@@ -12,8 +12,6 @@ html
       p
         | A quick cheat sheet extension for Emoji codes used by GitHub, Basecamp, and many others.
       br
-      strong
-        p Some versions are still under review, please excuse not working download links.
       #unknown
         strong
           p There is no dedicated version for your browser. :(
@@ -33,7 +31,7 @@ html
           img(src='./img/firefox.png', alt='')
           | Download for Firefox
         br
-        a.vendor.safari.small(href='')
+        a.vendor.safari.small(href='http://spaeti.pavo.uberspace.de/emoji.safariextz')
           img(src='./img/safari.png', alt='')
           | Download for Safari
       #known
@@ -57,7 +55,7 @@ html
         a.vendor.firefox.small(href='https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/')
           img(src='./img/firefox.png', alt='')
           | Download for Firefox
-        a.vendor.safari.small(href='')
+        a.vendor.safari.small(href='http://spaeti.pavo.uberspace.de/emoji.safariextz')
           img(src='./img/safari.png', alt='')
           | Download for Safari
         a(href='https://github.com/johannhof/emoji-helper')
@@ -83,6 +81,7 @@ html
           smalls[2].style.display = "none";
           break;
           case "safari":
+          mainVendor.href = "http://spaeti.pavo.uberspace.de/emoji.safariextz";
           mainVendor.innerHTML = '<img src="./img/safari.png" alt="" /> Download for Safari';
           smalls[3].style.display = "none";
           break;
