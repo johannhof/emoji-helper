@@ -44,6 +44,8 @@
 				<string>Emoji</string>
 				<key>Popover</key>
 				<string>popup</string>
+				<key>Tool Tip</key>
+				<string>Show Emoji Helper</string>
 			</dict>
 		</array>
 	</dict>
@@ -61,6 +63,8 @@
 		<key>Website Access</key>
 		<dict/>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://spaeti.pavo.uberspace.de/Update.plist</string>
 	<key>Website</key>
 	<string>http://johannhof.github.io/emoji</string>
 </dict>
