@@ -17,7 +17,7 @@ html
           p There is no dedicated version for your browser. :(
           p You can, however, use the Bookmarklet, it works everywhere!
         a.vendor.bookmarklet(href='')
-          img(src='./img/bookmarklet.png', alt='')
+          img(src='./img/bookmarklet.png', alt='Bookmarklet')
           | Bookmarklet
         br
         br
@@ -25,23 +25,23 @@ html
         br
         p Not correct? Here are the downloads for supported browsers.
         a.vendor.chrome.small(href='https://chrome.google.com/webstore/detail/nojknakoailnpbjlmfkpbbhoodlolfbh')
-          img(src='./img/chrome.png', alt='')
+          img(src='./img/chrome.png', alt='Chrome')
           | Download for Chrome
         a.vendor.firefox.small(href='https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/')
-          img(src='./img/firefox.png', alt='')
+          img(src='./img/firefox.png', alt='Firefox')
           | Download for Firefox
         br
-        a.vendor.safari.small(href='http://spaeti.pavo.uberspace.de/emoji.safariextz')
-          img(src='./img/safari.png', alt='')
+        a.vendor.safari.small(href='http://extensions.apple.com/details/?id=com.johann-hofmann.emoji-VQE5S3G4ED')
+          img(src='./img/safari.png', alt='Safari')
           | Download for Safari
       #known
         a#mainVendor.vendor.chrome(href='')
-          img(src='./img/chrome.png', alt='')
+          img(src='./img/chrome.png', alt='Chrome')
           | Download for Chrome
         br
         br
         a.vendor.bookmarklet.small(href='')
-          img(src='./img/bookmarklet.png', alt='')
+          img(src='./img/bookmarklet.png', alt='Bookmarklet')
           | Bookmarklet
         br
         br
@@ -50,13 +50,13 @@ html
         br
         p Different browser?
         a.vendor.chrome.small(href='https://chrome.google.com/webstore/detail/nojknakoailnpbjlmfkpbbhoodlolfbh')
-          img(src='./img/chrome.png', alt='')
+          img(src='./img/chrome.png', alt='Chrome')
           | Download for Chrome
         a.vendor.firefox.small(href='https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/')
-          img(src='./img/firefox.png', alt='')
+          img(src='./img/firefox.png', alt='Firefox')
           | Download for Firefox
-        a.vendor.safari.small(href='http://spaeti.pavo.uberspace.de/emoji.safariextz')
-          img(src='./img/safari.png', alt='')
+        a.vendor.safari.small(href='http://extensions.apple.com/details/?id=com.johann-hofmann.emoji-VQE5S3G4ED')
+          img(src='./img/safari.png', alt='Safari')
           | Download for Safari
         a(href='https://github.com/johannhof/emoji-helper')
           img(style='position: absolute; top: 0; right: 0; border: 0;', src='https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67', alt='Fork me on GitHub', data-canonical-src='https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png')
@@ -72,17 +72,17 @@ html
         switch(browser){
           case "chrome":
           mainVendor.href = "https://chrome.google.com/webstore/detail/nojknakoailnpbjlmfkpbbhoodlolfbh";
-          mainVendor.innerHTML = '<img src="./img/chrome.png" alt="" /> Download for Chrome';
+          mainVendor.innerHTML = '<img src="./img/chrome.png" alt="Chrome" /> Download for Chrome';
           smalls[1].style.display = "none";
           break;
           case "firefox":
           mainVendor.href = "https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/";
-          mainVendor.innerHTML = '<img src="./img/firefox.png" alt="" /> Download for Firefox';
+          mainVendor.innerHTML = '<img src="./img/firefox.png" alt="Firefox" /> Download for Firefox';
           smalls[2].style.display = "none";
           break;
           case "safari":
-          mainVendor.href = "http://spaeti.pavo.uberspace.de/emoji.safariextz";
-          mainVendor.innerHTML = '<img src="./img/safari.png" alt="" /> Download for Safari';
+          mainVendor.href = "http://extensions.apple.com/details/?id=com.johann-hofmann.emoji-VQE5S3G4ED";
+          mainVendor.innerHTML = '<img src="./img/safari.png" alt="Safari" /> Download for Safari';
           smalls[3].style.display = "none";
           break;
         }
