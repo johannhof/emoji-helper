@@ -196,7 +196,9 @@
 
     // get recents from user locals
     vendor.getLocal("recent", function(rec) {
-      recent = rec || recent;
+      if(rec && rec.length){
+        recent = rec;
+      }
       updateRecent();
     });
 

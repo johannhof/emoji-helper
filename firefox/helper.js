@@ -16,6 +16,7 @@ window.addEventListener("get", function(event) {
 
 self.port.on("send", function(data) {
   var event = document.createEvent('CustomEvent');
-  event.initCustomEvent("send_" + data.key, true, true, data.value);
+  event.initCustomEvent("send_" + data.key, true, true,
+                        JSON.stringify(data.value));
   document.documentElement.dispatchEvent(event);
 });
