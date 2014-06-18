@@ -67,7 +67,7 @@ gulp.task('watch', function() {
   gulp.watch('./vendor.js', ['build']);
 });
 
-gulp.task('release', ['build'], function () {
+gulp.task('release', function () {
   gulp.src([build + '**/*'])
       .pipe(gulp.dest("../release/latest/bookmarklet/"));
 });

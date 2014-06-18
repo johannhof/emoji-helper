@@ -1,6 +1,6 @@
 V=0.4.4
 
-release:
+release: build
 	gulp release --cwd bookmarklet/
 	gulp release --cwd chrome/
 	gulp release --cwd firefox/
@@ -18,5 +18,6 @@ clean:
 	rm -rf ./chrome/build/
 	rm -rf ./firefox/build/
 	rm -rf ./safari/build/
+	rm -rf release/latest/
 
 .PHONY: release build clean

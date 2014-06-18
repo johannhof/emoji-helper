@@ -40,7 +40,7 @@ gulp.task('watch', function() {
   gulp.watch('./vendor.js', ['build']);
 });
 
-gulp.task('release', ['build'], function () {
+gulp.task('release', function () {
   gulp.src([build + '**/*'])
       .pipe(zip('emoji-helper.zip'))
       .pipe(gulp.dest("../release/latest/chrome/"));
