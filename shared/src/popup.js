@@ -1,16 +1,17 @@
 (function() {
 
   // local vars for linting (and performance)
-  var _ = window._;
   var vendor = window.vendor;
 
   // upper bar
   var logos = document.querySelectorAll(".group-logo");
+  logos = Array.prototype.slice.call(logos);
   var recentButton = document.querySelector(".group-logo[data-group=recent]");
   var searchInput = document.getElementById("search");
 
   // group divs
   var groups = document.querySelectorAll(".group[data-emoji=true]");
+  groups = Array.prototype.slice.call(groups);
   var recentDiv = document.getElementById("recent");
   var searchContainer = document.getElementById("search-container");
 
@@ -42,17 +43,18 @@
   }
 
   // load emojis from json
-  var emojis;
+  var emojis = [];
   getJSON("./emojis.json", function(res) {
     // flatten and objectify emojis
-    emojis = _.flatten(_.map(JSON.parse(res), function(group) {
-      return _.map(group, function(v, k) {
-        return {
+    var map = JSON.parse(res);
+    Object.keys(map).forEach(function(group) {
+      Object.keys(map[group]).forEach(function(k) {
+        emojis.push({
           name: k,
-          src: v
-        };
+          src: map[group][k]
+        });
       });
-    }));
+    });
   });
 
   // show an emoji in the bottom detail screen
@@ -72,8 +74,8 @@
       vendor.setLocal('last', item);
 
       // set item in recent
-      recent = [item].concat(_.reject(recent, function(el) {
-        return el.name === item.name;
+      recent = [item].concat(recent.filter(function(el) {
+        return el.name !== item.name;
       }));
 
       // remove last if number too high
@@ -113,12 +115,13 @@
 
     // intermediate container to render the dom as few times as possible
     var cont = document.createElement("div");
-    _.each(recent, appendItem.bind(null, cont));
+    recent.forEach(appendItem.bind(null, cont));
     recentDiv.appendChild(cont);
   }
 
-  _.each(groups, function(group) {
-    _.each(group.childNodes, addEmojiClickListener);
+  groups.forEach(function(group) {
+    var nodes = Array.prototype.slice.call(group.childNodes);
+    nodes.forEach(addEmojiClickListener);
   });
 
   // copybutton is not present in safari
@@ -153,7 +156,7 @@
   recentButton.addEventListener('click', updateRecent);
 
   // add click listener to logo that changes the displayed group
-  _.each(logos, function(logo) {
+  logos.forEach(function(logo) {
     logo.addEventListener('click', setActiveGroup.bind(null, logo));
   });
 
@@ -171,9 +174,11 @@
 
           // intermediate container to render the dom as few times as possible
           var cont = document.createElement("div");
-          _.first(_.filter(emojis, function(emoji) {
+          var filtered = emojis.filter(function(emoji) {
             return emoji.name.indexOf(val) !== -1;
-          }), MAX_SEARCH_RESULTS).forEach(appendItem.bind(null, searchContainer));
+          });
+          filtered = filtered.slice(0, MAX_SEARCH_RESULTS);
+          filtered.forEach(appendItem.bind(null, searchContainer));
           recentDiv.appendChild(cont);
         }
       }, 200);
