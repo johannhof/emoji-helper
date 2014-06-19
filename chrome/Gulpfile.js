@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     zip = require('gulp-zip'),
     jade = require('gulp-jade');
 
-var emojis = require('../shared/emojis.json');
+var emojis = require('../shared/sprite/sprite.json');
 
 var build = "./build/";
 
@@ -46,6 +46,6 @@ gulp.task('release', function () {
       .pipe(gulp.dest("../release/latest/chrome/"));
 });
 
-gulp.task('build', ['popup', 'shared', 'manifest', 'vendor']);
+gulp.task('build', ['shared', 'manifest', 'vendor', 'popup']);
 
 gulp.task('default', ['build', 'watch']);

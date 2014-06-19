@@ -7,7 +7,7 @@ var gulp = require('gulp'),
     newer = require('gulp-newer'),
     jade = require('gulp-jade');
 
-var emojis = require('../shared/emojis.json');
+var emojis = require('../shared/sprite/sprite.json');
 
 var build = "./build/";
 
