@@ -25,7 +25,7 @@
   var recent = [];
 
   // maximum number of recents
-  var MAX_RECENT = 40;
+  var MAX_RECENT = 50;
 
   // maximum displayed search results for performance
   var MAX_SEARCH_RESULTS = 75;
