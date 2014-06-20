@@ -3,10 +3,10 @@ var gulp = require('gulp'),
     imageResize = require('gulp-image-resize'),
     spritesmith = require('gulp.spritesmith');
 
-var emojis = require('../emojis.json');
+var emojis = require('./shared/emojis.json');
 
 gulp.task('emoji', function () {
-    return gulp.src('../img/emoji/*')
+    return gulp.src('./shared/img/emoji/*')
         .pipe(imageResize({
           width : 46,
           height : 46
@@ -39,12 +39,12 @@ gulp.task('sprite', ['emoji'], function () {
     algorithm : 'binary-tree',
     cssName: 'sprite.json'
   }));
-  spriteData.img.pipe(gulp.dest("./"));
-  return spriteData.css.pipe(gulp.dest("./"));
+  spriteData.img.pipe(gulp.dest("./shared/sprite/"));
+  return spriteData.css.pipe(gulp.dest("./shared/sprite"));
 });
 
 gulp.task('clean', ['emoji', 'sprite'], function () {
     return gulp.src('./tmp', {read: false}).pipe(clean());
 });
 
-gulp.task('generate', ['emoji', 'sprite', 'clean']);
+gulp.task('generate-sprite', ['emoji', 'sprite', 'clean']);
