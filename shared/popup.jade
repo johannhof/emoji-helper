@@ -17,8 +17,7 @@ html
       each group, n in emojis
         .group(id=n, data-emoji="true")
           each emoji in group
-            .emoji(data-name=emoji.name, data-src="./img/emoji/#{emoji.name}.png",
-              style="background-image:url('./sprite/sprite.png');background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
+            .emoji(data-name=emoji.name, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
       .group(id="search-container",data-emoji=true)
       .group(id="about-container")
         h1
@@ -50,7 +49,7 @@ html
         p
           img.about-text-img(src="./img/emoji/heart.png")
     #detail
-      img#detail-logo
+      div#detail-logo
       input#detail-input
       if browser != "Safari" && browser != "Bookmarklet"
         button#copy-button.detail-button(title="Copy to clipboard")

@@ -20,12 +20,17 @@ body {
   text-align: center;
 }
 #detail-logo {
+  background-image: url(../sprite/sprite.png);
   vertical-align: middle;
   box-sizing: border-box;
-  padding: 5px;
   display: inline-block;
   height: 100%;
-  margin: 0 3px;
+  background-size: 690px;
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
+  height: 23px;
+  width: 23px;
+  margin: 8px;
 }
 input {
   border-radius: 3px;
@@ -126,10 +131,7 @@ h2{
   cursor: pointer;
   height: 23px;
   width: 23px;
-}
-.emoji img {
-  height: 100%;
-  width: 100%;
+  background-image: url('../sprite/sprite.png');
 }
 .emoji:hover {
   box-shadow: 0px 0px 1px black;
