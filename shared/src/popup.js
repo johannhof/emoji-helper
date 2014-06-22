@@ -196,4 +196,40 @@
 
   }, false);
 
+  document.addEventListener("keydown", function (event) {
+    if(event.target === searchInput){
+      return;
+    }
+    switch (event.keyCode) {
+      case 49:
+        // show recent
+        setActiveGroup(logos[0]);
+        break;
+      case 50:
+        // show people
+        setActiveGroup(logos[1]);
+        break;
+      case 51:
+        // show nature
+        setActiveGroup(logos[2]);
+        break;
+      case 52:
+        // show objects
+        setActiveGroup(logos[3]);
+        break;
+      case 53:
+        // show places
+        setActiveGroup(logos[4]);
+        break;
+      case 54:
+        // show symbols
+        setActiveGroup(logos[5]);
+        break;
+      default:
+        searchInput.value = "";
+        searchInput.focus();
+        break;
+    }
+  });
+
 }());
