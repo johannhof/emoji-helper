@@ -55,16 +55,32 @@ input {
   vertical-align: middle;
 }
 h1{
+  text-align: center;
   font-weight: 100;
   margin: 15px 0 10px;
+  font-size: 30px;
+  padding-left: 10px;
 }
 h1 img{
   margin: 0 5px;
-  height: 26px;
+  height: 25px;
 }
 h2{
+  text-align: center;
   font-weight: 400;
   margin: 15px 0 10px;
+}
+h3{
+  text-align: center;
+  margin: 10px 0;
+  font-size: 19px;
+}
+p, li{
+  font-size: 14px;
+  margin: 14px 0;
+}
+ul{
+  padding-left: 15px;
 }
 .about-text-img{
   height: 18px;
@@ -79,6 +95,7 @@ h2{
   cursor: pointer;
   border-radius: 3px;
   padding: 3px 8px;
+  outline: none;
 }
 .detail-button:hover{
   box-shadow: 0px 0px 1px grey;
@@ -98,7 +115,6 @@ h2{
 }
 #about-container{
   font-weight: 100;
-  text-align: center;
 }
 #about-container a{
   text-decoration: none;
@@ -107,7 +123,14 @@ h2{
   text-decoration: underline;
 }
 #about-container a > i{
+  font-size: 18px;
   margin: 0 5px;
+}
+#about-container .half{
+  box-sizing: border-box;
+  padding: 0 10px;
+  width: 50%;
+  float: left;
 }
 .groups {
   box-shadow: 0px 0px 1px black;
