@@ -25,10 +25,10 @@
   var recent = [];
 
   // maximum number of recents
-  var MAX_RECENT = 40;
+  var MAX_RECENT = 50;
 
   // maximum displayed search results for performance
-  var MAX_SEARCH_RESULTS = 75;
+  var MAX_SEARCH_RESULTS = 200;
 
   // very simple utility http get function
   function getJSON(url, cb) {
@@ -44,22 +44,22 @@
 
   // load emojis from json
   var emojis = [];
-  getJSON("./emojis.json", function(res) {
+  getJSON("./sprite/sprite.json", function(res) {
     // flatten and objectify emojis
     var map = JSON.parse(res);
     Object.keys(map).forEach(function(group) {
       Object.keys(map[group]).forEach(function(k) {
         emojis.push({
           name: k,
-          src: map[group][k]
+          pos: -map[group][k].x / 2 + "px " + -map[group][k].y / 2 + "px"
         });
       });
     });
   });
 
   // show an emoji in the bottom detail screen
-  function showDetail(name, src) {
-    detailLogo.src = src;
+  function showDetail(name, pos) {
+    detailLogo.style.backgroundPosition = pos;
     detailInput.value = ":" + name + ":";
   }
 
@@ -67,7 +67,7 @@
     node.addEventListener('click', function() {
       var item = {
         name: node.dataset.name,
-        src: node.dataset.src
+        pos: node.style.backgroundPosition
       };
 
       // save last in local storage
@@ -87,7 +87,7 @@
       vendor.setLocal('recent', recent);
 
       // show selected emoji in detail
-      showDetail(item.name, item.src);
+      showDetail(item.name, item.pos);
       vendor.copyToClipboard(detailInput);
     });
   }
@@ -96,15 +96,7 @@
     var cont = document.createElement("div");
     cont.classList.add("emoji");
     cont.dataset.name = item.name;
-    cont.dataset.src = item.src;
-
-    var img = document.createElement("img");
-    img.src = item.src;
-    cont.appendChild(img);
-
-    //var span = document.createElement("span");
-    //span.innerHTML = item.name;
-    //cont.appendChild(span);
+    cont.style.backgroundPosition = item.pos;
 
     addEmojiClickListener(cont);
     container.appendChild(cont);
@@ -190,7 +182,7 @@
     // get last used emoji from user locals and display
     vendor.getLocal("last", function(item) {
       if (item) {
-        showDetail(item.name, item.src);
+        showDetail(item.name, item.pos);
       }
     });
 
@@ -203,5 +195,41 @@
     });
 
   }, false);
+
+  document.addEventListener("keydown", function (event) {
+    if(event.target === searchInput){
+      return;
+    }
+    switch (event.keyCode) {
+      case 49:
+        // show recent
+        setActiveGroup(logos[0]);
+        break;
+      case 50:
+        // show people
+        setActiveGroup(logos[1]);
+        break;
+      case 51:
+        // show nature
+        setActiveGroup(logos[2]);
+        break;
+      case 52:
+        // show objects
+        setActiveGroup(logos[3]);
+        break;
+      case 53:
+        // show places
+        setActiveGroup(logos[4]);
+        break;
+      case 54:
+        // show symbols
+        setActiveGroup(logos[5]);
+        break;
+      default:
+        searchInput.value = "";
+        searchInput.focus();
+        break;
+    }
+  });
 
 }());

@@ -5,7 +5,7 @@ body {
   min-height: 370px;
   overflow: hidden;
   font-family: sans-serif;
-  background: linear-gradient(to bottom, rgba(238, 238, 238, 1) 0%, rgba(238, 238, 238, 1) 100%);
+  background: rgba(238, 238, 238, 1);
 }
 #detail {
   position: fixed;
@@ -20,12 +20,17 @@ body {
   text-align: center;
 }
 #detail-logo {
+  background-image: url(../sprite/sprite.png);
   vertical-align: middle;
   box-sizing: border-box;
-  padding: 5px;
   display: inline-block;
   height: 100%;
-  margin: 0 3px;
+  background-size: 690px;
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
+  height: 23px;
+  width: 23px;
+  margin: 8px;
 }
 input {
   border-radius: 3px;
@@ -50,16 +55,32 @@ input {
   vertical-align: middle;
 }
 h1{
+  text-align: center;
   font-weight: 100;
   margin: 15px 0 10px;
+  font-size: 30px;
+  padding-left: 10px;
 }
 h1 img{
   margin: 0 5px;
-  height: 26px;
+  height: 25px;
 }
 h2{
+  text-align: center;
   font-weight: 400;
   margin: 15px 0 10px;
+}
+h3{
+  text-align: center;
+  margin: 10px 0;
+  font-size: 19px;
+}
+p, li{
+  font-size: 14px;
+  margin: 14px 0;
+}
+ul{
+  padding-left: 15px;
 }
 .about-text-img{
   height: 18px;
@@ -74,6 +95,7 @@ h2{
   cursor: pointer;
   border-radius: 3px;
   padding: 3px 8px;
+  outline: none;
 }
 .detail-button:hover{
   box-shadow: 0px 0px 1px grey;
@@ -83,17 +105,8 @@ h2{
   float: right;
   margin-top: 5px;
 }
-#settings-button {
-  float: right;
-  margin-top: 5px;
-}
-#settings-container{
-  font-weight: 100;
-  padding: 40px 20px;
-}
 #about-container{
   font-weight: 100;
-  text-align: center;
 }
 #about-container a{
   text-decoration: none;
@@ -102,7 +115,14 @@ h2{
   text-decoration: underline;
 }
 #about-container a > i{
+  font-size: 18px;
   margin: 0 5px;
+}
+#about-container .half{
+  box-sizing: border-box;
+  padding: 0 10px;
+  width: 50%;
+  float: left;
 }
 .groups {
   box-shadow: 0px 0px 1px black;
@@ -118,19 +138,18 @@ h2{
   display: inline-block;
   border-radius: 5px;
   margin: 5px;
-  padding: 5px;
+  padding: 0;
+  border: 5px solid rgba(238, 238, 238, 1);
+  background-repeat: no-repeat;
+  background-size: 690px;
   text-align: center;
   cursor: pointer;
+  height: 23px;
+  width: 23px;
+  background-image: url('../sprite/sprite.png');
 }
 .emoji:hover {
   box-shadow: 0px 0px 1px black;
-}
-.emoji img {
-  height: 23px
-}
-.emoji span {
-  font-size: 9px;
-  display: block;
 }
 .group-logos {
   box-sizing: border-box;
