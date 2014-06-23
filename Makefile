@@ -1,6 +1,8 @@
 V=0.5.0
 
 release: build
+	rm -rf release/latest
+	rm -rf release/$V
 	gulp release --cwd bookmarklet/
 	gulp release --cwd chrome/
 	gulp release --cwd firefox/
