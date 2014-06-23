@@ -1,6 +1,6 @@
 var toggleEmojiBookmarklet = function () {
-  var SERVER_URL = 'http://localhost:8000';
-  //var SERVER_URL = 'https://johannhof.github.io/emoji-helper/bookmarklet/';
+  //var SERVER_URL = 'http://localhost:8000';
+  var SERVER_URL = 'https://johannhof.github.io/emoji-helper/bookmarklet/';
 
   var container = document.createElement('div');
   var frame = document.createElement('iframe');
