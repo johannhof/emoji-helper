@@ -105,6 +105,10 @@ ul{
   float: right;
   margin-top: 5px;
 }
+.update{
+  background-color: dodgerblue;
+  color: white;
+}
 #about-container{
   font-weight: 100;
 }
