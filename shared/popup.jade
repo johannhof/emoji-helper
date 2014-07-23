@@ -16,43 +16,50 @@ html
     .groups
       each group, n in emojis
         .group(id=n, data-emoji="true")
-          each url, name in group
-            .emoji(data-name=name, data-src=url)
-              img(src=url)
-              //-span= name
+          each emoji in group
+            .emoji(data-name=emoji.name, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
       .group(id="search-container",data-emoji=true)
       .group(id="about-container")
         h1
+          | Emoji
           img(src="./img/emoji/hatched_chick.png")
-          | Emoji-Helper
+          | Helper
         h3= browser
-        p
-          | Version 0.4.4 - 
-          img.about-text-img(src="./img/emoji/chicken.png")
-        p
-          a(href="http://johannhof.github.io/emoji-helper", target="_blank")
-            i.ion-earth
-            | johannhof.github.io/emoji-helper
-        p
-          a(href="http://github.com/johannhof/emoji-helper", target="_blank")
-            i.ion-social-github
-            | johannhof/emoji-helper
-        p
-          a(href="http://github.com/johannhof/emoji-helper/issues", target="_blank")
-            i.ion-bug
-            | johannhof/emoji-helper/issues
-        p
-          | Images are taken from Github's 
-          a(href="https://github.com/github/gemoji") gemoji 
-          | project.
-        p
-          | Copyright see 
-          a(href="https://github.com/github/gemoji/blob/master/LICENSE") license 
-        p
-          img.about-text-img(src="./img/emoji/heart.png")
+        div.half
+          p
+            a(href="http://johannhof.github.io/emoji-helper", target="_blank")
+              i.ion-earth
+              | Website
+          p
+            a(href="http://github.com/johannhof/emoji-helper", target="_blank")
+              i.ion-social-github
+              | Contribute on GitHub
+          p
+            a(href="http://github.com/johannhof/emoji-helper/issues", target="_blank")
+              i.ion-bug
+              | Bugs & Feature Requests
+          p
+            | Images are taken from Github's 
+            a(href="https://github.com/github/gemoji") gemoji 
+            | project.
+          p
+            | Copyright see 
+            a(href="https://github.com/github/gemoji/blob/master/LICENSE") license 
+          center
+            img.about-text-img(src="./img/emoji/heart.png")
+        div.half
+          p
+            center
+              | Version 0.5.0 - 
+              img.about-text-img(src="./img/emoji/turtle.png")
+          ul
+            li Images are now a single sprite, reducing load time and file size
+            li New Shortcuts: Press numbers on your keyboard to jump between sections
+            li To search, just start typing without having to click into the search box
+            li Added a Changelog
     #detail
-      img#detail-logo
-      input#detail-input
+      div#detail-logo
+      input#detail-input(readonly)
       if browser != "Safari" && browser != "Bookmarklet"
         button#copy-button.detail-button(title="Copy to clipboard")
           i.ion-clipboard

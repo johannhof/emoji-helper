@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     shell = require('gulp-shell'),
     jade = require('gulp-jade');
 
-var emojis = require('../shared/emojis.json');
+var emojis = require('../shared/sprite/sprite.json');
 
 var build = "./build/";
 
@@ -23,10 +23,25 @@ gulp.task('js', function() {
   gulp.src("./helper.js").pipe(gulp.dest(build + "data/"));
 });
 
+gulp.task('emoji', function () {
+    return gulp.src([
+      '../shared/img/emoji/clock9.png',
+      '../shared/img/emoji/smiley.png',
+      '../shared/img/emoji/cherry_blossom.png',
+      '../shared/img/emoji/bell.png',
+      '../shared/img/emoji/oncoming_automobile.png',
+      '../shared/img/emoji/symbols.png',
+      '../shared/img/emoji/hatched_chick.png',
+      '../shared/img/emoji/turtle.png',
+      '../shared/img/emoji/heart.png'
+    ]).pipe(gulp.dest(build + 'data/img/emoji/'));
+});
+
 gulp.task('shared', function() {
   gulp.src([
     "../shared/**/*",
-    "!../shared/popup.jade"
+    "!../shared/popup.jade",
+    "!../shared/img/emoji/*"
   ]).pipe(gulp.dest(build + "data/"));
   gulp.src("../package.json").pipe(gulp.dest(build));
 });
@@ -44,6 +59,6 @@ gulp.task('release', shell.task([
   'cd build && cfx xpi --output-file="../../release/latest/firefox/emoji-helper.xpi"'
 ]));
 
-gulp.task('build', ['popup', 'shared', 'js']);
+gulp.task('build', ['popup', 'shared', 'js', 'emoji']);
 
 gulp.task('default', ['build', 'watch']);

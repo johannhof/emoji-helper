@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
     jade = require('gulp-jade');
 
-var emojis = require('../shared/emojis.json');
+var emojis = require('../shared/sprite/sprite.json');
 
 var build = "./build/emoji.safariextension/";
 
@@ -24,10 +24,25 @@ gulp.task('vendor', function() {
   gulp.src("./vendor.js").pipe(gulp.dest(build + "src/"));
 });
 
+gulp.task('emoji', function () {
+    return gulp.src([
+      '../shared/img/emoji/clock9.png',
+      '../shared/img/emoji/smiley.png',
+      '../shared/img/emoji/cherry_blossom.png',
+      '../shared/img/emoji/bell.png',
+      '../shared/img/emoji/oncoming_automobile.png',
+      '../shared/img/emoji/symbols.png',
+      '../shared/img/emoji/hatched_chick.png',
+      '../shared/img/emoji/turtle.png',
+      '../shared/img/emoji/heart.png'
+    ]).pipe(gulp.dest(build + 'img/emoji/'));
+});
+
 gulp.task('shared', function() {
   gulp.src([
     "../shared/**/*",
-    "!../shared/popup.jade"
+    "!../shared/popup.jade",
+    "!../shared/img/emoji/*"
   ]).pipe(gulp.dest(build));
 });
 
@@ -44,6 +59,6 @@ gulp.task('release', function () {
       .pipe(gulp.dest("../release/latest/safari/emoji.safariextension/"));
 });
 
-gulp.task('build', ['popup', 'shared', 'manifest', 'vendor']);
+gulp.task('build', ['popup', 'shared', 'manifest', 'vendor', 'emoji']);
 
 gulp.task('default', ['build', 'watch']);
