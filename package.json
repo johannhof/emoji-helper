@@ -22,5 +22,8 @@
     "gulp-uglify": "^0.3.0",
     "gulp-zip": "^0.3.4",
     "gulp.spritesmith": "^1.1.0"
+  },
+  "scripts":{
+    "test" : "casperjs test test/"
   }
 }

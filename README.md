@@ -58,3 +58,22 @@ $ open test.html
 ```
 
 `gulp dev` will start a server to deliver the bookmarklet. You can test/debug the bookmarklet using test.html.
+
+### Testing
+
+Since the extension is mostly about the shared frontend, we're using CasperJS for headless browser testing.
+CasperJS launches a series of tests on the development page of the bookmarklet.
+
+To run the tests, start up the bookmarklet dev task
+
+```bash
+$ cd bookmarklet
+$ gulp dev
+```
+
+Now run the test task with npm
+
+```bash
+$ npm test
+```
+
