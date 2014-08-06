@@ -64,6 +64,8 @@ $ open test.html
 Since the extension is mostly about the shared frontend, we're using CasperJS for headless browser testing.
 CasperJS launches a series of tests on the development page of the bookmarklet.
 
+Check out http://docs.casperjs.org/en/latest/installation.html for instructions on how to install CasperJS.
+
 To run the tests, start up the bookmarklet dev task
 
 ```bash
