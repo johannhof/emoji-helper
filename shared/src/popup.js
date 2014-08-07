@@ -216,6 +216,7 @@
     switch (event.keyCode) {
       case 49:
         // show recent
+        updateRecent();
         setActiveGroup(logos[0]);
         break;
       case 50:
