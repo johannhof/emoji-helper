@@ -2,7 +2,11 @@
   var exports = {};
 
   exports.getLocal = function(name, cb) {
-    cb(JSON.parse(localStorage[name]));
+    if (localStorage[name]) {
+      cb(JSON.parse(localStorage[name]));
+    } else {
+      cb();
+    }
   };
 
   exports.setLocal = function(key, value) {

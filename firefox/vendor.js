@@ -11,7 +11,11 @@
     send("get", name);
 
     var listener = function(event) {
-      cb(JSON.parse(event.detail));
+      if (event.detail) {
+        cb(JSON.parse(event.detail));
+      } else {
+        cb();
+      }
       window.removeEventListener("send_" + name, listener);
     };
 
