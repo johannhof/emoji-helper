@@ -78,4 +78,3 @@ Now run the test task with npm
 ```bash
 $ npm test
 ```
-
