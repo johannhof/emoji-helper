@@ -12,24 +12,68 @@ casper.on("page.error", function(msg, trace) {
   this.echo("function: " + trace[0]["function"], "WARNING");
 });
 
-casper.test.begin('Navigation', 5, function suite(test) {
+casper.test.begin('Navigation', function suite(test) {
   casper
     .start("http://localhost:8000", function() {
       test.assertExists('.group-logos', "main container is found");
       test.assertElementCount('.group-logos > button', 6, "there are 6 logo buttons");
     })
+
+    /* NAVIGATION */
     .then(function() {
       this.click('button[data-group="nature"]');
     })
     .then(function() {
       test.assertVisible('#nature', "button click changes the content of the main container");
     })
+
+    /* KEYBOARD SHORTCUTS */
     .then(function() {
       this.sendKeys('body', '6');
     })
     .then(function() {
       test.assertVisible('#symbols', "keyboard shortcut changes the content of the main container");
       test.assertNotVisible('#nature', "... and hides the other container div");
+    })
+
+    /* SEARCH */
+    .then(function() {
+      this.sendKeys('body', 'sun');
+    })
+    .then(function() {
+      test.assertVisible('#search-container', "entering text triggers the search");
+      // wait for throttling
+      this.wait(500, function () {
+        test.assertElementCount('#search-container > .emoji', 9, "the query 'sun' finds 9 elements");
+      })
+    })
+
+    /* ABOUT */
+    .then(function() {
+      this.click('#about-button');
+    })
+    .then(function() {
+      test.assertVisible('#about-container', "clicking the about button triggers the about screen");
+    })
+
+    /* RECENT */
+    .then(function() {
+      // first go to other category
+      this.click('button[data-group="nature"]');
+    })
+    .then(function() {
+      // select an item
+      this.click('[data-name="fish"]');
+    })
+    .then(function() {
+      // go to recents
+      this.click('button[data-group="recent"]');
+    })
+    .then(function() {
+      test.assertVisible('#recent [data-name="fish"]', "after clicking on an item, it appears in the recents");
+      test.assertEvalEquals(function() {
+          return __utils__.findOne('#recent .emoji:first-of-type').dataset.name;
+      }, 'fish', "...at first position");
     })
 
   casper.run(function() {
