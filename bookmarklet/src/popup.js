@@ -3,6 +3,8 @@
   // local vars for linting (and performance)
   var vendor = window.vendor;
 
+  var VERSION = "0.5.0";
+
   // upper bar
   var logos = document.querySelectorAll(".group-logo");
   logos = Array.prototype.slice.call(logos);
@@ -192,6 +194,17 @@
         recent = rec;
       }
       updateRecent();
+    });
+
+    // show info in blue when updated
+    vendor.getLocal("version", function (ver) {
+      if(ver !== VERSION){
+        aboutButton.classList.add("update");
+        aboutButton.addEventListener('click', function() {
+          aboutButton.classList.remove("update");
+          vendor.setLocal("version", VERSION);
+        });
+      }
     });
 
   }, false);
