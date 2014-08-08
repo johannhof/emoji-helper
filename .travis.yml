@@ -1,8 +1,8 @@
 language: node_js
 node_js: "0.10"
 install:
-  - apt-get install imagemagick
-  - apt-get install graphicsmagick
+  - sudo apt-get install imagemagick
+  - sudo apt-get install graphicsmagick
   - npm install
   - npm install -g gulp
   - npm install -g casperjs
