@@ -1,0 +1,7 @@
+language: node_js
+node_js: "0.10"
+install: npm install -g casperjs
+before_script:
+  - gulp build --cwd=bookmarklet
+  - gulp server --cwd=bookmarklet
+script: npm test
