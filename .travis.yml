@@ -9,4 +9,5 @@ install:
 before_script:
   - gulp build --cwd=bookmarklet
   - gulp server --cwd=bookmarklet &
+  - sleep 3 # give the server a head start
 script: npm test
