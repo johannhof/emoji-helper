@@ -1,4 +1,4 @@
-V=0.5.0
+V=0.5.1
 
 release: build
 	rm -rf release/latest

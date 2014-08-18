@@ -3,7 +3,7 @@
   // local vars for linting (and performance)
   var vendor = window.vendor;
 
-  var VERSION = "0.5.0";
+  var VERSION = "0.5.1";
 
   // upper bar
   var logos = document.querySelectorAll(".group-logo");
