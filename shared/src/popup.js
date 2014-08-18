@@ -209,6 +209,7 @@
 
   }, false);
 
+  var alphaNum = /[a-zA-Z0-9]/;
   document.addEventListener("keydown", function (event) {
     if(event.target === searchInput){
       return;
@@ -240,8 +241,11 @@
         setActiveGroup(logos[5]);
         break;
       default:
-        searchInput.value = "";
-        searchInput.focus();
+        var str = String.fromCharCode(event.keyCode);
+        if(alphaNum.test(str)){
+          searchInput.value = "";
+          searchInput.focus();
+        }
         break;
     }
   });
