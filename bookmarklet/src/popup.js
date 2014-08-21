@@ -3,7 +3,7 @@
   // local vars for linting (and performance)
   var vendor = window.vendor;
 
-  var VERSION = "0.5.0";
+  var VERSION = "0.5.1";
 
   // upper bar
   var logos = document.querySelectorAll(".group-logo");
@@ -209,6 +209,7 @@
 
   }, false);
 
+  var alphaNum = /[a-zA-Z0-9]/;
   document.addEventListener("keydown", function (event) {
     if(event.target === searchInput){
       return;
@@ -216,6 +217,7 @@
     switch (event.keyCode) {
       case 49:
         // show recent
+        updateRecent();
         setActiveGroup(logos[0]);
         break;
       case 50:
@@ -239,8 +241,11 @@
         setActiveGroup(logos[5]);
         break;
       default:
-        searchInput.value = "";
-        searchInput.focus();
+        var str = String.fromCharCode(event.keyCode);
+        if(alphaNum.test(str)){
+          searchInput.value = "";
+          searchInput.focus();
+        }
         break;
     }
   });
