@@ -50,6 +50,7 @@ input {
   border-radius: 15px;
   padding-left: 10px;
   outline: none;
+  max-width: 150px;
 }
 #detail-input {
   vertical-align: middle;
@@ -101,12 +102,16 @@ ul{
   box-shadow: 0px 0px 1px grey;
   color: #444;
 }
+.detail-button.update:hover{
+  color: white;
+  background-color: darkslateblue;
+}
 #about-button {
   float: right;
   margin-top: 5px;
 }
 .update{
-  background-color: dodgerblue;
+  background-color: cornflowerblue;
   color: white;
 }
 #about-container{
