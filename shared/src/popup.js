@@ -21,7 +21,6 @@
   var detailInput = document.getElementById("detail-input");
   var unicodeInput = document.getElementById("unicode-input");
   var detailLogo = document.getElementById("detail-logo");
-  var copyButton = document.getElementById("copy-button");
   var aboutButton = document.getElementById("about-button");
 
   // recently used emojis
@@ -125,11 +124,6 @@
     var nodes = Array.prototype.slice.call(group.childNodes);
     nodes.forEach(addEmojiClickListener);
   });
-
-  // copybutton is not present in safari
-  if (copyButton) {
-    copyButton.addEventListener("click", vendor.copyToClipboard.bind(null, detailInput));
-  }
 
   var setActiveGroup = (function() {
     // show first group

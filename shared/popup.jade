@@ -64,9 +64,6 @@ html
       input#detail-input(readonly)
       if browser != "Chrome"
         input#unicode-input(readonly)
-      if browser != "Safari" && browser != "Bookmarklet"
-        button#copy-button.detail-button(title="Copy to clipboard")
-          i.ion-clipboard
       button#about-button.detail-button(title="About", data-group="about-container")
           i.ion-information-circled
     script(src="./src/popup.js")
