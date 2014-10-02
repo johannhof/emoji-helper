@@ -19,6 +19,7 @@
 
   // detail area
   var detailInput = document.getElementById("detail-input");
+  var unicodeInput = document.getElementById("unicode-input");
   var detailLogo = document.getElementById("detail-logo");
   var copyButton = document.getElementById("copy-button");
   var aboutButton = document.getElementById("about-button");
@@ -51,24 +52,30 @@
     var map = JSON.parse(res);
     Object.keys(map).forEach(function(group) {
       Object.keys(map[group]).forEach(function(k) {
+        var emoji = map[group][k];
         emojis.push({
           name: k,
-          pos: -map[group][k].x / 2 + "px " + -map[group][k].y / 2 + "px"
+          unicode: emoji.unicode,
+          pos: -emoji.x / 2 + "px " + -emoji.y / 2 + "px"
         });
       });
     });
   });
 
   // show an emoji in the bottom detail screen
-  function showDetail(name, pos) {
-    detailLogo.style.backgroundPosition = pos;
-    detailInput.value = ":" + name + ":";
+  function showDetail(item) {
+    detailLogo.style.backgroundPosition = item.pos;
+    detailInput.value = ":" + item.name + ":";
+    if(unicodeInput){
+      unicodeInput.value = item.unicode;
+    }
   }
 
   function addEmojiClickListener(node) {
     node.addEventListener('click', function() {
       var item = {
         name: node.dataset.name,
+        unicode : node.dataset.unicode,
         pos: node.style.backgroundPosition
       };
 
@@ -89,7 +96,7 @@
       vendor.setLocal('recent', recent);
 
       // show selected emoji in detail
-      showDetail(item.name, item.pos);
+      showDetail(item);
       vendor.copyToClipboard(detailInput);
     });
   }
@@ -98,6 +105,7 @@
     var cont = document.createElement("div");
     cont.classList.add("emoji");
     cont.dataset.name = item.name;
+    cont.dataset.unicode = item.unicode || "";
     cont.style.backgroundPosition = item.pos;
 
     addEmojiClickListener(cont);
@@ -184,7 +192,7 @@
     // get last used emoji from user locals and display
     vendor.getLocal("last", function(item) {
       if (item) {
-        showDetail(item.name, item.pos);
+        showDetail(item);
       }
     });
 

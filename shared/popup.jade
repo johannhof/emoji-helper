@@ -17,7 +17,7 @@ html
       each group, n in emojis
         .group(id=n, data-emoji="true")
           each emoji in group
-            .emoji(data-name=emoji.name, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
+            .emoji(data-name=emoji.name, data-unicode=emoji.unicode, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
       .group(id="search-container",data-emoji=true)
       .group(id="about-container")
         h1
@@ -62,6 +62,8 @@ html
     #detail
       div#detail-logo
       input#detail-input(readonly)
+      if browser != "Chrome"
+        input#unicode-input(readonly)
       if browser != "Safari" && browser != "Bookmarklet"
         button#copy-button.detail-button(title="Copy to clipboard")
           i.ion-clipboard

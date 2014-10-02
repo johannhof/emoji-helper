@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     spritesmith = require('gulp.spritesmith');
 
 var emojis = require('./shared/emojis.json');
+var unicode = require('./shared/unicode.json');
 
 gulp.task('emoji', function () {
     return gulp.src('./shared/img/emoji/*')
@@ -30,6 +31,7 @@ gulp.task('sprite', ['emoji'], function () {
 
       Object.keys(emojis).forEach(function (k) {
         Object.keys(emojis[k]).forEach(function(emoji){
+          coll[emoji].unicode = unicode[emoji];
           emojis[k][emoji] = coll[emoji];
         });
       });

@@ -52,8 +52,14 @@ input {
   outline: none;
   max-width: 150px;
 }
-#detail-input {
+#detail .input {
   vertical-align: middle;
+}
+#unicode-input{
+  width: 35px;
+  margin-left: 3px;
+  text-align: center;
+  font-size: 14px;
 }
 h1{
   text-align: center;
