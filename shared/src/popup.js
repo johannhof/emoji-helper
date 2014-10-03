@@ -46,7 +46,7 @@
 
   // load emojis from json
   var emojis = [];
-  getJSON("./sprite/sprite.json", function(res) {
+  getJSON("./data/sprite.json", function(res) {
     // flatten and objectify emojis
     var map = JSON.parse(res);
     Object.keys(map).forEach(function(group) {
