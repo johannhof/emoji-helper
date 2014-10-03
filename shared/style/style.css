@@ -20,7 +20,7 @@ body {
   text-align: center;
 }
 #detail-logo {
-  background-image: url(../sprite/sprite.png);
+  background-image: url(../img/sprite.png);
   vertical-align: middle;
   box-sizing: border-box;
   display: inline-block;
@@ -162,7 +162,7 @@ ul{
   cursor: pointer;
   height: 23px;
   width: 23px;
-  background-image: url('../sprite/sprite.png');
+  background-image: url('../img/sprite.png');
 }
 .emoji:hover {
   box-shadow: 0px 0px 1px black;

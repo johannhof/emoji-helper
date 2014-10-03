@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
     jade = require('gulp-jade');
 
-var emojis = require('../shared/sprite/sprite.json');
+var emojis = require('../shared/data/sprite.json');
 
 var build = "./build/emoji.safariextension/";
 
