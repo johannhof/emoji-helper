@@ -90,6 +90,20 @@ casper.test.begin('Navigation', function suite(test) {
       }, '🐸', "after clicking an item its unicode is shown in the detail bar");
     })
 
+    /* NON-UNICODE EMOJI */
+    .then(function() {
+      // select an item
+      this.click('[data-name="bowtie"]');
+    })
+    .then(function() {
+      test.assertEvalEquals(function() {
+          return __utils__.findOne('#detail-input').value;
+      }, ':bowtie:', "after clicking a non-unicode item its :code: is shown in the detail bar");
+      test.assertEvalEquals(function() {
+          return __utils__.findOne('#unicode-input').value;
+      }, '', "after clicking a non-unicode item nothing is shown in the detail bar");
+    })
+
   casper.run(function() {
     test.done();
   });

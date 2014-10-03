@@ -74,6 +74,9 @@
   var showCopyMessage = (function() {
     var timer;
     return function(val) {
+      if(!copyMessage){
+        return;
+      }
       copyMessage.classList.add('show');
       copyMessage.innerHTML = val + ' copied to clipboard';
       clearTimeout(timer);
