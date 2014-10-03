@@ -168,10 +168,12 @@
     showCopyMessage(detailInput.value);
   });
 
-  unicodeInput.addEventListener('click', function() {
-    vendor.copyToClipboard(unicodeInput);
-    showCopyMessage(unicodeInput.value);
-  });
+  if(unicodeInput){
+    unicodeInput.addEventListener('click', function() {
+      vendor.copyToClipboard(unicodeInput);
+      showCopyMessage(unicodeInput.value);
+    });
+  }
 
   recentButton.addEventListener('click', updateRecent);
 
