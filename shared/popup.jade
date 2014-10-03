@@ -60,6 +60,9 @@ html
               i.ion-social-github-outline
               | Full changelog & all releases
     #detail
+      if browser == "Chrome" || browser == "Firefox"
+        #copy-message
+          | copied to clipboard
       div#detail-logo
       input#detail-input(readonly)
       if browser != "Chrome"
