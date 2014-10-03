@@ -47,12 +47,13 @@ input {
 #search {
   vertical-align: top;
   margin-left: 5px;
+  margin-top: 3px;
   border-radius: 15px;
   padding-left: 10px;
   outline: none;
   max-width: 150px;
 }
-#detail .input {
+#detail input {
   vertical-align: middle;
 }
 #unicode-input{
