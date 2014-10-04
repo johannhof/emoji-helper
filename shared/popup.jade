@@ -1,3 +1,7 @@
+mixin link(url)
+  a(href="#{url}", target="#{browser === 'Safari' ? '' : _blank}")
+    block
+
 doctype html
 html
   - var grouplogos = { recent : "./img/emoji/clock9.png" , people : "./img/emoji/smiley.png", nature : "./img/emoji/cherry_blossom.png", objects : "./img/emoji/bell.png", places : "./img/emoji/oncoming_automobile.png", symbols : "./img/emoji/symbols.png" }
@@ -27,24 +31,24 @@ html
         h3= browser
         div.half
           p
-            a(href="http://johannhof.github.io/emoji-helper", target="_blank")
+            +link("http://johannhof.github.io/emoji-helper")
               i.ion-earth
               | Website
           p
-            a(href="http://github.com/johannhof/emoji-helper", target="_blank")
+            +link("http://github.com/johannhof/emoji-helper")
               i.ion-social-github
               | Contribute on GitHub
           p
-            a(href="http://github.com/johannhof/emoji-helper/issues", target="_blank")
+            +link("http://github.com/johannhof/emoji-helper/issues")
               i.ion-bug
               | Bugs & Feature Requests
           p
             | Images are taken from Github's 
-            a(href="https://github.com/github/gemoji", target="_blank") gemoji 
+            +link("https://github.com/github/gemoji") gemoji 
             | project.
           p
             | Copyright see 
-            a(href="https://github.com/github/gemoji/blob/master/LICENSE", target="_blank") license 
+            +link("https://github.com/github/gemoji/blob/master/LICENSE") license 
           center
             img.about-text-img(src="./img/emoji/heart.png")
         div.half
@@ -56,7 +60,7 @@ html
             li Fixes for some small issues
           hr
           p
-            a(href="https://github.com/johannhof/emoji-helper/releases", target="_blank")
+            +link("https://github.com/johannhof/emoji-helper/releases")
               i.ion-social-github-outline
               | Full changelog & all releases
     #detail
