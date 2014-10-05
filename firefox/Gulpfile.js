@@ -32,7 +32,7 @@ gulp.task('emoji', function () {
       '../shared/img/emoji/oncoming_automobile.png',
       '../shared/img/emoji/symbols.png',
       '../shared/img/emoji/hatched_chick.png',
-      '../shared/img/emoji/turtle.png',
+      '../shared/img/emoji/snake.png',
       '../shared/img/emoji/heart.png'
     ]).pipe(gulp.dest(build + 'data/img/emoji/'));
 });
