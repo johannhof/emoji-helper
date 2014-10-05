@@ -66,6 +66,6 @@
 	<key>Update Manifest URL</key>
 	<string>http://spaeti.pavo.uberspace.de/Update.plist</string>
 	<key>Website</key>
-	<string>http://johannhof.github.io/emoji</string>
+	<string>http://johannhof.github.io/emoji-helper</string>
 </dict>
 </plist>
