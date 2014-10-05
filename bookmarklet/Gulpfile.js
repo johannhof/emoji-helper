@@ -7,7 +7,7 @@ var gulp = require('gulp'),
     newer = require('gulp-newer'),
     jade = require('gulp-jade');
 
-var emojis = require('../shared/sprite/sprite.json');
+var emojis = require('../shared/data/sprite.json');
 
 var build = "./build/";
 
@@ -40,7 +40,7 @@ gulp.task('emoji', function () {
       '../shared/img/emoji/oncoming_automobile.png',
       '../shared/img/emoji/symbols.png',
       '../shared/img/emoji/hatched_chick.png',
-      '../shared/img/emoji/turtle.png',
+      '../shared/img/emoji/snake.png',
       '../shared/img/emoji/heart.png',
       '../shared/img/emoji/heavy_multiplication_x.png'
     ]).pipe(newer(build + 'img/emoji/'))

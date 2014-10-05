@@ -3,7 +3,7 @@
   // local vars for linting (and performance)
   var vendor = window.vendor;
 
-  var VERSION = "0.5.2";
+  var VERSION = "0.6.0";
 
   // upper bar
   var logos = document.querySelectorAll(".group-logo");
@@ -19,9 +19,10 @@
 
   // detail area
   var detailInput = document.getElementById("detail-input");
+  var unicodeInput = document.getElementById("unicode-input");
   var detailLogo = document.getElementById("detail-logo");
-  var copyButton = document.getElementById("copy-button");
   var aboutButton = document.getElementById("about-button");
+  var copyMessage = document.getElementById("copy-message");
 
   // recently used emojis
   var recent = [];
@@ -46,29 +47,50 @@
 
   // load emojis from json
   var emojis = [];
-  getJSON("./sprite/sprite.json", function(res) {
+  getJSON("./data/sprite.json", function(res) {
     // flatten and objectify emojis
     var map = JSON.parse(res);
     Object.keys(map).forEach(function(group) {
       Object.keys(map[group]).forEach(function(k) {
+        var emoji = map[group][k];
         emojis.push({
           name: k,
-          pos: -map[group][k].x / 2 + "px " + -map[group][k].y / 2 + "px"
+          unicode: emoji.unicode,
+          pos: -emoji.x / 2 + "px " + -emoji.y / 2 + "px"
         });
       });
     });
   });
 
   // show an emoji in the bottom detail screen
-  function showDetail(name, pos) {
-    detailLogo.style.backgroundPosition = pos;
-    detailInput.value = ":" + name + ":";
+  function showDetail(item) {
+    detailLogo.style.backgroundPosition = item.pos;
+    detailInput.value = ":" + item.name + ":";
+    if (unicodeInput) {
+      unicodeInput.value = item.unicode || "";
+    }
   }
+
+  var showCopyMessage = (function() {
+    var timer;
+    return function(val) {
+      if(!copyMessage){
+        return;
+      }
+      copyMessage.classList.add('show');
+      copyMessage.innerHTML = val + ' copied to clipboard';
+      clearTimeout(timer);
+      timer = setTimeout(function() {
+        copyMessage.classList.remove('show');
+      }, 1000);
+    };
+  }());
 
   function addEmojiClickListener(node) {
     node.addEventListener('click', function() {
       var item = {
         name: node.dataset.name,
+        unicode: node.dataset.unicode,
         pos: node.style.backgroundPosition
       };
 
@@ -89,8 +111,9 @@
       vendor.setLocal('recent', recent);
 
       // show selected emoji in detail
-      showDetail(item.name, item.pos);
+      showDetail(item);
       vendor.copyToClipboard(detailInput);
+      showCopyMessage(detailInput.value);
     });
   }
 
@@ -98,6 +121,7 @@
     var cont = document.createElement("div");
     cont.classList.add("emoji");
     cont.dataset.name = item.name;
+    cont.dataset.unicode = item.unicode || "";
     cont.style.backgroundPosition = item.pos;
 
     addEmojiClickListener(cont);
@@ -117,11 +141,6 @@
     var nodes = Array.prototype.slice.call(group.childNodes);
     nodes.forEach(addEmojiClickListener);
   });
-
-  // copybutton is not present in safari
-  if (copyButton) {
-    copyButton.addEventListener("click", vendor.copyToClipboard.bind(null, detailInput));
-  }
 
   var setActiveGroup = (function() {
     // show first group
@@ -146,6 +165,18 @@
   aboutButton.addEventListener('click', function() {
     setActiveGroup(aboutButton);
   });
+
+  detailInput.addEventListener('click', function() {
+    vendor.copyToClipboard(detailInput);
+    showCopyMessage(detailInput.value);
+  });
+
+  if(unicodeInput){
+    unicodeInput.addEventListener('click', function() {
+      vendor.copyToClipboard(unicodeInput);
+      showCopyMessage(unicodeInput.value);
+    });
+  }
 
   recentButton.addEventListener('click', updateRecent);
 
@@ -184,21 +215,21 @@
     // get last used emoji from user locals and display
     vendor.getLocal("last", function(item) {
       if (item) {
-        showDetail(item.name, item.pos);
+        showDetail(item);
       }
     });
 
     // get recents from user locals
     vendor.getLocal("recent", function(rec) {
-      if(rec && rec.length){
+      if (rec && rec.length) {
         recent = rec;
       }
       updateRecent();
     });
 
     // show info in blue when updated
-    vendor.getLocal("version", function (ver) {
-      if(ver !== VERSION){
+    vendor.getLocal("version", function(ver) {
+      if (ver !== VERSION) {
         aboutButton.classList.add("update");
         aboutButton.addEventListener('click', function() {
           aboutButton.classList.remove("update");
@@ -210,8 +241,11 @@
   }, false);
 
   var alphaNum = /[a-zA-Z0-9]/;
-  document.addEventListener("keydown", function (event) {
-    if(event.target === searchInput){
+  document.addEventListener("keydown", function(event) {
+    if (event.target === searchInput) {
+      return;
+    }
+    if (event.altKey || event.ctrlKey || event.metaKey){
       return;
     }
     switch (event.keyCode) {
@@ -242,7 +276,7 @@
         break;
       default:
         var str = String.fromCharCode(event.keyCode);
-        if(alphaNum.test(str)){
+        if (alphaNum.test(str)) {
           searchInput.value = "";
           searchInput.focus();
         }

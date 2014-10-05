@@ -45,7 +45,7 @@ casper.test.begin('Navigation', function suite(test) {
       // wait for throttling
       this.wait(500, function () {
         test.assertElementCount('#search-container > .emoji', 9, "the query 'sun' finds 9 elements");
-      })
+      });
     })
 
     /* ABOUT */
@@ -74,6 +74,34 @@ casper.test.begin('Navigation', function suite(test) {
       test.assertEvalEquals(function() {
           return __utils__.findOne('#recent .emoji:first-of-type').dataset.name;
       }, 'fish', "...at first position");
+    })
+
+    /* SELECTION */
+    .then(function() {
+      // select an item
+      this.click('[data-name="frog"]');
+    })
+    .then(function() {
+      test.assertEvalEquals(function() {
+          return __utils__.findOne('#detail-input').value;
+      }, ':frog:', "after clicking an item its :code: is shown in the detail bar");
+      test.assertEvalEquals(function() {
+          return __utils__.findOne('#unicode-input').value;
+      }, '🐸', "after clicking an item its unicode is shown in the detail bar");
+    })
+
+    /* NON-UNICODE EMOJI */
+    .then(function() {
+      // select an item
+      this.click('[data-name="bowtie"]');
+    })
+    .then(function() {
+      test.assertEvalEquals(function() {
+          return __utils__.findOne('#detail-input').value;
+      }, ':bowtie:', "after clicking a non-unicode item its :code: is shown in the detail bar");
+      test.assertEvalEquals(function() {
+          return __utils__.findOne('#unicode-input').value;
+      }, '', "after clicking a non-unicode item nothing is shown in the detail bar");
     })
 
   casper.run(function() {

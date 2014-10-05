@@ -14,13 +14,12 @@ body {
   margin: 0;
   width: 100%;
   height: 40px;
-  overflow: hidden;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(229, 229, 229, 1) 100%);
   box-shadow: 0px 5px 10px black;
   text-align: center;
 }
 #detail-logo {
-  background-image: url(../sprite/sprite.png);
+  background-image: url(../img/sprite.png);
   vertical-align: middle;
   box-sizing: border-box;
   display: inline-block;
@@ -31,6 +30,23 @@ body {
   height: 23px;
   width: 23px;
   margin: 8px;
+}
+#copy-message {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  display: inline-table;
+  transform: translateX(-50%);
+  font-size: 11px;
+  line-height: 12px;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 5px;
+  padding: 7px 15px;
+  visibility: hidden;
+}
+#copy-message.show {
+  visibility: visible;
 }
 input {
   border-radius: 3px;
@@ -47,47 +63,55 @@ input {
 #search {
   vertical-align: top;
   margin-left: 5px;
+  margin-top: 3px;
   border-radius: 15px;
   padding-left: 10px;
   outline: none;
   max-width: 150px;
 }
-#detail-input {
+#detail input {
   vertical-align: middle;
 }
-h1{
+#unicode-input {
+  width: 35px;
+  margin-left: 3px;
+  text-align: center;
+  font-size: 14px;
+}
+h1 {
   text-align: center;
   font-weight: 100;
   margin: 15px 0 10px;
   font-size: 30px;
   padding-left: 10px;
 }
-h1 img{
+h1 img {
   margin: 0 5px;
   height: 25px;
 }
-h2{
+h2 {
   text-align: center;
   font-weight: 400;
   margin: 15px 0 10px;
 }
-h3{
+h3 {
   text-align: center;
   margin: 10px 0;
   font-size: 19px;
 }
-p, li{
+p,
+li {
   font-size: 14px;
   margin: 14px 0;
 }
-ul{
+ul {
   padding-left: 15px;
 }
-.about-text-img{
+.about-text-img {
   height: 18px;
   vertical-align: text-bottom;
 }
-.detail-button{
+.detail-button {
   font-size: 20px;
   color: grey;
   background: none;
@@ -98,36 +122,37 @@ ul{
   padding: 3px 8px;
   outline: none;
 }
-.detail-button:hover{
+.detail-button:hover {
   box-shadow: 0px 0px 1px grey;
   color: #444;
 }
-.detail-button.update:hover{
+.detail-button.update:hover {
   color: white;
   background-color: darkslateblue;
 }
 #about-button {
   float: right;
   margin-top: 5px;
+  margin-right: 5px;
 }
-.update{
+.update {
   background-color: cornflowerblue;
   color: white;
 }
-#about-container{
+#about-container {
   font-weight: 100;
 }
-#about-container a{
+#about-container a {
   text-decoration: none;
 }
-#about-container a:hover{
+#about-container a:hover {
   text-decoration: underline;
 }
-#about-container a > i{
+#about-container a > i {
   font-size: 18px;
   margin: 0 5px;
 }
-#about-container .half{
+#about-container .half {
   box-sizing: border-box;
   padding: 0 10px;
   width: 50%;
@@ -155,7 +180,7 @@ ul{
   cursor: pointer;
   height: 23px;
   width: 23px;
-  background-image: url('../sprite/sprite.png');
+  background-image: url('../img/sprite.png');
 }
 .emoji:hover {
   box-shadow: 0px 0px 1px black;

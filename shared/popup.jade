@@ -1,3 +1,7 @@
+mixin link(url)
+  a(href="#{url}", target="#{browser === 'Safari' ? '' : _blank}")
+    block
+
 doctype html
 html
   - var grouplogos = { recent : "./img/emoji/clock9.png" , people : "./img/emoji/smiley.png", nature : "./img/emoji/cherry_blossom.png", objects : "./img/emoji/bell.png", places : "./img/emoji/oncoming_automobile.png", symbols : "./img/emoji/symbols.png" }
@@ -17,7 +21,7 @@ html
       each group, n in emojis
         .group(id=n, data-emoji="true")
           each emoji in group
-            .emoji(data-name=emoji.name, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
+            .emoji(data-name=emoji.name, data-unicode=emoji.unicode, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
       .group(id="search-container",data-emoji=true)
       .group(id="about-container")
         h1
@@ -27,44 +31,49 @@ html
         h3= browser
         div.half
           p
-            a(href="http://johannhof.github.io/emoji-helper", target="_blank")
+            +link("http://johannhof.github.io/emoji-helper")
               i.ion-earth
               | Website
           p
-            a(href="http://github.com/johannhof/emoji-helper", target="_blank")
+            +link("http://github.com/johannhof/emoji-helper")
               i.ion-social-github
               | Contribute on GitHub
           p
-            a(href="http://github.com/johannhof/emoji-helper/issues", target="_blank")
+            +link("http://github.com/johannhof/emoji-helper/issues")
               i.ion-bug
               | Bugs & Feature Requests
           p
             | Images are taken from Github's 
-            a(href="https://github.com/github/gemoji", target="_blank") gemoji 
+            +link("https://github.com/github/gemoji") gemoji 
             | project.
           p
             | Copyright see 
-            a(href="https://github.com/github/gemoji/blob/master/LICENSE", target="_blank") license 
+            +link("https://github.com/github/gemoji/blob/master/LICENSE") license 
           center
             img.about-text-img(src="./img/emoji/heart.png")
         div.half
           br
           center
-            | Version 0.5.2 - 
-            img.about-text-img(src="./img/emoji/turtle.png")
+            | Version 0.6.0 - 
+            img.about-text-img(src="./img/emoji/snake.png")
           ul
-            li Fixes for some small issues
+            li adds unicode emojis for supporting browsers (all except Chrome)
+            li removes the unnecessary copy button, and enables copy on click into the input field
+            li adds a small and hopefully unobtrusive notification when something was copied to the clipboard
+            li some code cleanups and fixes
           hr
           p
-            a(href="https://github.com/johannhof/emoji-helper/releases", target="_blank")
+            +link("https://github.com/johannhof/emoji-helper/releases")
               i.ion-social-github-outline
               | Full changelog & all releases
     #detail
+      if browser == "Chrome" || browser == "Firefox"
+        #copy-message
+          | copied to clipboard
       div#detail-logo
       input#detail-input(readonly)
-      if browser != "Safari" && browser != "Bookmarklet"
-        button#copy-button.detail-button(title="Copy to clipboard")
-          i.ion-clipboard
+      if browser != "Chrome"
+        input#unicode-input(readonly)
       button#about-button.detail-button(title="About", data-group="about-container")
           i.ion-information-circled
     script(src="./src/popup.js")
