@@ -245,6 +245,9 @@
     if (event.target === searchInput) {
       return;
     }
+    if (event.altKey || event.ctrlKey || event.metaKey){
+      return;
+    }
     switch (event.keyCode) {
       case 49:
         // show recent
