@@ -6,7 +6,7 @@ An Emoji cheat sheet extension for Chrome, Firefox and Safari. Also a Bookmarkle
 
 Visit http://johannhof.github.io/emoji-helper for download links from the official stores.
 
-![](https://raw.githubusercontent.com/johannhof/emoji-helper/master/resources/screenshot1.png?token=2622601__eyJzY29wZSI6IlJhd0Jsb2I6am9oYW5uaG9mL2Vtb2ppLWhlbHBlci9tYXN0ZXIvcmVzb3VyY2VzL3NjcmVlbnNob3QxLnBuZyIsImV4cGlyZXMiOjE0MDA0MzExODJ9--1ee6793d36f12b16684379623ba84ce7de08ed57)
+![](https://raw.githubusercontent.com/johannhof/emoji-helper/master/resources/firefox/firefox-1.png)
 
 
 ## Development
