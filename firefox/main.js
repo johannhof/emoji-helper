@@ -1,39 +1,50 @@
 var data = require("sdk/self").data;
 var ss = require("sdk/simple-storage");
 var clipboard = require("sdk/clipboard");
+var Panel = require("sdk/panel").Panel;
+var ToggleButton = require('sdk/ui/button/toggle').ToggleButton;
 
-var text_entry = require("sdk/panel").Panel({
+var panel, button;
+
+panel = Panel({
   width: 510,
   height: 370,
   contentURL: data.url("popup.html"),
-  contentScriptFile: data.url("helper.js")
+  contentScriptFile: data.url("helper.js"),
+  onHide: function() {
+    button.state('window', {checked: false});
+  }
 });
 
-text_entry.port.on("copy", function(text) {
+panel.port.on("copy", function(text) {
   clipboard.set(text);
 });
 
-text_entry.port.on("set", function(item) {
+panel.port.on("set", function(item) {
   ss.storage[item.key] = item.value;
 });
 
-text_entry.port.on("get", function(key) {
-  text_entry.port.emit("send", {
+panel.port.on("get", function(key) {
+  panel.port.emit("send", {
     key: key,
     value: ss.storage[key]
   });
 });
 
 // Create a button
-require("sdk/ui/button/action").ActionButton({
-  id: "show-panel",
+button = ToggleButton({
+  id: "show-emoji-panel",
   label: "Show Emoji Helper",
   icon: {
     "16": "./icon.png",
     "32": "./icon.png",
     "64": "./icon.png"
   },
-  onClick: function() {
-    text_entry.show();
+  onChange: function (state) {
+    if (state.checked) {
+      panel.show({
+        position: button
+      });
+    }
   }
 });
