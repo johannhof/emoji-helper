@@ -1,4 +1,4 @@
-Emoji Helper [![Build Status](https://travis-ci.org/johannhof/emoji-helper.svg?branch=master)](https://travis-ci.org/johannhof/emoji-helper) [![Version](http://img.shields.io/badge/Version-0.6.0-blue.svg)](https://github.com/johannhof/emoji-helper/releases)
+Emoji Helper [![](https://travis-ci.org/johannhof/emoji-helper.svg?branch=master)](https://travis-ci.org/johannhof/emoji-helper) [![](https://img.shields.io/github/release/johannhof/emoji-helper.svg?style=flat)](https://github.com/johannhof/emoji-helper/releases)
 ============
 
 
