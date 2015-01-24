@@ -9,9 +9,12 @@ var panel, button;
 
 panel = Panel({
   width: 510,
-  height: 370,
+  height: 410,
   contentURL: data.url("popup.html"),
   contentScriptFile: data.url("helper.js"),
+  onShow: function() {
+    button.state('window', {checked: true});
+  },
   onHide: function() {
     button.state('window', {checked: false});
   }

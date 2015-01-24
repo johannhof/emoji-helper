@@ -24,6 +24,14 @@ html
             .emoji(data-name=emoji.name, data-unicode=emoji.unicode, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
       .group(id="search-container",data-emoji=true)
       .group(id="settings-container")
+        h2 Settings
+        p Default value to copy on click :
+        p
+          input#copy-name(type="radio", name="default-copy", value="name" checked)
+          label(for="copy-name") :name:
+        p
+          input#copy-unicode(type="radio", name="default-copy", value="unicode")
+          label(for="copy-unicode") unicode symbol
       .group(id="about-container")
         h1
           | Emoji
@@ -53,8 +61,7 @@ html
           center
             img.about-text-img(src="./img/emoji/heart.png")
         div.half
-          br
-          center
+          p.center
             | Version 0.6.0 - 
             img.about-text-img(src="./img/emoji/snake.png")
           ul

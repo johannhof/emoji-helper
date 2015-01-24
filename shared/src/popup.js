@@ -25,6 +25,11 @@
   var settingsButton = document.getElementById("settings-button");
   var copyMessage = document.getElementById("copy-message");
 
+  var copyName = document.getElementById("copy-name");
+  var copyUnicode = document.getElementById("copy-unicode");
+
+  var whatToCopy = "name";
+
   // recently used emojis
   var recent = [];
 
@@ -113,8 +118,13 @@
 
       // show selected emoji in detail
       showDetail(item);
-      vendor.copyToClipboard(detailInput);
-      showCopyMessage(detailInput.value);
+      if(whatToCopy === "unicode"){
+        vendor.copyToClipboard(unicodeInput);
+        showCopyMessage(unicodeInput.value);
+      }else{
+        vendor.copyToClipboard(detailInput);
+        showCopyMessage(detailInput.value);
+      }
     });
   }
 
@@ -243,7 +253,29 @@
       }
     });
 
+    // copy settings
+    vendor.getLocal("copy-setting", function(which) {
+      if (which) {
+        whatToCopy = which;
+        if(whatToCopy === "unicode"){
+          copyUnicode.checked = true;
+        }else{
+          copyName.checked = true;
+        }
+      }
+    });
+
   }, false);
+
+  copyName.addEventListener('click', function () {
+    whatToCopy = "name";
+    vendor.setLocal('copy-setting', "name");
+  });
+
+  copyUnicode.addEventListener('click', function () {
+    whatToCopy = "unicode";
+    vendor.setLocal('copy-setting', "unicode");
+  });
 
   var alphaNum = /[a-zA-Z0-9]/;
   document.addEventListener("keydown", function(event) {

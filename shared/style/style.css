@@ -93,6 +93,7 @@ h2 {
   text-align: center;
   font-weight: 400;
   margin: 15px 0 10px;
+  font-size: 22px;
 }
 h3 {
   text-align: center;
@@ -103,6 +104,9 @@ p,
 li {
   font-size: 14px;
   margin: 14px 0;
+}
+p.center {
+  text-align: center;
 }
 ul {
   padding-left: 15px;
@@ -159,6 +163,9 @@ ul {
   width: 50%;
   float: left;
 }
+#settings-container {
+  padding: 40px 20px;
+}
 .groups {
   box-shadow: 0px 0px 1px black;
   min-height: 325px;
@@ -166,7 +173,8 @@ ul {
 .group {
   overflow: scroll;
   display: none;
-  height: 250px;
+  height: 370px;
+  box-sizing: border-box;
   padding: 40px 3px;
 }
 .emoji {
