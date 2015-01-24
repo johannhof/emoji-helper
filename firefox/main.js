@@ -3,6 +3,7 @@ var ss = require("sdk/simple-storage");
 var clipboard = require("sdk/clipboard");
 var Panel = require("sdk/panel").Panel;
 var ToggleButton = require('sdk/ui/button/toggle').ToggleButton;
+var Hotkey = require("sdk/hotkeys").Hotkey;
 
 var panel, button;
 
@@ -42,6 +43,20 @@ button = ToggleButton({
   },
   onChange: function (state) {
     if (state.checked) {
+      panel.show({
+        position: button
+      });
+    }
+  }
+});
+
+// create a keyboard shortcut
+Hotkey({
+  combo: "accel-e",
+  onPress: function() {
+    if (panel.isShowing) {
+      panel.hide();
+    }else{
       panel.show({
         position: button
       });
