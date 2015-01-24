@@ -23,6 +23,7 @@ html
           each emoji in group
             .emoji(data-name=emoji.name, data-unicode=emoji.unicode, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
       .group(id="search-container",data-emoji=true)
+      .group(id="settings-container")
       .group(id="about-container")
         h1
           | Emoji
@@ -76,4 +77,6 @@ html
         input#unicode-input(readonly)
       button#about-button.detail-button(title="About", data-group="about-container")
           i.ion-information-circled
+      button#settings-button.detail-button(title="Settings", data-group="settings-container")
+          i.ion-settings
     script(src="./src/popup.js")

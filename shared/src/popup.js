@@ -22,6 +22,7 @@
   var unicodeInput = document.getElementById("unicode-input");
   var detailLogo = document.getElementById("detail-logo");
   var aboutButton = document.getElementById("about-button");
+  var settingsButton = document.getElementById("settings-button");
   var copyMessage = document.getElementById("copy-message");
 
   // recently used emojis
@@ -164,6 +165,10 @@
 
   aboutButton.addEventListener('click', function() {
     setActiveGroup(aboutButton);
+  });
+
+  settingsButton.addEventListener('click', function() {
+    setActiveGroup(settingsButton);
   });
 
   detailInput.addEventListener('click', function() {
