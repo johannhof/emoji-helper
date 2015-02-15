@@ -205,9 +205,11 @@
     setActiveGroup(aboutButton);
   });
 
-  settingsButton.addEventListener('click', function() {
-    setActiveGroup(settingsButton);
-  });
+  if(settingsButton){
+    settingsButton.addEventListener('click', function() {
+      setActiveGroup(settingsButton);
+    });
+  }
 
   detailInput.addEventListener('click', function() {
     lastCopyValue = detailInput.value;
@@ -215,11 +217,13 @@
     showCopyMessage(detailInput.value);
   });
 
-  insertButton.addEventListener('click', function(event) {
-    event.preventDefault();
-    vendor.insertToActive(lastCopyValue);
-    showMessage("Added " + lastCopyValue + " to active page input.");
-  }, true);
+  if(insertButton){
+    insertButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      vendor.insertToActive(lastCopyValue);
+      showMessage("Added " + lastCopyValue + " to active page input.");
+    }, true);
+  }
 
   if(unicodeInput){
     unicodeInput.addEventListener('click', function() {
