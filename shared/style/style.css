@@ -180,18 +180,30 @@ hr{
   float: left;
 }
 #settings-container {
-  padding: 40px 20px;
+  padding: 0px 20px;
+}
+.setting-title{
+  font-size: 15px;
+  color: #666;
+  font-weight: 400;
+}
+.setting{
+  padding-left: 20px;
+  color: #555;
 }
 .groups {
   box-shadow: 0px 0px 1px black;
-  min-height: 325px;
+  height: 290px;
+  overflow: scroll;
+  margin-bottom: 40px;
+  padding-top: 40px;
+  overflow-x: hidden;
 }
 .group {
-  overflow: scroll;
   display: none;
-  height: 370px;
+  height: 100%;
   box-sizing: border-box;
-  padding: 40px 3px;
+  padding: 5px;
 }
 .emoji {
   display: inline-block;

@@ -25,13 +25,25 @@ html
       .group(id="search-container",data-emoji=true)
       .group(id="settings-container")
         h2 Settings
-        p Default value to copy on click :
-        p
+        p.setting-title Default value to copy on click
+        p.setting
           input#copy-name(type="radio", name="default-copy", value="name" checked)
           label(for="copy-name") :name:
-        p
+          br
           input#copy-unicode(type="radio", name="default-copy", value="unicode")
           label(for="copy-unicode") unicode symbol
+        if browser == "Firefox"
+          hr
+          p.setting-title Keyboard shortcut
+          p.setting
+            input#hotkey-accel-e(type="radio", name="hotkey", value="accel-e" checked)
+            label(for="hotkey-accel-e") CTRL-E
+            br
+            input#hotkey-accel-y(type="radio", name="hotkey", value="accel-y")
+            label(for="hotkey-accel-y") CTRL-Y
+            br
+            input#hotkey-none(type="radio", name="hotkey", value="none")
+            label(for="hotkey-none") None
       .group(id="about-container")
         h1
           | Emoji
@@ -88,6 +100,7 @@ html
             i.ion-share
       button#about-button.detail-button(title="About", data-group="about-container")
           i.ion-information-circled
-      button#settings-button.detail-button(title="Settings", data-group="settings-container")
-          i.ion-settings
+      if browser == "Chrome" || browser == "Firefox"
+        button#settings-button.detail-button(title="Settings", data-group="settings-container")
+            i.ion-settings
     script(src="./src/popup.js")
