@@ -28,9 +28,17 @@
   };
 
   exports.copyToClipboard = function(domElement) {
-    domElement.focus();
-    domElement.select();
-    send("copy", domElement.value);
+    if(domElement){
+      domElement.focus();
+      domElement.select();
+      send("copy", domElement.value);
+    }
+  };
+
+  exports.insertToActive = function (text) {
+    send("insert", text);
+  };
+
   };
 
   window.vendor = exports;

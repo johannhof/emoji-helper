@@ -13,6 +13,7 @@
 
   "permissions":[
     "clipboardWrite",
+    "activeTab",
     "storage"
   ],
 

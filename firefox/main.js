@@ -20,21 +20,6 @@ panel = Panel({
   }
 });
 
-panel.port.on("copy", function(text) {
-  clipboard.set(text);
-});
-
-panel.port.on("set", function(item) {
-  ss.storage[item.key] = item.value;
-});
-
-panel.port.on("get", function(key) {
-  panel.port.emit("send", {
-    key: key,
-    value: ss.storage[key]
-  });
-});
-
 // Create a button
 button = ToggleButton({
   id: "show-emoji-panel",
@@ -65,4 +50,26 @@ Hotkey({
       });
     }
   }
+
+panel.port.on("insert", function(text) {
+  tabs.activeTab.attach({
+    contentScript: 'document.activeElement.value += "' + (text || "") + '"'
+  });
 });
+
+panel.port.on("copy", function(text) {
+  clipboard.set(text);
+});
+
+panel.port.on("set", function(item) {
+  ss.storage[item.key] = item.value;
+});
+
+panel.port.on("get", function(key) {
+  panel.port.emit("send", {
+    key: key,
+    value: ss.storage[key]
+  });
+});
+
+

@@ -2,6 +2,10 @@
 // and the plugin main script, routing low-level requests like copy to clipboard
 // back and forth
 
+window.addEventListener("insert", function(event) {
+  self.port.emit("insert", event.detail);
+}, false);
+
 window.addEventListener("copy", function(event) {
   self.port.emit("copy", event.detail);
 }, false);

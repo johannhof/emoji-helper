@@ -23,12 +23,15 @@
   var detailLogo = document.getElementById("detail-logo");
   var aboutButton = document.getElementById("about-button");
   var settingsButton = document.getElementById("settings-button");
-  var copyMessage = document.getElementById("copy-message");
+  var insertButton = document.getElementById("insert-button");
 
+  var copyMessage = document.getElementById("copy-message");
   var copyName = document.getElementById("copy-name");
   var copyUnicode = document.getElementById("copy-unicode");
 
   var whatToCopy = "name";
+  var lastCopyValue = "";
+
 
   // recently used emojis
   var recent = [];
@@ -77,20 +80,24 @@
     }
   }
 
-  var showCopyMessage = (function() {
+  var showMessage = (function() {
     var timer;
-    return function(val) {
+    return function(text) {
       if(!copyMessage){
         return;
       }
       copyMessage.classList.add('show');
-      copyMessage.innerHTML = val + ' copied to clipboard';
+      copyMessage.innerHTML = text;
       clearTimeout(timer);
       timer = setTimeout(function() {
         copyMessage.classList.remove('show');
       }, 1000);
     };
   }());
+
+  function showCopyMessage(val){
+    showMessage(val + ' copied to clipboard');
+  }
 
   function addEmojiClickListener(node) {
     node.addEventListener('click', function() {
@@ -119,9 +126,11 @@
       // show selected emoji in detail
       showDetail(item);
       if(whatToCopy === "unicode"){
+        lastCopyValue = unicodeInput.value;
         vendor.copyToClipboard(unicodeInput);
         showCopyMessage(unicodeInput.value);
       }else{
+        lastCopyValue = detailInput.value;
         vendor.copyToClipboard(detailInput);
         showCopyMessage(detailInput.value);
       }
@@ -182,12 +191,20 @@
   });
 
   detailInput.addEventListener('click', function() {
+    lastCopyValue = detailInput.value;
     vendor.copyToClipboard(detailInput);
     showCopyMessage(detailInput.value);
   });
 
+  insertButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    vendor.insertToActive(lastCopyValue);
+    showMessage("Added " + lastCopyValue + " to active page input.");
+  }, true);
+
   if(unicodeInput){
     unicodeInput.addEventListener('click', function() {
+      lastCopyValue = unicodeInput.value;
       vendor.copyToClipboard(unicodeInput);
       showCopyMessage(unicodeInput.value);
     });
@@ -231,6 +248,13 @@
     vendor.getLocal("last", function(item) {
       if (item) {
         showDetail(item);
+        lastCopyValue = detailInput.value || "";
+      }else{
+        showDetail({
+          name: "lemon",
+          pos: "0px 0px",
+          unicode: "🍋"
+        });
       }
     });
 

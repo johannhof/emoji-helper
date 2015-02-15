@@ -149,7 +149,9 @@ hr{
   box-shadow: 0px 0px 1px grey;
   color: #444;
 }
-
+#insert-button{
+  margin-left: 5px;
+}
 #about-button, #settings-button {
   float: right;
   margin-top: 5px;

@@ -83,6 +83,9 @@ html
       input#detail-input(readonly)
       if browser != "Chrome"
         input#unicode-input(readonly)
+      if browser == "Chrome" || browser == "Firefox"
+        button#insert-button.detail-button(title="Insert into active input")
+            i.ion-share
       button#about-button.detail-button(title="About", data-group="about-container")
           i.ion-information-circled
       button#settings-button.detail-button(title="Settings", data-group="settings-container")
