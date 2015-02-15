@@ -32,6 +32,19 @@
   var whatToCopy = "name";
   var lastCopyValue = "";
 
+  var hotkeyGroup = document.getElementsByName("hotkey");
+
+  function getSelectedHotkey(){
+    for(var i=0; i<hotkeyGroup.length; i++){
+       if(hotkeyGroup[i].checked){
+            return hotkeyGroup[i].value;
+        }
+    }
+  }
+
+  function selectHotkeySetting(setting){
+    document.getElementById("hotkey-" + setting).checked = true;
+  }
 
   // recently used emojis
   var recent = [];
@@ -288,6 +301,22 @@
         }
       }
     });
+
+    // combo settings
+
+    if(hotkeyGroup){
+      vendor.getLocal("combo", function(combo) {
+        if(combo){
+          selectHotkeySetting(combo);
+        }
+      });
+      for(var i=0; i<hotkeyGroup.length; i++){
+        hotkeyGroup[i].addEventListener('change', function (e) {
+          vendor.setHotkey(e.target.value);
+        });
+      }
+
+    }
 
   }, false);
 

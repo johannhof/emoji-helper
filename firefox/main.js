@@ -1,15 +1,16 @@
-var data = require("sdk/self").data;
-var ss = require("sdk/simple-storage");
-var clipboard = require("sdk/clipboard");
-var Panel = require("sdk/panel").Panel;
+var data         = require("sdk/self").data;
+var ss           = require("sdk/simple-storage");
+var clipboard    = require("sdk/clipboard");
+var Panel        = require("sdk/panel").Panel;
 var ToggleButton = require('sdk/ui/button/toggle').ToggleButton;
-var Hotkey = require("sdk/hotkeys").Hotkey;
+var Hotkey       = require("sdk/hotkeys").Hotkey;
+var tabs         = require("sdk/tabs");
 
-var panel, button;
+var panel, button, hotkey;
 
 panel = Panel({
   width: 510,
-  height: 410,
+  height: 370,
   contentURL: data.url("popup.html"),
   contentScriptFile: data.url("helper.js"),
   onShow: function() {
@@ -38,18 +39,33 @@ button = ToggleButton({
   }
 });
 
-// create a keyboard shortcut
-Hotkey({
-  combo: "accel-e",
-  onPress: function() {
-    if (panel.isShowing) {
-      panel.hide();
-    }else{
-      panel.show({
-        position: button
-      });
-    }
+function createHotkey(combo) {
+  ss.storage.combo = combo;
+  if(combo === 'none'){
+    return;
   }
+
+  // create a keyboard shortcut
+  hotkey = Hotkey({
+    combo: combo,
+    onPress: function() {
+      if (panel.isShowing) {
+        panel.hide();
+      }else{
+        panel.show({
+          position: button
+        });
+      }
+    }
+  });
+}
+
+createHotkey(ss.storage.combo || "accel-e");
+
+panel.port.on("combo", function(combo) {
+  hotkey.destroy();
+  createHotkey(combo);
+});
 
 panel.port.on("insert", function(text) {
   tabs.activeTab.attach({

@@ -39,6 +39,8 @@
     send("insert", text);
   };
 
+  exports.setHotkey = function (combo) {
+    send("combo", combo);
   };
 
   window.vendor = exports;
