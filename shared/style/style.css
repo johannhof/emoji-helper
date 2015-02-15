@@ -1,11 +1,15 @@
 body {
   padding: 0;
   margin: 0;
-  min-width: 475px;
-  min-height: 370px;
+  min-width: 500px;
+  height: 370px;
   overflow: hidden;
   font-family: sans-serif;
   background: rgba(238, 238, 238, 1);
+}
+#recent{
+  background-size: cover;
+  background-position: 50%;
 }
 #detail {
   position: fixed;
@@ -25,10 +29,10 @@ body {
   display: inline-block;
   height: 100%;
   background-size: 690px;
-  -webkit-transform: scale(1.4);
-  transform: scale(1.4);
-  height: 23px;
-  width: 23px;
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+  height: 22px;
+  width: 22px;
   margin: 8px;
 }
 #copy-message {
@@ -72,6 +76,9 @@ input {
 #detail input {
   vertical-align: middle;
 }
+#detail-input {
+  width: 125px;
+}
 #unicode-input {
   width: 35px;
   margin-left: 3px;
@@ -92,8 +99,9 @@ h1 img {
 h2 {
   text-align: center;
   font-weight: 400;
-  margin: 15px 0 10px;
+  margin: 20px 0;
   font-size: 22px;
+  color: #555;
 }
 h3 {
   text-align: center;
@@ -104,12 +112,18 @@ p,
 li {
   font-size: 14px;
   margin: 14px 0;
+  font-weight: 200;
 }
 p.center {
   text-align: center;
 }
 ul {
   padding-left: 15px;
+}
+hr{
+  height: 1px;
+  border: none;
+  background-image: linear-gradient(to right, rgba(127,127,127,0.07) 0%,rgba(102,102,102,0.65) 20%,rgba(8,8,8,0) 94%,rgba(0,0,0,0) 100%);
 }
 .about-text-img {
   height: 18px;

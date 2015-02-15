@@ -64,6 +64,7 @@ html
           p.center
             | Version 0.6.0 - 
             img.about-text-img(src="./img/emoji/snake.png")
+          hr
           ul
             li adds unicode emojis for supporting browsers (all except Chrome)
             li removes the unnecessary copy button, and enables copy on click into the input field
@@ -72,7 +73,7 @@ html
           hr
           p
             +link("https://github.com/johannhof/emoji-helper/releases")
-              i.ion-social-github-outline
+              i.ion-social-octocat
               | Full changelog & all releases
     #detail
       if browser == "Chrome" || browser == "Firefox"
