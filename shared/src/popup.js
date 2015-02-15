@@ -164,10 +164,16 @@
   function updateRecent() {
     recentDiv.innerHTML = "";
 
-    // intermediate container to render the dom as few times as possible
-    var cont = document.createElement("div");
-    recent.forEach(appendItem.bind(null, cont));
-    recentDiv.appendChild(cont);
+    if(recent.length){
+      recentDiv.style.backgroundImage = '';
+      // intermediate container to render the dom as few times as possible
+      var cont = document.createElement("div");
+      recent.forEach(appendItem.bind(null, cont));
+      recentDiv.appendChild(cont);
+    }else{
+      // help screen if new install
+      recentDiv.style.backgroundImage = 'url("./img/emoji-help.png")';
+    }
   }
 
   groups.forEach(function(group) {
