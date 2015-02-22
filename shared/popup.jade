@@ -78,10 +78,12 @@ html
             img.about-text-img(src="./img/emoji/whale.png")
           hr
           ul
-            li adds unicode emojis for supporting browsers (all except Chrome)
-            li removes the unnecessary copy button, and enables copy on click into the input field
-            li adds a small and hopefully unobtrusive notification when something was copied to the clipboard
-            li some code cleanups and fixes
+            if browser == "Chrome" || browser == "Firefox"
+              li New button to insert emoji directly into the current page
+            li New settings menu
+            if browser == "Firefox"
+              li Repositioned the popup
+              li Ctrl-E or Ctrl-Y as browser shortcuts
           hr
           p
             +link("https://github.com/johannhof/emoji-helper/releases")
