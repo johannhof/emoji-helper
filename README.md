@@ -1,12 +1,11 @@
 Emoji Helper [![](https://travis-ci.org/johannhof/emoji-helper.svg?branch=master)](https://travis-ci.org/johannhof/emoji-helper) [![](https://img.shields.io/github/release/johannhof/emoji-helper.svg?style=flat)](https://github.com/johannhof/emoji-helper/releases)
-============
 
 
 An Emoji cheat sheet extension for Chrome, Firefox and Safari. Also a Bookmarklet. Built because I like spamming my coworkers with :mushroom: :pig: :rocket: :snail: but fortunately have more important things to keep in mind than the name for :moyai:
 
 Visit http://johannhof.github.io/emoji-helper for download links from the official stores.
 
-![](https://raw.githubusercontent.com/johannhof/emoji-helper/master/resources/firefox/firefox-1.png)
+![](https://raw.githubusercontent.com/johannhof/emoji-helper/master/resources/tile1.png)
 
 
 ## Development

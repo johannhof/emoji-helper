@@ -16,9 +16,17 @@
   };
 
   exports.copyToClipboard = function(domElement) {
-    domElement.focus();
+    if(domElement){
+      domElement.focus();
+    }
     document.execCommand('SelectAll');
     document.execCommand('copy');
+  };
+
+  exports.insertToActive = function (text) {
+    chrome.tabs.executeScript({
+      code: 'document.activeElement.value += "' + (text || "") + '"'
+    });
   };
 
   window.vendor = exports;

@@ -3,7 +3,7 @@
   // local vars for linting (and performance)
   var vendor = window.vendor;
 
-  var VERSION = "0.6.0";
+  var VERSION = "1.0.0";
 
   // upper bar
   var logos = document.querySelectorAll(".group-logo");
@@ -22,7 +22,29 @@
   var unicodeInput = document.getElementById("unicode-input");
   var detailLogo = document.getElementById("detail-logo");
   var aboutButton = document.getElementById("about-button");
+  var settingsButton = document.getElementById("settings-button");
+  var insertButton = document.getElementById("insert-button");
+
   var copyMessage = document.getElementById("copy-message");
+  var copyName = document.getElementById("copy-name");
+  var copyUnicode = document.getElementById("copy-unicode");
+
+  var whatToCopy = "name";
+  var lastCopyValue = "";
+
+  var hotkeyGroup = document.getElementsByName("hotkey");
+
+  function getSelectedHotkey(){
+    for(var i=0; i<hotkeyGroup.length; i++){
+       if(hotkeyGroup[i].checked){
+            return hotkeyGroup[i].value;
+        }
+    }
+  }
+
+  function selectHotkeySetting(setting){
+    document.getElementById("hotkey-" + setting).checked = true;
+  }
 
   // recently used emojis
   var recent = [];
@@ -71,20 +93,24 @@
     }
   }
 
-  var showCopyMessage = (function() {
+  var showMessage = (function() {
     var timer;
-    return function(val) {
+    return function(text) {
       if(!copyMessage){
         return;
       }
       copyMessage.classList.add('show');
-      copyMessage.innerHTML = val + ' copied to clipboard';
+      copyMessage.innerHTML = text;
       clearTimeout(timer);
       timer = setTimeout(function() {
         copyMessage.classList.remove('show');
       }, 1000);
     };
   }());
+
+  function showCopyMessage(val){
+    showMessage(val + ' copied to clipboard');
+  }
 
   function addEmojiClickListener(node) {
     node.addEventListener('click', function() {
@@ -112,8 +138,15 @@
 
       // show selected emoji in detail
       showDetail(item);
-      vendor.copyToClipboard(detailInput);
-      showCopyMessage(detailInput.value);
+      if(whatToCopy === "unicode"){
+        lastCopyValue = unicodeInput.value;
+        vendor.copyToClipboard(unicodeInput);
+        showCopyMessage(unicodeInput.value);
+      }else{
+        lastCopyValue = detailInput.value;
+        vendor.copyToClipboard(detailInput);
+        showCopyMessage(detailInput.value);
+      }
     });
   }
 
@@ -131,10 +164,16 @@
   function updateRecent() {
     recentDiv.innerHTML = "";
 
-    // intermediate container to render the dom as few times as possible
-    var cont = document.createElement("div");
-    recent.forEach(appendItem.bind(null, cont));
-    recentDiv.appendChild(cont);
+    if(recent.length){
+      recentDiv.style.backgroundImage = '';
+      // intermediate container to render the dom as few times as possible
+      var cont = document.createElement("div");
+      recent.forEach(appendItem.bind(null, cont));
+      recentDiv.appendChild(cont);
+    }else{
+      // help screen if new install
+      recentDiv.style.backgroundImage = 'url("./img/emoji-help.png")';
+    }
   }
 
   groups.forEach(function(group) {
@@ -166,13 +205,29 @@
     setActiveGroup(aboutButton);
   });
 
+  if(settingsButton){
+    settingsButton.addEventListener('click', function() {
+      setActiveGroup(settingsButton);
+    });
+  }
+
   detailInput.addEventListener('click', function() {
+    lastCopyValue = detailInput.value;
     vendor.copyToClipboard(detailInput);
     showCopyMessage(detailInput.value);
   });
 
+  if(insertButton){
+    insertButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      vendor.insertToActive(lastCopyValue);
+      showMessage("Added " + lastCopyValue + " to active page input.");
+    }, true);
+  }
+
   if(unicodeInput){
     unicodeInput.addEventListener('click', function() {
+      lastCopyValue = unicodeInput.value;
       vendor.copyToClipboard(unicodeInput);
       showCopyMessage(unicodeInput.value);
     });
@@ -216,6 +271,13 @@
     vendor.getLocal("last", function(item) {
       if (item) {
         showDetail(item);
+        lastCopyValue = detailInput.value || "";
+      }else{
+        showDetail({
+          name: "lemon",
+          pos: "0px 0px",
+          unicode: "🍋"
+        });
       }
     });
 
@@ -238,7 +300,45 @@
       }
     });
 
+    // copy settings
+    vendor.getLocal("copy-setting", function(which) {
+      if (which) {
+        whatToCopy = which;
+        if(whatToCopy === "unicode"){
+          copyUnicode.checked = true;
+        }else{
+          copyName.checked = true;
+        }
+      }
+    });
+
+    // combo settings
+
+    if(hotkeyGroup){
+      vendor.getLocal("combo", function(combo) {
+        if(combo){
+          selectHotkeySetting(combo);
+        }
+      });
+      for(var i=0; i<hotkeyGroup.length; i++){
+        hotkeyGroup[i].addEventListener('change', function (e) {
+          vendor.setHotkey(e.target.value);
+        });
+      }
+
+    }
+
   }, false);
+
+  copyName.addEventListener('click', function () {
+    whatToCopy = "name";
+    vendor.setLocal('copy-setting', "name");
+  });
+
+  copyUnicode.addEventListener('click', function () {
+    whatToCopy = "unicode";
+    vendor.setLocal('copy-setting', "unicode");
+  });
 
   var alphaNum = /[a-zA-Z0-9]/;
   document.addEventListener("keydown", function(event) {

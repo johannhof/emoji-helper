@@ -23,6 +23,27 @@ html
           each emoji in group
             .emoji(data-name=emoji.name, data-unicode=emoji.unicode, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
       .group(id="search-container",data-emoji=true)
+      .group(id="settings-container")
+        h2 Settings
+        p.setting-title Default value to copy on click
+        p.setting
+          input#copy-name(type="radio", name="default-copy", value="name" checked)
+          label(for="copy-name") :name:
+          br
+          input#copy-unicode(type="radio", name="default-copy", value="unicode")
+          label(for="copy-unicode") unicode symbol
+        if browser == "Firefox"
+          hr
+          p.setting-title Keyboard shortcut
+          p.setting
+            input#hotkey-accel-e(type="radio", name="hotkey", value="accel-e" checked)
+            label(for="hotkey-accel-e") CTRL-E
+            br
+            input#hotkey-accel-y(type="radio", name="hotkey", value="accel-y")
+            label(for="hotkey-accel-y") CTRL-Y
+            br
+            input#hotkey-none(type="radio", name="hotkey", value="none")
+            label(for="hotkey-none") None
       .group(id="about-container")
         h1
           | Emoji
@@ -52,19 +73,21 @@ html
           center
             img.about-text-img(src="./img/emoji/heart.png")
         div.half
-          br
-          center
-            | Version 0.6.0 - 
-            img.about-text-img(src="./img/emoji/snake.png")
+          p.center
+            | Version 1.0.0 - 
+            img.about-text-img(src="./img/emoji/whale.png")
+          hr
           ul
-            li adds unicode emojis for supporting browsers (all except Chrome)
-            li removes the unnecessary copy button, and enables copy on click into the input field
-            li adds a small and hopefully unobtrusive notification when something was copied to the clipboard
-            li some code cleanups and fixes
+            if browser == "Chrome" || browser == "Firefox"
+              li New button to insert emoji directly into the current page
+            li New settings menu
+            if browser == "Firefox"
+              li Repositioned the popup
+              li Ctrl-E or Ctrl-Y as browser shortcuts
           hr
           p
             +link("https://github.com/johannhof/emoji-helper/releases")
-              i.ion-social-github-outline
+              i.ion-social-octocat
               | Full changelog & all releases
     #detail
       if browser == "Chrome" || browser == "Firefox"
@@ -73,6 +96,12 @@ html
       div#detail-logo
       input#detail-input(readonly)
       input#unicode-input(readonly)
+      if browser == "Chrome" || browser == "Firefox"
+        button#insert-button.detail-button(title="Insert into active input")
+            i.ion-share
       button#about-button.detail-button(title="About", data-group="about-container")
           i.ion-information-circled
+      if browser == "Chrome" || browser == "Firefox"
+        button#settings-button.detail-button(title="Settings", data-group="settings-container")
+            i.ion-settings
     script(src="./src/popup.js")

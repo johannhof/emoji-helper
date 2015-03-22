@@ -2,6 +2,16 @@
 // and the plugin main script, routing low-level requests like copy to clipboard
 // back and forth
 
+// TODO make more DRY
+
+window.addEventListener("combo", function(event) {
+  self.port.emit("combo", event.detail);
+}, false);
+
+window.addEventListener("insert", function(event) {
+  self.port.emit("insert", event.detail);
+}, false);
+
 window.addEventListener("copy", function(event) {
   self.port.emit("copy", event.detail);
 }, false);

@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    common = require('../gulp-common'),
     connect = require('connect'),
     path = require('path'),
     rename = require("gulp-rename"),
@@ -32,18 +33,9 @@ gulp.task('popup', function() {
 });
 
 gulp.task('emoji', function () {
-    return gulp.src([
-      '../shared/img/emoji/clock9.png',
-      '../shared/img/emoji/smiley.png',
-      '../shared/img/emoji/cherry_blossom.png',
-      '../shared/img/emoji/bell.png',
-      '../shared/img/emoji/oncoming_automobile.png',
-      '../shared/img/emoji/symbols.png',
-      '../shared/img/emoji/hatched_chick.png',
-      '../shared/img/emoji/snake.png',
-      '../shared/img/emoji/heart.png',
+    return gulp.src(common.emoji.concat([
       '../shared/img/emoji/heavy_multiplication_x.png'
-    ]).pipe(newer(build + 'img/emoji/'))
+    ])).pipe(newer(build + 'img/emoji/'))
         .pipe(imageResize({
           width : 30,
           height : 30
