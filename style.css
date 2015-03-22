@@ -42,7 +42,7 @@ h2{
   border-radius: 15px;
 }
 .vendor:hover{
-  box-shadow: 1px 1px 5px black;
+  box-shadow: 1px 1px 5px grey;
 }
 .chrome {
   background: rgb(79, 133, 187);
@@ -65,23 +65,12 @@ h2{
   filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffa84c', endColorstr='#ff7b0d', GradientType=0);
 }
 .safari {
-  background: rgb(96, 108, 136);
-  background: -moz-linear-gradient(top, rgba(96, 108, 136, 1) 0%, rgba(63, 76, 107, 1) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(96, 108, 136, 1)), color-stop(100%, rgba(63, 76, 107, 1)));
-  background: -webkit-linear-gradient(top, rgba(96, 108, 136, 1) 0%, rgba(63, 76, 107, 1) 100%);
-  background: -o-linear-gradient(top, rgba(96, 108, 136, 1) 0%, rgba(63, 76, 107, 1) 100%);
-  background: -ms-linear-gradient(top, rgba(96, 108, 136, 1) 0%, rgba(63, 76, 107, 1) 100%);
-  background: linear-gradient(to bottom, rgba(96, 108, 136, 1) 0%, rgba(63, 76, 107, 1) 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#606c88', endColorstr='#3f4c6b', GradientType=0);
-
-  /*background: rgb(74,74,74); [> Old browsers <]*/
-  /*background: -moz-linear-gradient(top,  rgba(74,74,74,1) 0%, rgba(43,43,43,1) 100%); [> FF3.6+ <]*/
-  /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(74,74,74,1)), color-stop(100%,rgba(43,43,43,1))); [> Chrome,Safari4+ <]*/
-  /*background: -webkit-linear-gradient(top,  rgba(74,74,74,1) 0%,rgba(43,43,43,1) 100%); [> Chrome10+,Safari5.1+ <]*/
-  /*background: -o-linear-gradient(top,  rgba(74,74,74,1) 0%,rgba(43,43,43,1) 100%); [> Opera 11.10+ <]*/
-  /*background: -ms-linear-gradient(top,  rgba(74,74,74,1) 0%,rgba(43,43,43,1) 100%); [> IE10+ <]*/
-  /*background: linear-gradient(to bottom,  rgba(74,74,74,1) 0%,rgba(43,43,43,1) 100%); [> W3C <]*/
-  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a4a4a', endColorstr='#2b2b2b',GradientType=0 ); [> IE6-9 <]*/
+  background: ghostwhite;
+  color: #555;
+  border: grey 1px solid;
+}
+.opera {
+  background: transparent linear-gradient(to bottom, #1096D5 0%, #0174A7 100%) repeat scroll 0% 0%;
 }
 .bookmarklet {
   background: rgb(169, 219, 128);
@@ -104,6 +93,7 @@ h2{
 .vendor img {
   height: 85px;
   padding-bottom: 5px;
+  margin-right: 5px;
   vertical-align: middle;
 }
 .vendor.small {

@@ -37,6 +37,9 @@ html
         a.vendor.safari.small(href='http://extensions.apple.com/details/?id=com.johann-hofmann.emoji-VQE5S3G4ED')
           img(src='./img/safari.png', alt='Safari')
           | Download for Safari
+        a.vendor.opera.small(href='https://chrome.google.com/webstore/detail/nojknakoailnpbjlmfkpbbhoodlolfbh')
+          img(src='./img/opera.png', alt='Opera')
+          | Download for Opera
       #known
         a#mainVendor.vendor.chrome(href='')
           img(src='./img/chrome.png', alt='Chrome')
@@ -58,9 +61,13 @@ html
         a.vendor.firefox.small(href='https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/')
           img(src='./img/firefox.png', alt='Firefox')
           | Download for Firefox
+        br
         a.vendor.safari.small(href='http://extensions.apple.com/details/?id=com.johann-hofmann.emoji-VQE5S3G4ED')
           img(src='./img/safari.png', alt='Safari')
           | Download for Safari
+        a.vendor.opera.small(href='https://chrome.google.com/webstore/detail/nojknakoailnpbjlmfkpbbhoodlolfbh')
+          img(src='./img/opera.png', alt='Opera')
+          | Download for Opera
         a(href='https://github.com/johannhof/emoji-helper')
           img(style='position: absolute; top: 0; right: 0; border: 0;', src='https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67', alt='Fork me on GitHub', data-canonical-src='https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png')
     script.
@@ -68,7 +75,7 @@ html
       var known = document.getElementById("known");
       var smalls = known.querySelectorAll(".vendor.small");
 
-      if((bowser.chrome || bowser.firefox || bowser.safari) && !(bowser.android || bowser.ios)){
+      if((bowser.chrome || bowser.firefox || bowser.safari || bowser.opera) && !(bowser.android || bowser.ios)){
         unknown.parentNode.removeChild(unknown);
         var browser = bowser.name.toLowerCase();
         mainVendor.classList.add(browser);
@@ -87,6 +94,11 @@ html
           mainVendor.href = "http://extensions.apple.com/details/?id=com.johann-hofmann.emoji-VQE5S3G4ED";
           mainVendor.innerHTML = '<img src="./img/safari.png" alt="Safari" /> Download for Safari';
           smalls[3].style.display = "none";
+          break;
+          case "opera":
+          mainVendor.href = "http://extensions.apple.com/details/?id=com.johann-hofmann.emoji-VQE5S3G4ED";
+          mainVendor.innerHTML = '<img src="./img/opera.png" alt="Opera" /> Download for Opera';
+          smalls[4].style.display = "none";
           break;
         }
       }else{
