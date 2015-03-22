@@ -95,8 +95,7 @@ html
           | copied to clipboard
       div#detail-logo
       input#detail-input(readonly)
-      if browser != "Chrome"
-        input#unicode-input(readonly)
+      input#unicode-input(readonly)
       if browser == "Chrome" || browser == "Firefox"
         button#insert-button.detail-button(title="Insert into active input")
             i.ion-share
