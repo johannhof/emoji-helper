@@ -1,7 +1,7 @@
 # Emoji Helper [![](https://travis-ci.org/johannhof/emoji-helper.svg?branch=master)](https://travis-ci.org/johannhof/emoji-helper) [![](https://img.shields.io/github/release/johannhof/emoji-helper.svg?style=flat)](https://github.com/johannhof/emoji-helper/releases)
 
 
-An Emoji cheat sheet extension for Chrome, Firefox and Safari. Also a Bookmarklet. Built because I like spamming my coworkers with :mushroom: :pig: :rocket: :snail: but fortunately have more important things to keep in mind than the name for :moyai:
+An Emoji cheat sheet extension for Chrome, Firefox, Safari and Opera. Also a Bookmarklet. Built because I like spamming my coworkers with :mushroom: :pig: :rocket: :snail: but fortunately have more important things to keep in mind than the name for :moyai:
 
 Visit http://johannhof.github.io/emoji-helper for download links from the official stores.
 
@@ -19,7 +19,7 @@ The build process is done through Gulp. Each submodule (`chrome`, `safari`, `fir
 The generated files are located in the `build` folders. To load the build folder into the browser, do the following:
 
 
-#### Chrome
+#### Chrome/Opera
 
 ```bash
 $ cd chrome
