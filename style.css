@@ -65,9 +65,9 @@ h2{
   filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffa84c', endColorstr='#ff7b0d', GradientType=0);
 }
 .safari {
-  background: ghostwhite;
-  color: #555;
-  border: grey 1px solid;
+  border: 2px solid #EFEDED;
+  background: #E0E0E0 none repeat scroll 0% 0%;
+  color: #2485B4;
 }
 .opera {
   background: transparent linear-gradient(to bottom, #1096D5 0%, #0174A7 100%) repeat scroll 0% 0%;
