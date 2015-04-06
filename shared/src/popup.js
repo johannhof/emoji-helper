@@ -100,7 +100,7 @@
         return;
       }
       copyMessage.classList.add('show');
-      copyMessage.innerHTML = text;
+      copyMessage.textContent = text;
       clearTimeout(timer);
       timer = setTimeout(function() {
         copyMessage.classList.remove('show');
@@ -162,7 +162,7 @@
   }
 
   function updateRecent() {
-    recentDiv.innerHTML = "";
+    recentDiv.textContent = "";
 
     if(recent.length){
       recentDiv.style.backgroundImage = '';
@@ -250,7 +250,7 @@
       setTimeout(function() {
         if (searchInput.value === val && val !== lastVal) {
           lastVal = val;
-          searchContainer.innerHTML = "";
+          searchContainer.textContent = "";
 
           // intermediate container to render the dom as few times as possible
           var cont = document.createElement("div");
