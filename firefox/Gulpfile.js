@@ -10,6 +10,7 @@ var build = "./build/";
 gulp.task('popup', function() {
   gulp.src('../shared/popup.jade')
     .pipe(jade({
+      pretty: true,
       locals: {
         emojis: emojis,
         browser: "Firefox"
