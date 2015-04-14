@@ -56,6 +56,14 @@ casper.test.begin('Navigation', function suite(test) {
       test.assertVisible('#about-container', "clicking the about button triggers the about screen");
     })
 
+    /* SETTINGS */
+    .then(function() {
+      this.click('#settings-button');
+    })
+    .then(function() {
+      test.assertVisible('#settings-container', "clicking the settings button triggers the settings screen");
+    })
+
     /* RECENT */
     .then(function() {
       // first go to other category

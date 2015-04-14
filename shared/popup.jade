@@ -101,7 +101,7 @@ html
             i.ion-share
       button#about-button.detail-button(title="About", data-group="about-container")
           i.ion-information-circled
-      if browser == "Chrome" || browser == "Firefox"
+      if browser != "Safari"
         button#settings-button.detail-button(title="Settings", data-group="settings-container")
             i.ion-settings
     script(src="./src/popup.js")
