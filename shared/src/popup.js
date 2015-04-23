@@ -28,6 +28,7 @@
   var copyMessage = document.getElementById("copy-message");
   var copyName = document.getElementById("copy-name");
   var copyUnicode = document.getElementById("copy-unicode");
+  var copyImg = document.getElementById("copy-img");
 
   var whatToCopy = "name";
   var lastCopyValue = "";
@@ -138,14 +139,36 @@
 
       // show selected emoji in detail
       showDetail(item);
-      if(whatToCopy === "unicode"){
-        lastCopyValue = unicodeInput.value;
-        vendor.copyToClipboard(unicodeInput);
-        showCopyMessage(unicodeInput.value);
-      }else{
-        lastCopyValue = detailInput.value;
-        vendor.copyToClipboard(detailInput);
-        showCopyMessage(detailInput.value);
+      switch(whatToCopy){
+        case 'unicode':
+          lastCopyValue = unicodeInput.value;
+          vendor.copyToClipboard(unicodeInput);
+          showCopyMessage(unicodeInput.value);
+        break;
+        case 'name':
+          lastCopyValue = detailInput.value;
+          vendor.copyToClipboard(detailInput);
+          showCopyMessage(detailInput.value);
+        break;
+        case 'copyimg':
+          lastCopyValue = detailInput.value;
+          var size = '19px';
+          var copyDiv = document.createElement('img');
+          copyDiv.contentEditable = true;
+          document.body.appendChild(copyDiv);
+          copyDiv.src = 'https://raw.githubusercontent.com/johannhof/emoji-helper/master/shared/img/emoji/'+detailInput.value.substr(1,detailInput.value.length-2)+'.png';
+          copyDiv.style.width = size;
+          copyDiv.style.height = size;
+          copyDiv.unselectable = "off";
+          var r = document.createRange();
+          r.selectNode(copyDiv);
+          var s = window.getSelection();
+          s.removeAllRanges();
+          s.addRange(r);
+          document.execCommand("Copy");
+          document.body.removeChild(copyDiv);
+          showCopyMessage('Image');
+        break;
       }
     });
   }
@@ -304,10 +327,16 @@
     vendor.getLocal("copy-setting", function(which) {
       if (which) {
         whatToCopy = which;
-        if(whatToCopy === "unicode"){
-          copyUnicode.checked = true;
-        }else{
-          copyName.checked = true;
+        switch(whatToCopy){
+          case "unicode":
+            copyUnicode.checked = true;
+          break;
+          case "name":
+            copyName.checked = true;
+          break;
+          case "copyimg":
+            copyImg.checked = true;
+          break;
         }
       }
     });
@@ -338,6 +367,11 @@
   copyUnicode.addEventListener('click', function () {
     whatToCopy = "unicode";
     vendor.setLocal('copy-setting', "unicode");
+  });
+
+  copyImg.addEventListener('click', function () {
+    whatToCopy = "copyimg";
+    vendor.setLocal('copy-setting', "copyimg");
   });
 
   var alphaNum = /[a-zA-Z0-9]/;

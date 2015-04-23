@@ -32,6 +32,9 @@ html
           br
           input#copy-unicode(type="radio", name="default-copy", value="unicode")
           label(for="copy-unicode") unicode symbol
+          br
+          input#copy-img(type="radio", name="default-copy", value="copyimg")
+          label(for="copy-img") copy image
         if browser == "Firefox"
           hr
           p.setting-title Keyboard shortcut
