@@ -151,22 +151,8 @@
           showCopyMessage(detailInput.value);
         break;
         case 'copyimg':
-          lastCopyValue = detailInput.value;
-          var size = '19px';
-          var copyDiv = document.createElement('img');
-          copyDiv.contentEditable = true;
-          document.body.appendChild(copyDiv);
-          copyDiv.src = 'https://raw.githubusercontent.com/johannhof/emoji-helper/master/shared/img/emoji/'+detailInput.value.substr(1,detailInput.value.length-2)+'.png';
-          copyDiv.style.width = size;
-          copyDiv.style.height = size;
-          copyDiv.unselectable = "off";
-          var r = document.createRange();
-          r.selectNode(copyDiv);
-          var s = window.getSelection();
-          s.removeAllRanges();
-          s.addRange(r);
-          document.execCommand("Copy");
-          document.body.removeChild(copyDiv);
+          lastCopyValue = 'https://raw.githubusercontent.com/johannhof/emoji-helper/master/shared/img/emoji/'+detailInput.value.substr(1,detailInput.value.length-2)+'.png';
+          vendor.copyToClipboard(lastCopyValue);
           showCopyMessage('Image');
         break;
       }

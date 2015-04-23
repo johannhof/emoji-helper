@@ -7,6 +7,22 @@
     document.documentElement.dispatchEvent(event);
   }
 
+
+
+  function getImageHtml(src){
+    var size = '19px';
+    var copyDiv = document.createElement('img');
+    copyDiv.contentEditable = true;
+    document.body.appendChild(copyDiv);
+    copyDiv.src = src;
+    copyDiv.style.width = size;
+    copyDiv.style.height = size;
+    copyDiv.unselectable = "off";
+    var resp = copyDiv.outerHTML;
+    document.body.removeChild(copyDiv);
+    return resp;
+  }
+
   exports.getLocal = function(name, cb) {
     send("get", name);
 
@@ -27,11 +43,16 @@
     send("set", {key: key, value: value});
   };
 
+
   exports.copyToClipboard = function(domElement) {
     if(domElement){
-      domElement.focus();
-      domElement.select();
-      send("copy", domElement.value);
+      if(!domElement.value) {
+        send("copy", getImageHtml(domElement));
+      } else {
+        domElement.focus();
+        domElement.select();
+        send("copy", domElement.value);
+      }
     }
   };
 
