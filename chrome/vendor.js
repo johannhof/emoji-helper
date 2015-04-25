@@ -3,6 +3,23 @@
 
   var chrome = window.chrome;
 
+  function getImageTagSelect(src){
+    var size = '19px';
+    var copyDiv = document.createElement('img');
+    copyDiv.contentEditable = true;
+    document.body.appendChild(copyDiv);
+    copyDiv.src = src;
+    copyDiv.style.width = size;
+    copyDiv.style.height = size;
+    copyDiv.unselectable = "off";
+    var r = document.createRange();
+    r.selectNode(copyDiv);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    return copyDiv;
+  }
+
   exports.getLocal = function(name, cb) {
     chrome.storage.local.get(name, function(item) {
       cb(item[name]);
@@ -16,11 +33,15 @@
   };
 
   exports.copyToClipboard = function(domElement) {
-    if(domElement){
+    if(domElement.value){
       domElement.focus();
+      document.execCommand('SelectAll');
+    } else {
+      var copyDiv = getImageTagSelect(domElement);
     }
-    document.execCommand('SelectAll');
+    
     document.execCommand('copy');
+    if(copyDiv) document.body.removeChild(copyDiv);
   };
 
   exports.insertToActive = function (text) {

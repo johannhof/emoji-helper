@@ -73,8 +73,8 @@ panel.port.on("insert", function(text) {
   });
 });
 
-panel.port.on("copy", function(text) {
-  clipboard.set(text);
+panel.port.on("copy", function(data) {
+  clipboard.set(data,(data.indexOf('<img')==-1 ? 'text' : 'html'));
 });
 
 panel.port.on("set", function(item) {
