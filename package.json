@@ -6,22 +6,20 @@
   "id": "jid1-Xo5SuA6qc1DFpw",
   "main": "main",
   "author": "Johann Hofmann",
-  "icon": "data/icon32.png",
-  "icon64": "data/icon_alt.png",
   "homepage": "http://github.com/johannhof/emoji-helper",
   "license": "MIT",
   "devDependencies": {
     "connect": "^2.14.5",
-    "gulp": "^3.8.10",
+    "gulp": "^3.8.11",
     "gulp-clean": "^0.3.0",
     "gulp-image-resize": "^0.5.0",
-    "gulp-jade": "^0.5.0",
+    "gulp-jade": "^1.0.0",
     "gulp-newer": "^0.3.0",
     "gulp-rename": "^1.2.0",
-    "gulp-shell": "^0.2.4",
+    "gulp-shell": "^0.4.0",
     "gulp-uglify": "^0.3.0",
-    "gulp-zip": "^0.3.4",
-    "gulp.spritesmith": "^1.1.0"
+    "gulp-zip": "^3.0.2",
+    "gulp.spritesmith": "^3.5.3"
   },
   "scripts":{
     "test" : "casperjs test test/test.js"

@@ -1,27 +1,27 @@
-var gulp = require('gulp'),
-    common = require('../gulp-common'),
-    connect = require('connect'),
-    path = require('path'),
+var gulp = require("gulp"),
+    common = require("../gulp-common"),
+    connect = require("connect"),
+    path = require("path"),
     rename = require("gulp-rename"),
-    uglify = require('gulp-uglify'),
-    imageResize = require('gulp-image-resize'),
-    newer = require('gulp-newer'),
-    jade = require('gulp-jade');
+    uglify = require("gulp-uglify"),
+    imageResize = require("gulp-image-resize"),
+    newer = require("gulp-newer"),
+    jade = require("gulp-jade");
 
-var emojis = require('../shared/data/sprite.json');
+var emojis = require("../shared/data/sprite.json");
 
 var build = "./build/";
 
 var SERVER_PORT = 8000;
 
 // server for testing the bookmarklet
-gulp.task('server', function() {
+gulp.task("server", function() {
   connect().use(connect.static(path.resolve(build))).listen(SERVER_PORT);
   console.log("Server running on http://localhost:" + SERVER_PORT);
 });
 
-gulp.task('popup', function() {
-  gulp.src('../shared/popup.jade')
+gulp.task("popup", function() {
+  gulp.src("../shared/popup.jade")
     .pipe(jade({
       locals: {
         emojis: emojis,
@@ -32,50 +32,51 @@ gulp.task('popup', function() {
     .pipe(gulp.dest(build));
 });
 
-gulp.task('emoji', function () {
+gulp.task("emoji", function () {
     return gulp.src(common.emoji.concat([
-      '../shared/img/emoji/heavy_multiplication_x.png'
-    ])).pipe(newer(build + 'img/emoji/'))
+      "../shared/img/emoji/heavy_multiplication_x.png"
+    ])).pipe(newer(build + "img/emoji/"))
         .pipe(imageResize({
-          width : 30,
-          height : 30
+          width: 30,
+          height: 30
         }))
-        .pipe(gulp.dest(build + 'img/emoji/'));
+        .pipe(gulp.dest(build + "img/emoji/"));
 });
 
-gulp.task('vendor', function() {
+gulp.task("vendor", function() {
   gulp.src("./vendor.js").pipe(gulp.dest(build + "src/"));
 });
 
-gulp.task('bookmarklet', function () {
+gulp.task("bookmarklet", function () {
   gulp.src("./bookmarklet.js")
       .pipe(uglify())
       .pipe(gulp.dest(build));
 });
 
-gulp.task('shared', function() {
+gulp.task("shared", function() {
   gulp.src([
     "../shared/**/*",
+    "!../shared/icons/",
     "!../shared/popup.jade",
     "!../shared/img/emoji/*"
   ]).pipe(gulp.dest(build));
 });
 
 // Rerun the task when a file changes
-gulp.task('watch', function() {
-  gulp.watch('../shared/popup.jade', ['build']);
-  gulp.watch('../shared/src/*.js', ['build']);
-  gulp.watch('../shared/style/*.css', ['build']);
-  gulp.watch('./vendor.js', ['build']);
+gulp.task("watch", function() {
+  gulp.watch("../shared/popup.jade", ["build"]);
+  gulp.watch("../shared/src/*.js", ["build"]);
+  gulp.watch("../shared/style/*.css", ["build"]);
+  gulp.watch("./vendor.js", ["build"]);
 });
 
-gulp.task('release', function () {
-  gulp.src([build + '**/*'])
+gulp.task("release", function () {
+  gulp.src([build + "**/*"])
       .pipe(gulp.dest("../release/latest/bookmarklet/"));
 });
 
-gulp.task('build', ['popup', 'shared', 'vendor', 'bookmarklet', 'emoji']);
+gulp.task("build", ["popup", "shared", "vendor", "bookmarklet", "emoji"]);
 
-gulp.task('default', ['build', 'watch']);
+gulp.task("default", ["build", "watch"]);
 
-gulp.task('dev', ['server', 'build', 'watch']);
+gulp.task("dev", ["server", "build", "watch"]);

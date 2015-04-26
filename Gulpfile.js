@@ -1,32 +1,32 @@
-var gulp = require('gulp'),
-    clean = require('gulp-clean'),
-    imageResize = require('gulp-image-resize'),
-    spritesmith = require('gulp.spritesmith');
+var gulp = require("gulp"),
+    clean = require("gulp-clean"),
+    imageResize = require("gulp-image-resize"),
+    spritesmith = require("gulp.spritesmith");
 
-var emojis = require('./shared/data/emojis.json');
-var unicode = require('./shared/data/unicode.json');
+var emojis = require("./shared/data/emojis.json");
+var unicode = require("./shared/data/unicode.json");
 
-gulp.task('emoji', function () {
-    return gulp.src('./shared/img/emoji/*')
+gulp.task("emoji", function () {
+    return gulp.src("./shared/img/emoji/*")
         .pipe(imageResize({
-          width : 46,
-          height : 46
+          width: 46,
+          height: 46
         }))
         .pipe(gulp.dest("./tmp/"));
 });
 
-gulp.task('sprite', ['emoji'], function () {
+gulp.task("sprite", ["emoji"], function () {
   var spriteData = gulp.src("./tmp/*.png").pipe(spritesmith({
-    imgName: 'sprite.png',
-    cssFormat : 'json',
-    cssTemplate : function (params) {
-      var coll = params.items.reduce(function (coll, item) {
-        coll[item.name] = {
-          name : item.name,
-          x : item.x,
-          y : item.y
+    imgName: "sprite.png",
+    cssFormat: "json",
+    cssTemplate: function (params) {
+      var coll = params.items.reduce(function (c, item) {
+        c[item.name] = {
+          name: item.name,
+          x: item.x,
+          y: item.y
         };
-        return coll;
+        return c;
       }, {});
 
       Object.keys(emojis).forEach(function (k) {
@@ -38,15 +38,15 @@ gulp.task('sprite', ['emoji'], function () {
 
       return JSON.stringify(emojis);
     },
-    algorithm : 'binary-tree',
-    cssName: 'sprite.json'
+    algorithm: "binary-tree",
+    cssName: "sprite.json"
   }));
   spriteData.img.pipe(gulp.dest("./shared/img/"));
   return spriteData.css.pipe(gulp.dest("./shared/data"));
 });
 
-gulp.task('clean', ['emoji', 'sprite'], function () {
-    return gulp.src('./tmp', {read: false}).pipe(clean());
+gulp.task("clean", ["emoji", "sprite"], function () {
+    return gulp.src("./tmp", {read: false}).pipe(clean());
 });
 
-gulp.task('generate-sprite', ['emoji', 'sprite', 'clean']);
+gulp.task("generate-sprite", ["emoji", "sprite", "clean"]);

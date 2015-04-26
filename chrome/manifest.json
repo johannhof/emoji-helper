@@ -5,7 +5,11 @@
   "short_name": "Emoji Helper",
   "description": "A very simple and useful reference for the codes that can be used to generate Emojis on popular sites like GitHub or Basecamp.",
   "version": "1.0.1",
-  "icons": { "128": "icon.png" },
+  "icons": {
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
 
   "author" : "Johann Hofmann",
 
@@ -18,7 +22,7 @@
   ],
 
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "icon48.png",
     "default_popup": "popup.html"
   },
 
