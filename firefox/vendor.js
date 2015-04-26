@@ -2,16 +2,14 @@
   var exports = {};
 
   function send(name, data){
-    var event = document.createEvent('CustomEvent');
+    var event = document.createEvent("CustomEvent");
     event.initCustomEvent(name, true, true, data);
     document.documentElement.dispatchEvent(event);
   }
 
-
-
   function getImageHtml(src){
-    var size = '19px';
-    var copyDiv = document.createElement('img');
+    var size = "19px";
+    var copyDiv = document.createElement("img");
     copyDiv.contentEditable = true;
     document.body.appendChild(copyDiv);
     copyDiv.src = src;
@@ -42,7 +40,6 @@
   exports.setLocal = function(key, value) {
     send("set", {key: key, value: value});
   };
-
 
   exports.copyToClipboard = function(domElement) {
     if(domElement){

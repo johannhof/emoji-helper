@@ -15,7 +15,7 @@
 
   exports.copyToClipboard = function(domElement) {
     domElement.focus();
-    document.execCommand('SelectAll');
+    document.execCommand("SelectAll");
     // copy to clipboard not supported in safari :(
     //document.execCommand('copy');
   };

@@ -35,14 +35,6 @@
 
   var hotkeyGroup = document.getElementsByName("hotkey");
 
-  function getSelectedHotkey(){
-    for(var i=0; i<hotkeyGroup.length; i++){
-       if(hotkeyGroup[i].checked){
-            return hotkeyGroup[i].value;
-        }
-    }
-  }
-
   function selectHotkeySetting(setting){
     document.getElementById("hotkey-" + setting).checked = true;
   }
@@ -100,21 +92,21 @@
       if(!copyMessage){
         return;
       }
-      copyMessage.classList.add('show');
+      copyMessage.classList.add("show");
       copyMessage.textContent = text;
       clearTimeout(timer);
       timer = setTimeout(function() {
-        copyMessage.classList.remove('show');
+        copyMessage.classList.remove("show");
       }, 1000);
     };
   }());
 
   function showCopyMessage(val){
-    showMessage(val + ' copied to clipboard');
+    showMessage(val + " copied to clipboard");
   }
 
   function addEmojiClickListener(node) {
-    node.addEventListener('click', function() {
+    node.addEventListener("click", function() {
       var item = {
         name: node.dataset.name,
         unicode: node.dataset.unicode,
@@ -122,7 +114,7 @@
       };
 
       // save last in local storage
-      vendor.setLocal('last', item);
+      vendor.setLocal("last", item);
 
       // set item in recent
       recent = [item].concat(recent.filter(function(el) {
@@ -135,26 +127,26 @@
       }
 
       // persist recent
-      vendor.setLocal('recent', recent);
+      vendor.setLocal("recent", recent);
 
       // show selected emoji in detail
       showDetail(item);
       switch(whatToCopy){
-        case 'unicode':
+        case "unicode":
           lastCopyValue = unicodeInput.value;
           vendor.copyToClipboard(unicodeInput);
           showCopyMessage(unicodeInput.value);
         break;
-        case 'name':
+        case "copyimg":
+          lastCopyValue = "https://raw.githubusercontent.com/johannhof/emoji-helper/master/shared/img/emoji/" + detailInput.value.substr(1, detailInput.value.length - 2) + ".png";
+          vendor.copyToClipboard(lastCopyValue);
+          showCopyMessage("Image");
+        break;
+        // name
+        default:
           lastCopyValue = detailInput.value;
           vendor.copyToClipboard(detailInput);
           showCopyMessage(detailInput.value);
-        break;
-        case 'copyimg':
-          lastCopyValue = 'https://raw.githubusercontent.com/johannhof/emoji-helper/master/shared/img/emoji/'+detailInput.value.substr(1,detailInput.value.length-2)+'.png';
-          vendor.copyToClipboard(lastCopyValue);
-          showCopyMessage('Image');
-        break;
       }
     });
   }
@@ -174,7 +166,7 @@
     recentDiv.textContent = "";
 
     if(recent.length){
-      recentDiv.style.backgroundImage = '';
+      recentDiv.style.backgroundImage = "";
       // intermediate container to render the dom as few times as possible
       var cont = document.createElement("div");
       recent.forEach(appendItem.bind(null, cont));
@@ -210,24 +202,24 @@
     };
   }());
 
-  aboutButton.addEventListener('click', function() {
+  aboutButton.addEventListener("click", function() {
     setActiveGroup(aboutButton);
   });
 
   if(settingsButton){
-    settingsButton.addEventListener('click', function() {
+    settingsButton.addEventListener("click", function() {
       setActiveGroup(settingsButton);
     });
   }
 
-  detailInput.addEventListener('click', function() {
+  detailInput.addEventListener("click", function() {
     lastCopyValue = detailInput.value;
     vendor.copyToClipboard(detailInput);
     showCopyMessage(detailInput.value);
   });
 
   if(insertButton){
-    insertButton.addEventListener('click', function(event) {
+    insertButton.addEventListener("click", function(event) {
       event.preventDefault();
       vendor.insertToActive(lastCopyValue);
       showMessage("Added " + lastCopyValue + " to active page input.");
@@ -235,18 +227,18 @@
   }
 
   if(unicodeInput){
-    unicodeInput.addEventListener('click', function() {
+    unicodeInput.addEventListener("click", function() {
       lastCopyValue = unicodeInput.value;
       vendor.copyToClipboard(unicodeInput);
       showCopyMessage(unicodeInput.value);
     });
   }
 
-  recentButton.addEventListener('click', updateRecent);
+  recentButton.addEventListener("click", updateRecent);
 
   // add click listener to logo that changes the displayed group
   logos.forEach(function(logo) {
-    logo.addEventListener('click', setActiveGroup.bind(null, logo));
+    logo.addEventListener("click", setActiveGroup.bind(null, logo));
   });
 
   // search functionality
@@ -302,7 +294,7 @@
     vendor.getLocal("version", function(ver) {
       if (ver !== VERSION) {
         aboutButton.classList.add("update");
-        aboutButton.addEventListener('click', function() {
+        aboutButton.addEventListener("click", function() {
           aboutButton.classList.remove("update");
           vendor.setLocal("version", VERSION);
         });
@@ -335,29 +327,30 @@
           selectHotkeySetting(combo);
         }
       });
-      for(var i=0; i<hotkeyGroup.length; i++){
-        hotkeyGroup[i].addEventListener('change', function (e) {
-          vendor.setHotkey(e.target.value);
-        });
+      var listener = function (e) {
+        vendor.setHotkey(e.target.value);
+      };
+      for(var i = 0; i < hotkeyGroup.length; i++){
+        hotkeyGroup[i].addEventListener("change", listener);
       }
 
     }
 
   }, false);
 
-  copyName.addEventListener('click', function () {
+  copyName.addEventListener("click", function () {
     whatToCopy = "name";
-    vendor.setLocal('copy-setting', "name");
+    vendor.setLocal("copy-setting", "name");
   });
 
-  copyUnicode.addEventListener('click', function () {
+  copyUnicode.addEventListener("click", function () {
     whatToCopy = "unicode";
-    vendor.setLocal('copy-setting', "unicode");
+    vendor.setLocal("copy-setting", "unicode");
   });
 
-  copyImg.addEventListener('click', function () {
+  copyImg.addEventListener("click", function () {
     whatToCopy = "copyimg";
-    vendor.setLocal('copy-setting', "copyimg");
+    vendor.setLocal("copy-setting", "copyimg");
   });
 
   var alphaNum = /[a-zA-Z0-9]/;

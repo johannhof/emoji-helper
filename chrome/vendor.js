@@ -4,8 +4,8 @@
   var chrome = window.chrome;
 
   function getImageTagSelect(src){
-    var size = '19px';
-    var copyDiv = document.createElement('img');
+    var size = "19px";
+    var copyDiv = document.createElement("img");
     copyDiv.contentEditable = true;
     document.body.appendChild(copyDiv);
     copyDiv.src = src;
@@ -35,13 +35,15 @@
   exports.copyToClipboard = function(domElement) {
     if(domElement.value){
       domElement.focus();
-      document.execCommand('SelectAll');
+      document.execCommand("SelectAll");
     } else {
       var copyDiv = getImageTagSelect(domElement);
     }
-    
-    document.execCommand('copy');
-    if(copyDiv) document.body.removeChild(copyDiv);
+
+    document.execCommand("copy");
+    if(copyDiv){
+      document.body.removeChild(copyDiv);
+    }
   };
 
   exports.insertToActive = function (text) {
