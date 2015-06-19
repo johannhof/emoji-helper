@@ -6,6 +6,6 @@ exports.emoji = [
       "../shared/img/emoji/oncoming_automobile.png",
       "../shared/img/emoji/symbols.png",
       "../shared/img/emoji/hatched_chick.png",
-      "../shared/img/emoji/whale.png",
+      "../shared/img/emoji/tropical_fish.png",
       "../shared/img/emoji/heart.png"
 ];

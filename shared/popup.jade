@@ -78,15 +78,12 @@ html
         div.half
           p.center
             | Version 1.1.0 - 
-            img.about-text-img(src="./img/emoji/whale.png")
+            img.about-text-img(src="./img/emoji/tropical_fish.png")
           hr
           ul
             if browser == "Chrome" || browser == "Firefox"
-              li New button to insert emoji directly into the current page
-            li New settings menu
-            if browser == "Firefox"
-              li Repositioned the popup
-              li Ctrl-E or Ctrl-Y as browser shortcuts
+              li New setting to copy emoji images to use in Gmail and many other places (thanks to @webcaetano)
+            li Code improvements
           hr
           p
             +link("https://github.com/johannhof/emoji-helper/releases")
