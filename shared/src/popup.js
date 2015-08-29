@@ -29,6 +29,7 @@
   var copyName = document.getElementById("copy-name");
   var copyUnicode = document.getElementById("copy-unicode");
   var copyImg = document.getElementById("copy-img");
+  var insertName = document.getElementById("insert-name");
 
   var whatToCopy = "name";
   var lastCopyValue = "";
@@ -106,7 +107,7 @@
   }
 
   function addEmojiClickListener(node) {
-    node.addEventListener("click", function() {
+    node.addEventListener("click", function(event) {
       var item = {
         name: node.dataset.name,
         unicode: node.dataset.unicode,
@@ -141,6 +142,11 @@
           lastCopyValue = "https://raw.githubusercontent.com/johannhof/emoji-helper/master/shared/img/emoji/" + detailInput.value.substr(1, detailInput.value.length - 2) + ".png";
           vendor.copyToClipboard(lastCopyValue);
           showCopyMessage("Image");
+        break;
+        case "insertname":
+            event.preventDefault();
+            vendor.insertToActive(detailInput.value);
+            showMessage("Added " + detailInput.value + " to active page input.");
         break;
         // name
         default:
@@ -315,6 +321,9 @@
           case "copyimg":
             copyImg.checked = true;
           break;
+          case "insertname":
+            insertName.checked = true;
+          break;
         }
       }
     });
@@ -346,6 +355,11 @@
   copyUnicode.addEventListener("click", function () {
     whatToCopy = "unicode";
     vendor.setLocal("copy-setting", "unicode");
+  });
+  
+  insertName.addEventListener("click", function () {
+    whatToCopy = "insertname";
+    vendor.setLocal("copy-setting", "insertname");
   });
 
   copyImg.addEventListener("click", function () {

@@ -25,16 +25,20 @@ html
       .group(id="search-container",data-emoji=true)
       .group(id="settings-container")
         h2 Settings
-        p.setting-title Default value to copy on click
+        p.setting-title Default action on click
         p.setting
           input#copy-name(type="radio", name="default-copy", value="name" checked)
-          label(for="copy-name") :name:
+          label(for="copy-name") copy :name:
           br
           input#copy-unicode(type="radio", name="default-copy", value="unicode")
-          label(for="copy-unicode") unicode symbol
+          label(for="copy-unicode") copy unicode symbol
           br
           input#copy-img(type="radio", name="default-copy", value="copyimg")
           label(for="copy-img") copy image (for Mail, Google Docs, MS Office and more)
+          if browser == "Chrome" || browser == "Firefox"
+            br
+            input#insert-name(type="radio", name="default-copy", value="insertname")
+            label(for="insert-name") Insert :name: into active input
         if browser == "Firefox"
           hr
           p.setting-title Keyboard shortcut
