@@ -144,7 +144,6 @@
           showCopyMessage("Image");
         break;
         case "insertname":
-            event.preventDefault();
             vendor.insertToActive(detailInput.value);
             showMessage("Added " + detailInput.value + " to active page input.");
         break;
@@ -357,10 +356,12 @@
     vendor.setLocal("copy-setting", "unicode");
   });
   
-  insertName.addEventListener("click", function () {
-    whatToCopy = "insertname";
-    vendor.setLocal("copy-setting", "insertname");
-  });
+  if(insertName) {
+      insertName.addEventListener("click", function () {
+        whatToCopy = "insertname";
+        vendor.setLocal("copy-setting", "insertname");
+      });
+  }
 
   copyImg.addEventListener("click", function () {
     whatToCopy = "copyimg";
