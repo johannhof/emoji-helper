@@ -3,7 +3,7 @@
   // local vars for linting (and performance)
   var vendor = window.vendor;
 
-  var VERSION = "1.1.0";
+  var VERSION = "1.1.1";
 
   // upper bar
   var logos = document.querySelectorAll(".group-logo");
@@ -355,7 +355,7 @@
     whatToCopy = "unicode";
     vendor.setLocal("copy-setting", "unicode");
   });
-  
+
   if(insertName) {
       insertName.addEventListener("click", function () {
         whatToCopy = "insertname";
