@@ -12,14 +12,14 @@
     "connect": "^2.14.5",
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.0",
-    "gulp-image-resize": "^0.5.0",
-    "gulp-jade": "^1.0.0",
+    "gulp-image-resize": "^0.7.1",
+    "gulp-jade": "^1.1.0",
     "gulp-newer": "^0.3.0",
     "gulp-rename": "^1.2.0",
     "gulp-shell": "^0.4.0",
     "gulp-uglify": "^0.3.0",
     "gulp-zip": "^3.0.2",
-    "gulp.spritesmith": "^3.5.3"
+    "gulp.spritesmith": "^4.2.2"
   },
   "scripts":{
     "test" : "casperjs test test/test.js"
