@@ -159,6 +159,7 @@
   function appendItem(container, item) {
     var cont = document.createElement("div");
     cont.classList.add("emoji");
+    cont.title = item.name;
     cont.dataset.name = item.name;
     cont.dataset.unicode = item.unicode || "";
     cont.style.backgroundPosition = item.pos;
