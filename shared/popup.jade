@@ -21,7 +21,7 @@ html
       each group, n in emojis
         .group(id=n, data-emoji="true")
           each emoji in group
-            .emoji(data-name=emoji.name, data-unicode=emoji.unicode, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
+            .emoji(title=emoji.name, data-name=emoji.name, data-unicode=emoji.unicode, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
       .group(id="search-container",data-emoji=true)
       .group(id="settings-container")
         h2 Settings
