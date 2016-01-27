@@ -7,6 +7,10 @@ body {
   font-family: sans-serif;
   background: rgba(238, 238, 238, 1);
 }
+
+#clear-history-button {
+  margin: 5px;
+}
 #recent{
   background-size: cover;
   background-position: 50%;
