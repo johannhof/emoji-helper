@@ -24,6 +24,7 @@
   var aboutButton = document.getElementById("about-button");
   var settingsButton = document.getElementById("settings-button");
   var insertButton = document.getElementById("insert-button");
+  var clearHistoryButton = document.getElementById("clear-history-button");
 
   var copyMessage = document.getElementById("copy-message");
   var copyName = document.getElementById("copy-name");
@@ -217,6 +218,18 @@
       setActiveGroup(settingsButton);
     });
   }
+
+  clearHistoryButton.addEventListener("click", function() {
+    var item = {
+      name: "lemon",
+      pos: "0px 0px",
+      unicode: "🍋"
+    }
+    recent = [];
+    vendor.setLocal("recent", recent);
+    vendor.setLocal("last", item);
+    showDetail(item);
+  });
 
   detailInput.addEventListener("click", function() {
     lastCopyValue = detailInput.value;
