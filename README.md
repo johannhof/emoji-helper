@@ -32,11 +32,19 @@ Follow this guide https://developer.chrome.com/extensions/getstarted#unpacked an
 
 A good introduction to the Mozilla Add-on SDK is https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Getting_started
 
+__Running it once__
 ```bash
 $ cd firefox
 $ gulp build
 $ cd build
-$ cfx run
+$ jpm run
+```
+
+__Auto-reload on changes__ (recommended)
+- Install the [Extension Auto-Installer](https://addons.mozilla.org/en-US/firefox/addon/autoinstaller/)
+```bash
+$ cd firefox
+$ gulp watch
 ```
 
 #### Safari
