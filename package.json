@@ -8,6 +8,9 @@
   "author": "Johann Hofmann",
   "homepage": "http://github.com/johannhof/emoji-helper",
   "license": "MIT",
+  "permissions": {
+    "private-browsing": true
+  },
   "devDependencies": {
     "connect": "^2.14.5",
     "fs-extra": "^0.26.5",

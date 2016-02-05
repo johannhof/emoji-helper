@@ -47,7 +47,7 @@ gulp.task("shared", function() {
 });
 
 // Rerun the task when a file changes
-gulp.task("watch", ["build"], function() {
+gulp.task("watch", ["build", "post"], function() {
   gulp.watch("../shared/popup.jade", ["popup", "post"]);
   gulp.watch("../shared/src/*.js", ["shared", "post"]);
   gulp.watch("../shared/style/*.css", ["shared", "post"]);
