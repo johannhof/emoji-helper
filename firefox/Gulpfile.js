@@ -1,10 +1,14 @@
 var gulp = require("gulp"),
+    xpi = require("jpm/lib/xpi"),
+    post = require("jpm/lib/post"),
+    path = require("path"),
+    fs = require("fs-promise"),
     common = require("../gulp-common"),
-    shell = require("gulp-shell"),
     rename = require("gulp-rename"),
     jade = require("gulp-jade");
 
 var emojis = require("../shared/data/sprite.json");
+var pkg = require('../package.json');
 
 var build = "./build/";
 
@@ -38,23 +42,40 @@ gulp.task("shared", function() {
     "!../shared/img/emoji/*"
   ]).pipe(gulp.dest(build + "data/"));
   gulp.src("../package.json").pipe(gulp.dest(build));
-  gulp.src("../shared/icons/icon48.png").pipe(rename("icon.png")).pipe(gulp.dest(build + "data/"));
-  gulp.src("../shared/icons/icon_alt.png").pipe(rename("icon64.png")).pipe(gulp.dest(build + "data/"));
+  gulp.src("../shared/icons/icon48.png").pipe(rename("icon.png")).pipe(gulp.dest(build));
+  gulp.src("../shared/icons/icon_alt.png").pipe(rename("icon64.png")).pipe(gulp.dest(build));
 });
 
 // Rerun the task when a file changes
-gulp.task("watch", function() {
-  gulp.watch("../shared/popup.jade", ["build"]);
-  gulp.watch("../shared/src/*.js", ["build"]);
-  gulp.watch("../shared/style/*.css", ["build"]);
-  gulp.watch("./*.js", ["build"]);
+gulp.task("watch", ["build"], function() {
+  gulp.watch("../shared/popup.jade", ["popup", "post"]);
+  gulp.watch("../shared/src/*.js", ["shared", "post"]);
+  gulp.watch("../shared/style/*.css", ["shared", "post"]);
+  gulp.watch("./*.js", ["js", "post"]);
 });
 
-gulp.task("release", ["build"], shell.task([
-  "mkdir -p ../release/latest/firefox",
-  'cd build && cfx xpi --output-file="../../release/latest/firefox/emoji-helper.xpi"'
-]));
-
 gulp.task("build", ["popup", "shared", "js", "emoji"]);
+
+gulp.task("post", function() {
+  var options = {
+    postUrl: 'http://localhost:8888/',
+    addonDir: path.resolve("./build/")
+  };
+
+  return post(pkg, options);
+});
+
+gulp.task("release", ["build"], function() {
+  var options = {
+    addonDir: path.resolve("./build/"),
+    xpiPath: path.resolve("../release/latest/firefox/")
+  };
+
+  return fs.mkdirs("../release/latest/firefox/").then(function(){
+    return xpi(pkg, options);
+  }).then(function(){
+    return fs.rename(`../release/latest/firefox/jid1-Xo5SuA6qc1DFpw@jetpack-${pkg.version}.xpi`, "../release/latest/firefox/emoji-helper.xpi");
+   });
+});
 
 gulp.task("default", ["build", "watch"]);
