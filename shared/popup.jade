@@ -85,11 +85,19 @@ html
             img.about-text-img(src="./img/emoji/heart.png")
         div.half
           p.center
-            | Version 1.1.1 - 
-            img.about-text-img(src="./img/emoji/tropical_fish.png")
+            | Version 1.2.0 - 
+            img.about-text-img(src="./img/emoji/octopus.png")
           hr
           ul
-            li Insert into page as an optional default action on click (thanks to @michyprima)
+            li
+              | "Clear history" option in the settings (by 
+              +link("https://github.com/jackunion") @jackunion
+              | )
+            li
+              | Show the emoji name on hover, also by 
+              +link("https://github.com/jackunion") @jackunion
+            if browser == "Firefox"
+              li Now works in Firefox private mode! Duh!
           hr
           p
             +link("https://github.com/johannhof/emoji-helper/releases")

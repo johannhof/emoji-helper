@@ -3,7 +3,7 @@
   // local vars for linting (and performance)
   var vendor = window.vendor;
 
-  var VERSION = "1.1.1";
+  var VERSION = "1.2.0";
 
   // upper bar
   var logos = document.querySelectorAll(".group-logo");
@@ -224,7 +224,7 @@
       name: "lemon",
       pos: "0px 0px",
       unicode: "🍋"
-    }
+    };
     recent = [];
     vendor.setLocal("recent", recent);
     vendor.setLocal("last", item);
