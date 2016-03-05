@@ -23,8 +23,10 @@
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^0.3.0",
     "gulp-zip": "^3.0.2",
-    "gulp.spritesmith": "^4.2.2",
-    "jpm": "^1.0.5"
+    "gulp.spritesmith": "^6.2.0",
+    "imagemin-pngquant": "^4.2.2",
+    "jpm": "^1.0.5",
+    "vinyl-buffer": "^1.0.0"
   },
   "scripts": {
     "test": "casperjs test test/test.js"

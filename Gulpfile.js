@@ -1,5 +1,7 @@
 var gulp = require("gulp"),
+    buffer = require('vinyl-buffer'),
     clean = require("gulp-clean"),
+    imageminPngquant = require('imagemin-pngquant'),
     imageResize = require("gulp-image-resize"),
     spritesmith = require("gulp.spritesmith");
 
@@ -41,8 +43,11 @@ gulp.task("sprite", ["emoji"], function () {
     algorithm: "binary-tree",
     cssName: "sprite.json"
   }));
-  spriteData.img.pipe(gulp.dest("./shared/img/"));
-  return spriteData.css.pipe(gulp.dest("./shared/data"));
+  spriteData.css.pipe(gulp.dest("./shared/data"));
+  return spriteData.img
+    .pipe(buffer())
+    .pipe(imageminPngquant({quality: '0-100', speed: 1})())
+    .pipe(gulp.dest("./shared/img/"));
 });
 
 gulp.task("clean", ["emoji", "sprite"], function () {
