@@ -26,9 +26,10 @@ button = ToggleButton({
   id: "show-emoji-panel",
   label: "Show Emoji Helper",
   icon: {
-    "16": "./icon.png",
-    "32": "./icon.png",
-    "64": "./icon.png"
+    24: "./icons/icon24.png",
+    32: "./icons/icon32.png",
+    48: "./icons/icon48.png",
+    64: "./icons/icon64.png"
   },
   onChange: function (state) {
     if (state.checked) {
