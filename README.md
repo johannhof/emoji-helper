@@ -30,7 +30,7 @@ Follow this guide https://developer.chrome.com/extensions/getstarted#unpacked an
 
 #### Firefox
 
-A good introduction to the Mozilla Add-on SDK is https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Getting_started
+A good introduction to the Mozilla Add-on SDK is https://developer.mozilla.org/Add-ons/SDK/Tutorials/Getting_started
 
 __Running it once__
 ```bash
@@ -41,7 +41,7 @@ $ jpm run
 ```
 
 __Auto-reload on changes__ (recommended)
-- Install the [Extension Auto-Installer](https://addons.mozilla.org/en-US/firefox/addon/autoinstaller/)
+- Install the [Extension Auto-Installer](https://addons.mozilla.org/firefox/addon/autoinstaller/)
 ```bash
 $ cd firefox
 $ gulp watch
