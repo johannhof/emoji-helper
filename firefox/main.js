@@ -26,6 +26,7 @@ button = ToggleButton({
   id: "show-emoji-panel",
   label: "Show Emoji Helper",
   icon: {
+    16: "./icons/icon16.png",
     24: "./icons/icon24.png",
     32: "./icons/icon32.png",
     48: "./icons/icon48.png",
