@@ -3,37 +3,20 @@
   "title": "Emoji Cheatsheet for GitHub, Basecamp etc.",
   "version": "1.2.0",
   "description": "A very simple and useful reference for the codes that can be used to generate Emojis on popular sites like GitHub or Basecamp.",
-  "id": "jid1-Xo5SuA6qc1DFpw@jetpack",
-  "main": "lib/main.js",
   "author": "Johann Hofmann",
   "homepage": "http://github.com/johannhof/emoji-helper",
   "license": "MIT",
-  "engines": {
-    "firefox": ">=38.0a1",
-    "{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}": ">=27.1.0b1"
-  },
-  "permissions": {
-    "private-browsing": true,
-    "multiprocess": true
-  },
   "devDependencies": {
-    "connect": "^2.14.5",
-    "fs-extra": "^0.26.5",
-    "fs-promise": "^0.4.1",
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.0",
     "gulp-image-resize": "^0.7.1",
     "gulp-jade": "^1.1.0",
     "gulp-newer": "^0.3.0",
-    "gulp-rename": "^1.2.0",
     "gulp-uglify": "^0.3.0",
     "gulp-zip": "^3.0.2",
     "gulp.spritesmith": "^6.2.0",
     "imagemin-pngquant": "^4.2.2",
-    "jpm": "^1.0.5",
     "vinyl-buffer": "^1.0.0"
   },
-  "scripts": {
-    "test": "casperjs test test/test.js"
-  }
+  "false": {}
 }

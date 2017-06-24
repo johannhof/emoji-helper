@@ -1,8 +1,11 @@
+html, body {
+  width: 500px;
+  height: 370px;
+}
+
 body {
   padding: 0;
   margin: 0;
-  min-width: 500px;
-  height: 370px;
   overflow: hidden;
   font-family: sans-serif;
   background: rgba(238, 238, 238, 1);
@@ -27,13 +30,12 @@ body {
   text-align: center;
 }
 #detail-logo {
-  background-image: url(../img/sprite.png);
+  background-image: url(./sprite.png);
   vertical-align: middle;
   box-sizing: border-box;
   display: inline-block;
   height: 100%;
   background-size: 690px;
-  -webkit-transform: scale(1.3);
   transform: scale(1.3);
   height: 22px;
   width: 22px;
@@ -221,7 +223,7 @@ hr{
   cursor: pointer;
   height: 23px;
   width: 23px;
-  background-image: url('../img/sprite.png');
+  background-image: url('./sprite.png');
 }
 .emoji:hover {
   box-shadow: 0px 0px 1px black;
@@ -251,16 +253,12 @@ hr{
 .group-logo img {
   height: 20px;
   opacity: 0.8;
-  /* firefox grayscale filter 100% */
-  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
-  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
   /* prevent blurry image from filter */
-  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .group-logo:hover img {
-  /* firefox grayscale filter 0% */
-  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
-  -webkit-filter: grayscale(0%)
+  filter: grayscale(0%)
 }
 .group-logo.selected {
   background: linear-gradient(to bottom, rgba(238, 238, 238, 1) 0%, rgba(238, 238, 238, 1) 100%);
@@ -268,7 +266,5 @@ hr{
 }
 .group-logo.selected img {
   opacity: 1;
-  /* firefox grayscale filter 0% */
-  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
-  -webkit-filter: grayscale(0%)
+  filter: grayscale(0%)
 }
