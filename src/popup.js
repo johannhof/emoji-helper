@@ -288,7 +288,9 @@
 
           // intermediate container to render the dom as few times as possible
           let cont = document.createElement("div");
-          let filtered = emojis.filter(emoji => emoji.name.indexOf(val) !== -1);
+          let filtered = emojis.filter(function(emoji) {
+            return emoji.name.includes(val) || emoji.tags.some(tag => tag.includes(val));
+          });
           filtered = filtered.slice(0, MAX_SEARCH_RESULTS);
           filtered.forEach(appendItem.bind(null, searchContainer));
           recentDiv.appendChild(cont);
