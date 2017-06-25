@@ -78,27 +78,23 @@
   let recent = [];
 
   // maximum number of recents
-  let MAX_RECENT = 50;
+  const MAX_RECENT = 50;
 
   // maximum displayed search results for performance
-  let MAX_SEARCH_RESULTS = 200;
+  const MAX_SEARCH_RESULTS = 200;
 
   // load emojis from json
   let emojis = [];
-  fetch("./data/sprite.json")
+  fetch("./emoji.json")
     .then(res => res.json())
     .then(function(map) {
       // flatten and objectify emojis
-      Object.keys(map).forEach(function(group) {
-        Object.keys(map[group]).forEach(function(k) {
-          let emoji = map[group][k];
-          emojis.push({
-            name: k,
-            unicode: emoji.unicode,
-            pos: -emoji.x / 2 + "px " + -emoji.y / 2 + "px"
-          });
-        });
-      });
+      for (let group of Object.keys(map)) {
+        for (let emoji of map[group]) {
+          emoji.pos = -emoji.x / 2 + "px " + -emoji.y / 2 + "px";
+          emojis.push(emoji);
+        }
+      }
     });
 
   // show an emoji in the bottom detail screen
@@ -198,14 +194,14 @@
       recentDiv.appendChild(cont);
     }else{
       // help screen if new install
-      recentDiv.style.backgroundImage = 'url("./emoji-help.png")';
+      recentDiv.style.backgroundImage = 'url("./img/emoji-help.png")';
     }
   }
 
-  groups.forEach(function(group) {
+  for (let group of groups) {
     let nodes = Array.prototype.slice.call(group.childNodes);
     nodes.forEach(addEmojiClickListener);
-  });
+  }
 
   let setActiveGroup = (function() {
     // show first group
@@ -240,7 +236,7 @@
   clearHistoryButton.addEventListener("click", function() {
     let item = {
       name: "lemon",
-      pos: "0px 0px",
+      pos: "-621px -184px",
       unicode: "🍋"
     };
     recent = [];
@@ -274,9 +270,9 @@
   recentButton.addEventListener("click", updateRecent);
 
   // add click listener to logo that changes the displayed group
-  logos.forEach(function(logo) {
-    logo.addEventListener("click", setActiveGroup.bind(null, logo));
-  });
+  for (let logo of logos) {
+    logo.addEventListener("click", () => setActiveGroup(logo));
+  }
 
   // search functionality
   (function() {
@@ -308,10 +304,10 @@
       if (item) {
         showDetail(item);
         lastCopyValue = detailInput.value || "";
-      }else{
+      } else {
         showDetail({
           name: "lemon",
-          pos: "0px 0px",
+          pos: "-621px -184px",
           unicode: "🍋"
         });
       }

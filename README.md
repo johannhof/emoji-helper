@@ -40,3 +40,13 @@ To create a zipped release package of the extension that can be uploaded to one 
 $ make release
 ```
 
+## Fetching an updated Emoji list
+
+Our Emoji list is taken from the [gemoji project](https://github.com/github/gemoji) (https://api.github.com/emojis). Whenever GitHub updates their list of Emoji, you can run
+
+```bash
+$ gulp fetch-images
+$ gulp sprite
+```
+
+to download the updated images and generate a new sprite.
