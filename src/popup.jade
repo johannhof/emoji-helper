@@ -1,0 +1,101 @@
+mixin link(url)
+  a(href="#{url}", target="_blank")
+    block
+
+doctype html
+html
+  - var grouplogos = { recent : "./img/emoji/clock9.png" , people : "./img/emoji/smiley.png", nature : "./img/emoji/cherry_blossom.png", objects : "./img/emoji/bell.png", places : "./img/emoji/oncoming_automobile.png", symbols : "./img/emoji/symbols.png" }
+  head
+    title Emojis
+    meta(charset="utf-8")
+    link(rel="stylesheet" href="./ionicons.min.css" type="text/css")
+    link(rel="stylesheet" href="./style.css" type="text/css")
+  body
+    .group-logos
+      each group, n in emojis
+        button.group-logo(data-group=n)
+          img(src=grouplogos[n], alt=n, title=n)
+      input#search(placeholder="Search", data-group="search-container")
+    .groups
+      each group, n in emojis
+        .group(id=n, data-emoji="true")
+          each emoji in group
+            .emoji(title=emoji.name, data-name=emoji.name, data-unicode=emoji.unicode, style="background-position:#{-emoji.x / 2}px #{-emoji.y / 2}px;")
+      .group(id="search-container",data-emoji=true)
+      .group(id="settings-container")
+        h2 Settings
+        p.setting-title Default action on click
+        p.setting
+          input#copy-name(type="radio", name="default-copy", value="name" checked)
+          label(for="copy-name") copy :name:
+          br
+          input#copy-unicode(type="radio", name="default-copy", value="unicode")
+          label(for="copy-unicode") copy unicode symbol
+          br
+          input#copy-img(type="radio", name="default-copy", value="copyimg")
+          label(for="copy-img") copy image (for Mail, Google Docs, MS Office and more)
+          br
+          input#insert-name(type="radio", name="default-copy", value="insertname")
+          label(for="insert-name") Insert :name: into active input
+        hr
+        span.setting-title History
+        button#clear-history-button.detail-button(title="Clear history")
+            i.ion-trash-b
+      .group(id="about-container")
+        h1
+          | Emoji
+          img(src="./img/emoji/hatched_chick.png")
+          | Helper
+        div.half
+          p
+            +link("http://johannhof.github.io/emoji-helper")
+              i.ion-earth
+              | Website
+          p
+            +link("https://github.com/johannhof/emoji-helper")
+              i.ion-social-github
+              | Contribute on GitHub
+          p
+            +link("https://github.com/johannhof/emoji-helper/issues")
+              i.ion-bug
+              | Bugs & Feature Requests
+          p
+            | Images are taken from Github's 
+            +link("https://github.com/github/gemoji") gemoji 
+            | project.
+          p
+            | Copyright see 
+            +link("https://github.com/github/gemoji/blob/master/LICENSE") license 
+          center
+            img.about-text-img(src="./img/emoji/heart.png")
+        div.half
+          p.center
+            | Version 1.2.0 - 
+            img.about-text-img(src="./img/emoji/octopus.png")
+          hr
+          ul
+            li
+              | "Clear history" option in the settings (by 
+              +link("https://github.com/jackunion") @jackunion
+              | )
+            li
+              | Show the emoji name on hover, also by 
+              +link("https://github.com/jackunion") @jackunion
+          hr
+          p
+            +link("https://github.com/johannhof/emoji-helper/releases")
+              i.ion-social-octocat
+              | Full changelog & all releases
+    #detail
+      #copy-message
+        | copied to clipboard
+      div#detail-logo
+      input#detail-input(readonly)
+      input#unicode-input(readonly)
+      button#insert-button.detail-button(title="Insert into active input")
+          i.ion-share
+      button#about-button.detail-button(title="About", data-group="about-container")
+          i.ion-information-circled
+      button#settings-button.detail-button(title="Settings", data-group="settings-container")
+          i.ion-settings
+    script(src="./popup.js")
