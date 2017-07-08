@@ -37,7 +37,7 @@ Follow this guide https://developer.chrome.com/extensions/getstarted#unpacked an
 To create a zipped release package of the extension that can be uploaded to one of the stores, run
 
 ```bash
-$ make release
+$ gulp release
 ```
 
 ## Fetching an updated Emoji list

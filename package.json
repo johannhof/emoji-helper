@@ -5,21 +5,18 @@
   "description": "A very simple and useful reference for the codes that can be used to generate Emojis on popular sites like GitHub or Basecamp.",
   "author": "Johann Hofmann",
   "homepage": "http://github.com/johannhof/emoji-helper",
+  "repository": "http://github.com/johannhof/emoji-helper",
   "license": "MIT",
   "devDependencies": {
     "fs-extra": "^3.0.1",
     "gulp": "^3.9.0",
-    "gulp-clean": "^0.3.0",
-    "gulp-image-resize": "^0.7.1",
+    "gulp-image-resize": "^0.12.0",
     "gulp-jade": "^1.1.0",
-    "gulp-newer": "^0.3.0",
-    "gulp-uglify": "^0.3.0",
-    "gulp-zip": "^3.0.2",
-    "gulp.spritesmith": "^6.2.0",
+    "gulp-zip": "^4.0.0",
+    "gulp.spritesmith": "^6.5.0",
     "imagemin-pngquant": "^4.2.2",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4",
     "vinyl-buffer": "^1.0.0"
-  },
-  "false": {}
+  }
 }

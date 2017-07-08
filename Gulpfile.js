@@ -1,6 +1,5 @@
 var gulp = require("gulp");
 var buffer = require('vinyl-buffer');
-var clean = require("gulp-clean");
 var imageminPngquant = require('imagemin-pngquant');
 var imageResize = require("gulp-image-resize");
 var zip = require("gulp-zip");
@@ -11,8 +10,6 @@ var fs = require("fs-extra");
 
 const BUILD_DIR = "./build/";
 const VERSION = "1.2.0";
-
-var sprite = require("./data/emoji.json");
 
 var static = [
   "./data/emoji/clock9.png",
@@ -47,6 +44,8 @@ gulp.task("sources", function() {
 });
 
 gulp.task("popup", function() {
+  let sprite = require("./data/emoji.json");
+
   gulp.src("./src/popup.jade")
     .pipe(jade({
       locals: { emojis: sprite }
