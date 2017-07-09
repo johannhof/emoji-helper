@@ -38,8 +38,8 @@ body {
   /* Sprite height / 2 */
   background-size: 897px;
   transform: scale(1.2);
-  height: 22px;
-  width: 22px;
+  height: 23px;
+  width: 23px;
   margin: 8px;
 }
 #copy-message {

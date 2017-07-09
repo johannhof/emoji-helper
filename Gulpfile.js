@@ -9,7 +9,7 @@ var request = require("request-promise-native");
 var fs = require("fs-extra");
 
 const BUILD_DIR = "./build/";
-const VERSION = "1.2.0";
+const VERSION = "2.0.0";
 
 var static = [
   "./data/emoji/clock9.png",
@@ -19,7 +19,7 @@ var static = [
   "./data/emoji/oncoming_automobile.png",
   "./data/emoji/symbols.png",
   "./data/emoji/hatched_chick.png",
-  "./data/emoji/octopus.png",
+  "./data/emoji/owl.png",
   "./data/emoji/heart.png"
 ];
 

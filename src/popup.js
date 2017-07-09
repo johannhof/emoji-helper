@@ -1,5 +1,5 @@
 (function() {
-  const VERSION = "1.2.0";
+  const VERSION = "2.0.0";
 
   function getLocal(name, cb) {
     chrome.storage.local.get(name, function(item) {

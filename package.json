@@ -1,7 +1,7 @@
 {
   "name": "emoji-helper",
   "title": "Emoji Cheatsheet for GitHub, Basecamp etc.",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "A very simple and useful reference for the codes that can be used to generate Emojis on popular sites like GitHub or Basecamp.",
   "author": "Johann Hofmann",
   "homepage": "http://github.com/johannhof/emoji-helper",
