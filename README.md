@@ -26,7 +26,7 @@ The generated files are located in the `build` folders. To load the build folder
 
 #### Firefox
 
-You can follow this guide to install a WebExtension temporarily: https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Temporary_Installation_in_Firefox
+You can follow this guide to install a WebExtension temporarily: https://developer.mozilla.org/Add-ons/WebExtensions/Temporary_Installation_in_Firefox
 
 #### Chrome
 
