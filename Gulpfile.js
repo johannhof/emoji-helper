@@ -9,7 +9,7 @@ var request = require("request-promise-native");
 var fs = require("fs-extra");
 
 const BUILD_DIR = "./build/";
-const VERSION = "2.0.0";
+const VERSION = "2.0.1";
 
 var static = [
   "./data/emoji/clock9.png",
@@ -48,7 +48,7 @@ gulp.task("popup", function() {
 
   gulp.src("./src/popup.jade")
     .pipe(jade({
-      locals: { emojis: sprite }
+      locals: { version: VERSION, emojis: sprite }
     }))
     .pipe(gulp.dest(BUILD_DIR));
 });
