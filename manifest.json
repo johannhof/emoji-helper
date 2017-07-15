@@ -26,5 +26,13 @@
     "default_popup": "popup.html"
   },
 
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E"
+      }
+    }
+  },
+
   "minimum_chrome_version": "41"
 }
