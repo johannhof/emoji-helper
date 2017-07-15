@@ -106,7 +106,7 @@ h1 img {
 h2 {
   text-align: center;
   font-weight: 400;
-  margin: 20px 0;
+  margin: 15px 0;
   font-size: 22px;
   color: #555;
 }
@@ -187,6 +187,7 @@ hr{
   float: left;
 }
 #settings-container {
+  height: auto;
   padding: 0px 20px;
 }
 .setting-title{
