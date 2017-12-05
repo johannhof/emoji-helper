@@ -5,6 +5,7 @@ var imageResize = require("gulp-image-resize");
 var zip = require("gulp-zip");
 var jade = require("gulp-jade");
 var spritesmith = require("gulp.spritesmith");
+var rename = require("gulp-rename");
 var request = require("request-promise-native");
 var fs = require("fs-extra");
 
@@ -28,6 +29,19 @@ gulp.task("emoji", function() {
 });
 
 gulp.task("sources", function() {
+  const emojiName = "no_good_woman";
+  const toolbarEmoji = `data/emoji/${emojiName}.png`;
+  [64, 48, 32, 24, 16].forEach(function(size) {
+    output = `icon${size}.png`
+    gulp.src(defaultToolbarEmoji)
+      .pipe(imageResize({
+        width: size,
+        height: size
+      }))
+      .pipe(rename(output))
+      .pipe(gulp.dest("icons")
+    );
+  });
   gulp.src([
     "./src/**/*",
     "!./src/popup.jade",
