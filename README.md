@@ -1,4 +1,4 @@
-# Emoji Helper [![](https://travis-ci.org/johannhof/emoji-helper.svg?branch=master)](https://travis-ci.org/johannhof/emoji-helper) [![](https://img.shields.io/github/release/johannhof/emoji-helper.svg?style=flat)](https://github.com/johannhof/emoji-helper/releases)
+# Emoji Helper [![](https://img.shields.io/github/release/johannhof/emoji-helper.svg?style=flat-square)](https://github.com/johannhof/emoji-helper/releases) [![](https://img.shields.io/amo/users/emoji-cheatsheet.svg?style=flat-square)](https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/) [![](https://img.shields.io/amo/d/emoji-cheatsheet.svg?style=flat-square)](https://addons.mozilla.org/en-US/firefox/addon/emoji-cheatsheet/)
 
 An Emoji cheat sheet extension for Chrome, Firefox and Opera. Built because I like spamming my coworkers with :mushroom: :pig: :rocket: :snail: but fortunately have more important things to keep in mind than the name for :moyai:
 
