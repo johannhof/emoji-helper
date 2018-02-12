@@ -33,7 +33,7 @@
     r.selectNode(copyDiv);
     let s = window.getSelection();
     s.removeAllRanges();
-    s.addRange(r); 
+    s.addRange(r);
     document.execCommand("copy");
     document.body.removeChild(copyDiv);
   };
@@ -70,6 +70,11 @@
   let copyUnicode = document.getElementById("copy-unicode");
   let copyImg = document.getElementById("copy-img");
   let insertName = document.getElementById("insert-name");
+
+  let toolbarEmoji = document.getElementById("toolbar-emoji");
+  let toolbarEmojiButton = document.getElementById("toolbar-emoji-button");
+  let defaultToolbarEmoji = "smiley";
+  let errorMessage = document.getElementById("error-message");
 
   let whatToCopy = "name";
   let lastCopyValue = "";
@@ -355,6 +360,19 @@
       }
     });
 
+    // customize toolbar emoji
+    getLocal("toolbar-emoji", function(inputName) {
+      inputName = inputName.replace(/:/g,'');
+      let exists = (emojis.filter(function(emoji) {
+          return emoji.name.includes(inputName)
+        })).length == 1 ? true : false;
+      if (exists) {
+        emojiName = inputName;
+        toolbarEmoji.setAttribute("value", emojiName);
+      } else {
+        toolbarEmoji.setAttribute("value", defaultToolbarEmoji);
+      }
+    });
   }, false);
 
   copyName.addEventListener("click", function () {

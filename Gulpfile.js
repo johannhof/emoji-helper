@@ -23,17 +23,17 @@ var static = [
   "./data/emoji/owl.png",
   "./data/emoji/heart.png"
 ];
+var emojiName = 'smiley'
 
 gulp.task("emoji", function() {
   return gulp.src(static).pipe(gulp.dest(BUILD_DIR + "./img/emoji/"));
 });
 
 gulp.task("sources", function() {
-  const emojiName = "no_good_woman";
-  const toolbarEmoji = `data/emoji/${emojiName}.png`;
+  let toolbarEmoji = `data/emoji/${emojiName}.png`;
   [64, 48, 32, 24, 16].forEach(function(size) {
     output = `icon${size}.png`
-    gulp.src(defaultToolbarEmoji)
+    gulp.src(toolbarEmoji)
       .pipe(imageResize({
         width: size,
         height: size
