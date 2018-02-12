@@ -5,6 +5,7 @@ var imageResize = require("gulp-image-resize");
 var zip = require("gulp-zip");
 var jade = require("gulp-jade");
 var spritesmith = require("gulp.spritesmith");
+var rename = require("gulp-rename");
 var request = require("request-promise-native");
 var fs = require("fs-extra");
 
@@ -22,12 +23,25 @@ var static = [
   "./data/emoji/owl.png",
   "./data/emoji/heart.png"
 ];
+var emojiName = 'smiley'
 
 gulp.task("emoji", function() {
   return gulp.src(static).pipe(gulp.dest(BUILD_DIR + "./img/emoji/"));
 });
 
 gulp.task("sources", function() {
+  let toolbarEmoji = `data/emoji/${emojiName}.png`;
+  [64, 48, 32, 24, 16].forEach(function(size) {
+    output = `icon${size}.png`
+    gulp.src(toolbarEmoji)
+      .pipe(imageResize({
+        width: size,
+        height: size
+      }))
+      .pipe(rename(output))
+      .pipe(gulp.dest("icons")
+    );
+  });
   gulp.src([
     "./src/**/*",
     "!./src/popup.jade",

@@ -12,6 +12,7 @@
     "gulp": "^3.9.0",
     "gulp-image-resize": "^0.12.0",
     "gulp-jade": "^1.1.0",
+    "gulp-rename": "^3.10.10",
     "gulp-zip": "^4.0.0",
     "gulp.spritesmith": "^6.5.0",
     "imagemin-pngquant": "^4.2.2",

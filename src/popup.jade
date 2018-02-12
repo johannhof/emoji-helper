@@ -43,6 +43,13 @@ html
           input#insert-name(type="radio", name="default-copy", value="insertname")
           label(for="insert-name") Insert :name: into active input
         hr
+        p.setting-title Change Toolbar Emoji
+        p.setting
+          input#toolbar-emoji(type="text", name="change-toolbarbutton", value="")
+          input#toolbar-emoji-button(type="button", value="Change")
+          br
+          label(for="toolbar-emoji")  (only paste)
+        hr
         span.setting-title History
         button#clear-history-button.detail-button(title="Clear history")
             i.ion-trash-b
