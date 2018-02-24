@@ -9,7 +9,7 @@ var request = require("request-promise-native");
 var fs = require("fs-extra");
 
 const BUILD_DIR = "./build/";
-const VERSION = "2.0.1";
+const VERSION = "2.1.0";
 
 var static = [
   "./data/emoji/clock9.png",
@@ -19,8 +19,9 @@ var static = [
   "./data/emoji/oncoming_automobile.png",
   "./data/emoji/symbols.png",
   "./data/emoji/hatched_chick.png",
-  "./data/emoji/owl.png",
-  "./data/emoji/heart.png"
+  "./data/emoji/squid.png",
+  "./data/emoji/heart.png",
+  "./data/emoji/mag.png",
 ];
 
 gulp.task("emoji", function() {
@@ -61,15 +62,13 @@ gulp.task("fetch-images", function() {
   }).then(function(emojis) {
     let downloads = [];
     for (let id of Object.keys(emojis)) {
-      downloads.push([
-        request({
-          url: emojis[id],
-          headers: { "User-Agent": ":unicorn:" },
-          encoding: null,
-        }).then(function(data) {
-          return fs.writeFile(`data/emoji/${id}.png`, data);
-        })
-      ]);
+      downloads.push(request({
+        url: emojis[id],
+        headers: { "User-Agent": ":unicorn:" },
+        encoding: null,
+      }).then(function(data) {
+        return fs.writeFile(`data/emoji/${id}.png`, data);
+      }));
     }
     return Promise.all(downloads);
   });

@@ -1,5 +1,5 @@
 (function() {
-  const VERSION = "2.0.1";
+  const VERSION = "2.1.0";
 
   function getLocal(name, cb) {
     chrome.storage.local.get(name, function(item) {
@@ -194,7 +194,7 @@
       recentDiv.appendChild(cont);
     }else{
       // help screen if new install
-      recentDiv.style.backgroundImage = 'url("./img/emoji-help.png")';
+      recentDiv.style.backgroundImage = 'url("./img/emoji-help.svg")';
     }
   }
 
@@ -277,8 +277,10 @@
   // search functionality
   (function() {
     let lastVal;
-    searchInput.addEventListener("keyup", function() {
+    searchInput.addEventListener("focus", function() {
       setActiveGroup(searchInput);
+    });
+    searchInput.addEventListener("keyup", function() {
       let val = searchInput.value;
       // prevent flickering
       setTimeout(function() {
