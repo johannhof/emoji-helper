@@ -4,7 +4,7 @@
   "name": "Emoji Cheatsheet for GitHub, Basecamp etc.",
   "short_name": "Emoji Helper",
   "description": "A very simple and useful reference for the codes that can be used to generate Emojis on popular sites like GitHub or Basecamp.",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "icons": {
     "32": "icon32.png",
     "48": "icon48.png",

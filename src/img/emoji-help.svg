@@ -1,0 +1,120 @@
+<svg width="400" height="290" viewBox="0 0 400 290" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter x="-3.6%" y="-10.9%" width="107.1%" height="123.9%" filterUnits="objectBoundingBox" id="a">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" in="shadowBlurOuter1" result="shadowMatrixOuter1"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <rect id="b" y="8" width="140" height="38" rx="3"/>
+    <filter x="-3.9%" y="-10.9%" width="107.9%" height="123.9%" filterUnits="objectBoundingBox" id="c">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" in="shadowBlurOuter1" result="shadowMatrixOuter1"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <rect id="d" y="8" width="127" height="38" rx="3"/>
+    <filter x="-3.9%" y="-8.7%" width="107.9%" height="123.9%" filterUnits="objectBoundingBox" id="e">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" in="shadowBlurOuter1" result="shadowMatrixOuter1"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <rect id="f" width="127" height="38" rx="3"/>
+    <filter x="-5.1%" y="-6.6%" width="110.2%" height="118%" filterUnits="objectBoundingBox" id="g">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" in="shadowBlurOuter1" result="shadowMatrixOuter1"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <rect id="h" width="98" height="53" rx="3"/>
+    <filter x="-3.9%" y="-6.6%" width="107.9%" height="118%" filterUnits="objectBoundingBox" id="i">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" in="shadowBlurOuter1" result="shadowMatrixOuter1"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <rect id="j" width="127" height="53" rx="3"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <text font-family="Fira Sans, sans-serif" font-size="22" fill="#0C0C0D" font-weight="200">
+      <tspan x="137" y="139">Emoji Helper</tspan>
+    </text>
+    <text font-family="sans-serif" font-size="11" font-weight="300" fill="#0C0C0D">
+      <tspan x="312" y="282">Settings</tspan>
+    </text>
+    <text font-family="sans-serif" font-size="11" font-weight="300" fill="#0C0C0D">
+      <tspan x="363" y="282">About</tspan>
+    </text>
+    <g filter="url(#a)" transform="translate(245 4)">
+      <use fill="#FFF" xlink:href="#b"/>
+      <rect stroke="#979797" x=".5" y="8.5" width="139" height="37" rx="3"/>
+      <g fill="#FFF">
+        <path stroke="#979797" d="M120 0l8 10h-16z"/>
+        <path d="M111 9h19v3h-19z"/>
+      </g>
+      <text font-family="sans-serif" font-size="11" fill="#737373">
+        <tspan x="7" y="24">You can search for Emoji,</tspan> <tspan x="7" y="37">just start typing!</tspan>
+      </text>
+    </g>
+    <g filter="url(#c)" transform="translate(12 4)">
+      <use fill="#FFF" xlink:href="#d"/>
+      <rect stroke="#979797" x=".5" y="8.5" width="126" height="37" rx="3"/>
+      <g fill="#FFF">
+        <path stroke="#979797" d="M60 0l8 10H52z"/>
+        <path d="M51 9h19v3H51z"/>
+      </g>
+      <text font-family="sans-serif" font-size="11" fill="#737373">
+        <tspan x="6" y="24">Emoji are grouped into </tspan> <tspan x="6" y="37">several categories</tspan>
+      </text>
+    </g>
+    <g filter="url(#e)" transform="translate(9 237)">
+      <use fill="#FFF" xlink:href="#f"/>
+      <rect stroke="#979797" x=".5" y=".5" width="126" height="37" rx="3"/>
+      <g fill="#FFF">
+        <path stroke="#979797" d="M106 46l-8-10h16z"/>
+        <path d="M115 37H96v-3h19z"/>
+      </g>
+      <text font-family="sans-serif" font-size="11" fill="#737373">
+        <tspan x="5" y="16">Many websites </tspan> <tspan x="5" y="29">support :emoji_names:</tspan>
+      </text>
+    </g>
+    <g filter="url(#g)" transform="translate(148 222)">
+      <use fill="#FFF" xlink:href="#h"/>
+      <rect stroke="#979797" x=".5" y=".5" width="97" height="52" rx="3"/>
+      <g fill="#FFF">
+        <path stroke="#979797" d="M77 61l-8-10h16z"/>
+        <path d="M86 52H67v-3h19z"/>
+      </g>
+      <text font-family="sans-serif" font-size="11" fill="#737373">
+        <tspan x="5" y="17">You can use </tspan> <tspan x="5" y="30">Unicode symbols </tspan> <tspan x="5" y="43">everywhere else</tspan>
+      </text>
+    </g>
+    <g filter="url(#i)" transform="translate(258 213)">
+      <use fill="#FFF" xlink:href="#j"/>
+      <rect stroke="#979797" x=".5" y=".5" width="126" height="52" rx="3"/>
+      <g fill="#FFF">
+        <path stroke="#979797" d="M16 61L8 51h16z"/>
+        <path d="M25 52H6v-3h19z"/>
+      </g>
+      <text font-family="sans-serif" font-size="11" fill="#737373">
+        <tspan x="8" y="17">Inserts the selected </tspan> <tspan x="8" y="30">Emoji into the focused </tspan> <tspan x="8" y="43">input field of the page</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
