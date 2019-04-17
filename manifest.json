@@ -1,7 +1,6 @@
 {
   "manifest_version": 2,
-
-  "name": "Emoji Cheatsheet for GitHub, Basecamp etc.",
+  "name": "Emoji Cheatsheet",
   "short_name": "Emoji Helper",
   "description": "A very simple and useful reference for the codes that can be used to generate Emojis on popular sites like GitHub or Basecamp.",
   "version": "2.0.1",
