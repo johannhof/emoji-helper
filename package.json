@@ -12,11 +12,11 @@
     "gulp": "^3.9.0",
     "gulp-image-resize": "^0.12.0",
     "gulp-jade": "^1.1.0",
-    "gulp-zip": "^4.0.0",
-    "gulp.spritesmith": "^6.5.0",
+    "gulp-zip": "^4.2.0",
+    "gulp.spritesmith": "^6.9.0",
     "imagemin-pngquant": "^4.2.2",
-    "request": "^2.81.0",
-    "request-promise-native": "^1.0.4",
-    "vinyl-buffer": "^1.0.0"
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
+    "vinyl-buffer": "^1.0.1"
   }
 }
