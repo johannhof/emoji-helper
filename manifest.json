@@ -13,8 +13,6 @@
 
   "author" : "Johann Hofmann",
 
-  "offline_enabled": true,
-
   "permissions":[
     "clipboardWrite",
     "activeTab",
